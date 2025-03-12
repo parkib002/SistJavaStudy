@@ -1,0 +1,30 @@
+package day0304;
+
+class shop{
+	
+	private String sangpum;
+	private int su;
+	
+	//디폴트 생성자
+	public shop() {
+		// TODO Auto-generated constructor stub
+	}
+	//명시적 생성자
+	public shop(String sangpum,int su) {
+		this.sangpum=sangpum;
+		this.su=su;
+	}
+}
+/////////////////
+class Myget{
+	
+}
+//////////////////
+public class Ex4Inherit {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

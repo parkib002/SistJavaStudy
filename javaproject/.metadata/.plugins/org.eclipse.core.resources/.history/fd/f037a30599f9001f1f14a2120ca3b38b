@@ -1,0 +1,25 @@
+package day0305;
+
+class Company{
+	
+	 private String staff,position; //직원명,직급
+	 private int famSu; //가족수
+	 
+	 //디폴트 생성자
+	 
+	 
+	 //사원명,직급,가족수를 인자로 받는 생성자
+	 
+	 //각각의 setter & getter
+	 
+	 
+}
+///////////////////////////
+public class QuizClass {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

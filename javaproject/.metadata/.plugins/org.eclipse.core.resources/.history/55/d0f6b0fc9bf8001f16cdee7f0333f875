@@ -1,0 +1,13 @@
+package day0304;
+
+//자식
+public class Ex2Manager extends Ex2Employee {
+
+	String dept; //부서
+	
+	public Ex2Manager(String name, int sal) {
+		super(name, sal);
+		// TODO Auto-generated constructor stub
+	}
+
+}

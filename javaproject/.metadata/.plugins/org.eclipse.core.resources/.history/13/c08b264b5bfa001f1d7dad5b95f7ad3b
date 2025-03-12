@@ -1,0 +1,60 @@
+package day0306;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class Ex10FileReadWrite {
+
+	static final String FILENAME="C:\\sist0217\\work\\sungjuk.txt";
+	FileWriter fw;
+	FileReader fr;
+	BufferedReader bf;
+	Scanner sc=new Scanner(System.in);
+	
+	//추가/전체출력 선택하는 메서드
+	public int getMenu()
+	{
+		int num=0;
+		System.out.println("1.추가   2.전체출력   9.종료");
+		num=Integer.parseInt(sc.nextLine());
+		
+		return num;
+	}
+	
+	//정보입력해서 파일에 저장
+	public void sungjukInput()
+	{
+		//이름과 점수
+		System.out.println("학생명을 입력하시오");
+		String name=sc.nextLine();
+		System.out.println("점수를 입력하시오");
+		int score=Integer.parseInt(sc.nextLine());
+		
+		//파일에 저장
+		try {
+			fw=new FileWriter(FILENAME, true);
+			
+			//입력한 내용 파일에 저장
+			fw.write(name+"\n");
+			fw.write(score+"\n");
+			
+			System.out.println("**학생정보가 저장됨**");
+			
+			
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

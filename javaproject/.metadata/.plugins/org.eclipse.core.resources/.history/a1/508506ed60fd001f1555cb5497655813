@@ -1,0 +1,37 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class BtnArrayEvent7 extends JFrame{
+
+	Container cp;
+	JButton [] btn=new JButton[7];
+	String[] btnLabel= {"Red","Yellow","Blue","Green","Black","White","Pink"};
+	Color [] btnColor= {Color.red,Color.yellow,Color.BLUE,Color.GREEN,Color.BLACK,Color.WHITE,Color.PINK};
+	
+	//생성자
+	public BtnArrayEvent7 (String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 300, 500);
+		
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,200));
+		
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new BtnArrayEvent7("스윙레이아웃 #3");
+	}
+
+}
+	
+

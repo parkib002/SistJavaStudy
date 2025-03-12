@@ -1,0 +1,26 @@
+package day0306;
+
+import java.io.FileWriter;
+import java.util.Scanner;
+
+public class Ex9FileWriter {
+	
+	Scanner sc;
+	FileWriter fw; //null
+	static final String FILENAME="C:\\sist0217\\work\\member.txt";
+	
+	public Ex9FileWriter() {
+		sc=new Scanner(System.in);
+	}
+	
+	public void dateWrite()
+	{
+		
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

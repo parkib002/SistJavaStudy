@@ -1,0 +1,27 @@
+package day0304;
+
+/*	보너스는 개발부만 백만 나머지 부서는 50만원 특별지급
+ * 사원명?
+ * 홍길동
+ * 부서
+ * 개발부
+ * 기본급?
+ * 2000000
+ * =======================================
+ * 사원명		부서		기본급	보너스	총급여
+ * 홍길동		개발부	2000000	1000000	3000000
+ * 
+ */
+
+class Sawon{
+	
+}
+
+public class QuizSawon {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

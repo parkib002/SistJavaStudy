@@ -1,0 +1,18 @@
+package day0310;
+
+public class ThreadEx3 implements Runnable{
+
+	String name;
+	int num;
+	
+	public ThreadEx3(String name,int num) {
+		this.name=name;
+		this.num=num;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

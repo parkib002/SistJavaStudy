@@ -1,0 +1,38 @@
+package day0305;
+
+class Company{
+	
+	 private String staff,position; //직원명,직급
+	 private int famSu; //가족수
+	 
+	 //디폴트 생성자
+	 
+	 
+	 //사원명,직급,가족수를 인자로 받는 생성자
+	 
+	 //각각의 setter & getter
+	 
+	 //직급에 따라 기본급:  부장->450  과장->350  대리->280  사원->220  getGibonPay()
+	 
+	 //직급에 따라 수당:  부장,과장==>100  대리,사원==>70  getSudangPay()
+	 
+	 //가족수가 5인이상:  30만 5인미만2인이상은 10만원 나머지는 0  getFamSudang()
+	 
+	 //세금:  기본급의 5%를 반환 받아서 세금  getTax()
+	 
+	 //실수령액:  기본급+수당+가족수당-세금  getNetPay()
+}
+///////////////////////////
+public class QuizClass {
+	
+	
+	//제목출력 메서드(showTitle())
+	//사원명   직급   기본급   수당   가족수당   세금   실수령액   
+	
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

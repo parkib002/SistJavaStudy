@@ -1,0 +1,18 @@
+package day0304;
+
+//추상클래스
+abstract class Board{ 
+	
+	public abstract void process(); //추상메서드
+}
+
+
+
+public class Ex10Abst {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

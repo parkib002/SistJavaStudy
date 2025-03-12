@@ -1,0 +1,22 @@
+package day0307;
+
+@FunctionalInterface
+interface MySawon
+{
+	public void sawonAdd(String name);
+}
+
+@FunctionalInterface
+interface Sales
+{
+	public void sanpumAdd(String sangpum,int su,int dan);
+}
+
+public class Ex9RamdaTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

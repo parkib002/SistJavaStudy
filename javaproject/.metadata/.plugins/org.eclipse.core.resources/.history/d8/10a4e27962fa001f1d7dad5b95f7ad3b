@@ -1,0 +1,25 @@
+package day0306;
+
+public class QuizReadWrite {
+
+	
+	
+	public int getMenu()
+	{
+		//1.상품추가 2.상품전체입고현황 9.종료
+		
+	}
+	
+	//입력 후 파일에 저장 sangpumAdd()
+	
+	
+	//전체출력		sangpumAllDatas()
+	//전체금액이 10만원 이상이면 10프로 할인
+	//번호  	상품명	수량		단가		금액		할인		총금액
+	
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

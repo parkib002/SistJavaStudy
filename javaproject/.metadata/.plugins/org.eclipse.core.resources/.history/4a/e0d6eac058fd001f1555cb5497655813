@@ -1,0 +1,33 @@
+package day0310;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class SwingIcon5 extends JFrame{
+	
+	Container cp;
+
+	//생성자
+	public SwingIcon5(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 300, 500);
+		
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,200));
+		
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new SwingIcon5("스윙레이아웃 #3");
+	}
+
+}
+
+

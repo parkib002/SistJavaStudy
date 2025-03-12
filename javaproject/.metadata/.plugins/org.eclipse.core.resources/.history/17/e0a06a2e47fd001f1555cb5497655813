@@ -1,0 +1,28 @@
+package day0310;
+
+public class ThreadEx3 implements Runnable{
+
+	String name;
+	int num;
+	
+	public ThreadEx3(String name,int num) {
+		this.name=name;
+		this.num=num;
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		for(int i=1;i<=num;i++)
+		{
+			System.out.println(name+"==>"+i);
+		}
+		
+	}
+
+}

@@ -1,0 +1,87 @@
+package day0310;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FlowLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class BtnArrayEvent7 extends JFrame implements ActionListener{
+
+	Container cp;
+	JButton [] btn=new JButton[7];
+	String[] btnLabel= {"Red","Yellow","Blue","Green","Black","White","Pink"};
+	Color [] btnColor= {Color.red,Color.yellow,Color.BLUE,Color.GREEN,Color.BLACK,Color.WHITE,Color.PINK};
+	
+	//생성자
+	public BtnArrayEvent7 (String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 700, 500);
+		
+		cp=this.getContentPane();
+		cp.setBackground(new Color(255,255,200));
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	public void initDesign()
+	{
+		//Panel은 기본이 FlowLayout
+		JPanel panel=new JPanel();
+		panel.setBackground(Color.ORANGE);
+		
+		//패널을 상단에 배치
+		this.add(panel, BorderLayout.NORTH);
+		//this.add("North", panel);
+		
+		//버튼생성
+		for(int i=0;i<btn.length;i++)
+		{
+			btn[i]=new JButton(btnLabel[i]);
+			//버튼의 색상을 각각의 색상으로 변경
+			btn[i].setBackground(btnColor[i]);
+			//panel에 버튼 추가
+			panel.add(btn[i]);
+			//버튼에 이벤트 추가
+			btn[i].addActionListener(this);
+			
+		}
+			
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		Object ob=e.getSource();
+		
+		for(int i=0;i<btn.length;i++)
+		{
+			if(ob==btn[i])
+				//프레임의 배경색 변경
+				{cp.setBackground(btnColor[i]);
+			
+				//창제목도 변경
+				this.setTitle("Color: "+btnLabel[i]);
+				}
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new BtnArrayEvent7("버튼배열 #7");
+	}
+
+
+}
+	
+

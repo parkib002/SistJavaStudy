@@ -1,0 +1,13 @@
+package day0304;
+
+public class Ex2Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		Ex2Manager emp1=new Ex2Manager("손흥민", 2000000, "기획경영부");
+		emp1.getEmp();
+
+	}
+
+}

@@ -1,0 +1,57 @@
+package day0307;
+
+//ArrayList(Vector)로 생성해서 할 것!!!
+//MyShop은 디폴트 생성자로 생성할 것
+//메인에서 추가를 누르면 입력메서드 호출..
+//전체출력을 선택하면 출력메서드 호출됨
+//출력모양:	번호		입고상품		수량		가격		총금액
+class MyShop{
+	
+	
+	private String sangName;
+	private int su;
+	private int price;
+	
+	public MyShop() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public String getSangName() {
+		return sangName;
+	}
+
+	public void setSangName(String sangName) {
+		this.sangName = sangName;
+	}
+
+	public int getSu() {
+		return su;
+	}
+
+	public void setSu(int su) {
+		this.su = su;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	
+	
+	
+	
+	//setters & getters
+}
+
+////////////////////////////
+public class QuizList {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
