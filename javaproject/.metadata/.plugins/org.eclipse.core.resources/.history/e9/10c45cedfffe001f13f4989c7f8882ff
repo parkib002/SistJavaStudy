@@ -1,0 +1,32 @@
+package day0312;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JFrame;
+
+public class GraphicImage04 extends JFrame{
+	
+	Container cp;
+
+	//생성자
+	public GraphicImage04(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 700, 500);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(new Color(255,255,200));		
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new GraphicImage04("스윙레이아웃 #3");
+	}
+
+}
+

@@ -1,0 +1,57 @@
+package day0312;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.Image;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class CanvasImage05 extends JFrame{
+	
+	Container cp;
+	JButton btnImage;
+	Image image;
+
+	//생성자
+	public CanvasImage05(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 700, 500);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(Color.WHITE);	
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	//디자인
+	public void initDesign()
+	{
+		
+	}
+	
+	//canvas를 상속받는 클래스
+	class Mycanvas extends Canvas{
+		
+		@Override
+		public void paint(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paint(g);
+			
+			//이미지 출력
+		}
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new CanvasImage05("스윙캔버스 #5");
+	}
+
+}

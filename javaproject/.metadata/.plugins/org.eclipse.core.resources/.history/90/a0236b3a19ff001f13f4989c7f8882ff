@@ -1,0 +1,132 @@
+package day0312;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.border.TitledBorder;
+
+public class QuizCheckRadio extends JFrame implements ActionListener{
+
+	Container cp;
+	JButton imageOpen;
+	JRadioButton m,w;
+	JRadioButton [] rb=new JRadioButton[5];
+	Color [] colors= {Color.RED,Color.BLUE,Color.GREEN,Color.PINK,Color.ORANGE};
+	JCheckBox [] cb=new JCheckBox[6];
+	JLabel lbl1,lbl2;
+	
+
+	//생성자
+	public QuizCheckRadio(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 700, 500);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(new Color(255,255,200));		
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	public void initDesign()
+	{
+		String [] str1= {"빨강","파랑","초록","분홍","주황"};
+		
+		JPanel ptop=new JPanel();
+		ptop.setBorder(new TitledBorder("성별 및 색상 선택"));
+		
+		m=new JRadioButton("남자");
+		m.setBounds(30, 30, 50, 50);
+		ptop.add(m);
+		
+		w=new JRadioButton("여자");
+		w.setBounds(70, 30, 50, 50);
+		ptop.add(w);
+		
+		this.add("North",ptop);
+		
+		ButtonGroup bg=new ButtonGroup();
+		
+		for(int i=0;i<rb.length;i++)
+		{
+			rb[i]=new JRadioButton(str1[i]);
+			ptop.add(rb[i]);
+			bg.add(rb[i]);
+			rb[i].addActionListener(this);
+		}
+		
+		String [] str2= {"일본","중국","프랑스","독일","미국","이탈리아"};
+		JPanel pbottom=new JPanel();
+		pbottom.setBorder(new TitledBorder("국가 선택"));
+		this.add("South",pbottom);
+		
+		for(int i=0;i<cb.length;i++)
+		{
+			cb[i]=new JCheckBox(str2[i]);
+			pbottom.add(cb[i]);
+			cb[i].addActionListener(this);
+		}
+		
+		lbl1=new JLabel("성별");
+		this.add("Left", lbl1);
+		
+		lbl2=new JLabel("여행해본 국가");
+		this.add("Right", lbl2);
+		
+		
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+		Object ob=e.getSource();
+		
+		
+		for(int i=0;i<rb.length;i++)
+		{
+			if(ob==rb[i])
+			lbl1.setForeground(colors[i]);
+		}
+		
+		String msg="내가 여행해본 나라는 ";
+		int select=0;
+		
+		for(int i=0;i<cb.length;i++)
+			if(cb[i].isSelected()==true)
+			{
+				msg+=cb[i].getText();
+			}
+		
+		if(select==0)
+		{
+			msg="저는 가본 나라가 없습니다";
+		}
+		
+		else
+			msg+="  입니다";
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new QuizCheckRadio("스윙 체크&라디오 과제");
+	}
+
+	
+
+}
+	
+	

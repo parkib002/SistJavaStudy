@@ -100,7 +100,6 @@ public class RadioCheck01 extends JFrame implements ActionListener{
 		
 		//체크박스 호출처리, 선택한 체크박스의 메세지별 출력
 		
-		
 		String msg="나의 가능한 컴퓨터 언어는 ";
 		
 		for(int i=0;i<cb.length;i++)
