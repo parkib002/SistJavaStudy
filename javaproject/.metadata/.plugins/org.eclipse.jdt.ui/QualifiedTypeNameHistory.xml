@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="day0305.MyCar"/>
-    <fullyQualifiedTypeName name="day0305.interWork"/>
-    <fullyQualifiedTypeName name="day0305.InterFood"/>
-    <fullyQualifiedTypeName name="day0305.InterImpl"/>
-    <fullyQualifiedTypeName name="day0305.Game"/>
-    <fullyQualifiedTypeName name="day0305.YongHee"/>
-    <fullyQualifiedTypeName name="day0305.JooHee"/>
-    <fullyQualifiedTypeName name="day0305.HeaJee"/>
-    <fullyQualifiedTypeName name="day0305.OuterObj"/>
-    <fullyQualifiedTypeName name="day0305.OuterObj.InnerObj"/>
     <fullyQualifiedTypeName name="day0305.Outer.Inner1"/>
     <fullyQualifiedTypeName name="day0305.Outer"/>
     <fullyQualifiedTypeName name="day0305.Outer.Inner2"/>
@@ -43,7 +33,6 @@
     <fullyQualifiedTypeName name="java.util.Iterator"/>
     <fullyQualifiedTypeName name="day0307.Ex7BoardList"/>
     <fullyQualifiedTypeName name="day0307.Ex7Board"/>
-    <fullyQualifiedTypeName name="java.util.Vector"/>
     <fullyQualifiedTypeName name="day0307.MyShop"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
     <fullyQualifiedTypeName name="java.lang.System"/>
@@ -60,4 +49,15 @@
     <fullyQualifiedTypeName name="org.w3c.dom.ls.LSException"/>
     <fullyQualifiedTypeName name="javax.swing.border.TitledBorder"/>
     <fullyQualifiedTypeName name="java.awt.Font"/>
+    <fullyQualifiedTypeName name="java.awt.event.ActionListener"/>
+    <fullyQualifiedTypeName name="javax.swing.JFrame"/>
+    <fullyQualifiedTypeName name="java.awt.GridLayout"/>
+    <fullyQualifiedTypeName name="java.awt.ScrollPane"/>
+    <fullyQualifiedTypeName name="javax.swing.table.DefaultTableModel"/>
+    <fullyQualifiedTypeName name="javax.swing.JTable"/>
+    <fullyQualifiedTypeName name="java.util.Vector"/>
+    <fullyQualifiedTypeName name="javax.swing.JLabel"/>
+    <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
+    <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
+    <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
 </qualifiedTypeNameHistroy>

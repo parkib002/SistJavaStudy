@@ -5,8 +5,7 @@
 		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
 		
 		//위치 너비
-		this.setBounds(500, 100, 700, 500);
-		
+		this.setBounds(500, 100, 700, 500);	
 		cp=this.getContentPane();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		cp.setBackground(new Color(255,255,200));		
