@@ -239,6 +239,7 @@ select ename,job,sal from emp where sal>(select sal from emp where ename='ADAMS'
 select * from emp where sal<(select avg(sal) from emp);
 --3.emp_ ENAME이 A나 S나 M으로 시작하는 모든 사람 출력(ename,hiredate,sal)
 select ename,hiredate,sal from emp where ename in (select ename from emp where ename like 'A%' or ename like 'S%' or ename like 'M%');
+select ename,hiredate,sal from emp where ename like 'S%' or ename like 'A%' or ename like 'M%';
 --4.emp_ SCOTT의 SAL과 같은 SAL을 받는 사람을 조회하시오(ename,sal)
 select ename,sal from emp where sal=(select sal from emp where ename='SCOTT');
 --5.emp_ 사원명의 3번째 글자가 R이거나 A인 사람 조회(ename,job)
