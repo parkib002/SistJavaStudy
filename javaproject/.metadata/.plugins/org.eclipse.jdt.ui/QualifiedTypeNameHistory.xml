@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="day0305.Outer.Inner1"/>
-    <fullyQualifiedTypeName name="day0305.Outer"/>
-    <fullyQualifiedTypeName name="day0305.Outer.Inner2"/>
-    <fullyQualifiedTypeName name="day0305.AbstEx"/>
-    <fullyQualifiedTypeName name="day0305.OuterEx"/>
-    <fullyQualifiedTypeName name="day0305.AbstAnony"/>
-    <fullyQualifiedTypeName name="day0305.Abst"/>
-    <fullyQualifiedTypeName name="day0305.SawonOuter.SudangInner"/>
-    <fullyQualifiedTypeName name="day0305.SawonOuter.InputInner"/>
-    <fullyQualifiedTypeName name="day0305.SawonOuter"/>
     <fullyQualifiedTypeName name="java.nio.file.spi.FileSystemProvider"/>
     <fullyQualifiedTypeName name="java.lang.ArithmeticException"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="day0305.Ex10NullPointException"/>
     <fullyQualifiedTypeName name="java.lang.NullPointerException"/>
     <fullyQualifiedTypeName name="java.io.InputStream"/>
@@ -34,9 +23,6 @@
     <fullyQualifiedTypeName name="day0307.Ex7BoardList"/>
     <fullyQualifiedTypeName name="day0307.Ex7Board"/>
     <fullyQualifiedTypeName name="day0307.MyShop"/>
-    <fullyQualifiedTypeName name="java.util.Scanner"/>
-    <fullyQualifiedTypeName name="java.lang.System"/>
-    <fullyQualifiedTypeName name="java.lang.Integer"/>
     <fullyQualifiedTypeName name="day0307.QuizList"/>
     <fullyQualifiedTypeName name="day0307.Ex8Ramda"/>
     <fullyQualifiedTypeName name="day0307.Orange"/>
@@ -60,4 +46,18 @@
     <fullyQualifiedTypeName name="javax.swing.JTextArea"/>
     <fullyQualifiedTypeName name="javax.swing.JScrollPane"/>
     <fullyQualifiedTypeName name="java.awt.event.MouseAdapter"/>
+    <fullyQualifiedTypeName name="day0319.ConnectTestEx1"/>
+    <fullyQualifiedTypeName name="day0319.ConnectTestEx2"/>
+    <fullyQualifiedTypeName name="day0319.ConnectTestEx3"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
+    <fullyQualifiedTypeName name="day0319.DbConnect"/>
+    <fullyQualifiedTypeName name="java.sql.ResultSet"/>
+    <fullyQualifiedTypeName name="java.sql.DriverManager"/>
+    <fullyQualifiedTypeName name="day0319.DBCrudTest"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.System"/>
+    <fullyQualifiedTypeName name="java.sql.Statement"/>
+    <fullyQualifiedTypeName name="java.sql.Connection"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>

@@ -111,6 +111,127 @@ public class DBCrudTest {
 			db.dbClose(stmt, conn);
 		}
 	}
+	
+	public void update()
+	{
+		Scanner sc=new Scanner(System.in);
+		String name,addr;
+		int num;
+		
+		System.out.println("수정할 번호를 입력하시오");
+		num=Integer.parseInt(sc.nextLine());
+		
+		if(!this.isData(num))
+		{
+			System.out.println("해당 번호는 존재하지 않습니다");
+			return; //메서드 종료
+		}
+		
+		System.out.println("수정할 이름을 입력하시오");
+		name=sc.nextLine();
+		System.out.println("수정할 주소를 입력하시오");
+		addr=sc.nextLine();
+		
+		String sql="update hello set name='"+name+"',addr='"+addr+"' where num="+num;
+		System.out.println(sql);
+		
+		//db연결
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		
+		try {
+			stmt=conn.createStatement();
+			int a=stmt.executeUpdate(sql);
+			
+			if(a==0)
+				System.out.println("수정할 데이터가 존재하지 않습니다");
+			else
+				System.out.println("**수정이 완료되었습니다**");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(stmt, conn);
+		}
+	}
+	
+	
+	//수정할 하나의 데이터 조회
+	public boolean isData(int num)
+	{
+		//num에 해당하는 데이터가 있으면 true, 없으면 false 반환
+		
+		boolean flag=false;
+		
+		String sql="select * from hello where num="+num;
+		
+		Connection conn=db.getConnection();
+		Statement stmt=null;
+		ResultSet rs=null;
+		
+		try {
+			stmt=conn.createStatement();
+			rs=stmt.executeQuery(sql);
+			
+			//1개일 경우는 if
+			if(rs.next()) //데이터가 있는 경우
+				flag=true;
+			else //데이터가 없는 경우
+				flag=false;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, stmt, conn);
+		}
+		
+		return flag;
+	}
+	
+	
+	
+	
+	
+	//수정_수정하고 싶은 번호를 입력해서
+//	public void update()
+//	{
+//		Scanner sc=new Scanner(System.in);
+//		int a;
+//		String c;
+//		String q;
+//		String sql="";
+//				
+//		System.out.println("수정할 번호를 입력하세요");
+//		a=Integer.parseInt(sc.nextLine());
+//		System.out.println("수정할 컬럼을 입력하세요");
+//		q=sc.nextLine();
+//		System.out.println("수정할 내용을 입력하세요");
+//		c=sc.nextLine();
+//		
+//		sql="update hello set "+q+"="+"'"+c+"'"+" where num="+a;
+//		System.out.println(sql);
+//		
+//		Connection conn=null;
+//		Statement stmt=null;
+//		
+//		conn=db.getConnection();
+//		try {
+//			stmt=conn.createStatement();
+//			int s=stmt.executeUpdate(sql);
+//			
+//			if(s==0)
+//				System.out.println("없는 데이터 번호입니다");
+//			else //삭제되면 1이 반환
+//				System.out.println("**수정되었습니다**");
+//			
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}finally {
+//			db.dbClose(stmt, conn);
+//		}
+//	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DBCrudTest db=new DBCrudTest();
@@ -125,13 +246,18 @@ public class DBCrudTest {
 			
 			if(n==1)
 				db.insert();
+			
 			else if(n==9)
 			{
 				System.out.println("프로그램을 종료합니다");
 				break;
 			}
+			
 			else if(n==2)
 				db.select();
+			
+			else if(n==3)
+				db.update();
 			
 			else if(n==4)
 				db.delete();
