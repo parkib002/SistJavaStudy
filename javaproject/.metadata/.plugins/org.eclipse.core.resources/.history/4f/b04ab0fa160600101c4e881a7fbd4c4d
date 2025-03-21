@@ -1,0 +1,44 @@
+package day0321;
+
+import java.util.Scanner;
+
+import day0319.DbConnect;
+
+public class SungjukDB {
+
+	DbConnect db=new DbConnect();
+	Scanner sc=new Scanner(System.in);
+	
+	public void insertSungjuk()
+	{
+		
+	}
+	
+	public void selectAllSungjuk()
+	{
+		
+	}
+	
+	public void deleteSungjuk()
+	{
+		
+	}
+	
+	public void updateSungjuk()
+	{
+		
+	}
+	
+	public void process()
+	{
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		SungjukDB db=new SungjukDB();
+		db.process();
+
+	}
+
+}

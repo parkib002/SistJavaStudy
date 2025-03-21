@@ -1,0 +1,68 @@
+package day0321;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.Scanner;
+
+import day0319.DbConnect;
+
+public class StuInfoTest {
+
+	DbConnect db=new DbConnect();
+	Scanner sc=new Scanner(System.in);
+	
+	public void insertStuinfo()
+	{
+		System.out.println("이름을 입력하세요");
+		String sname=sc.nextLine();
+		System.out.println("주소 입력하세요");
+		String saddr=sc.nextLine();
+		System.out.println("혈액형을 입력하세요");
+		String sblood=sc.nextLine();
+		System.out.println("전화번호를 입력하세요");
+		String shp=sc.nextLine();
+		System.out.println("학년을 입력하세요");
+		int sgrade=Integer.parseInt(sc.nextLine());
+		System.out.println("나이를 입력하세요");
+		int sage=Integer.parseInt(sc.nextLine());
+		System.out.println("생년월일을 입력하세요");
+		String sbirth=sc.nextLine();
+		
+		String sql="insert into stuinfo values(seq_test.nextval,?,?,?,?,?,?,?,sysdate)";
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, sname);
+			pstmt.setString(2, saddr);
+			pstmt.setString(3, sblood);
+			pstmt.setString(4, shp);
+			pstmt.setInt(5, sgrade);
+			pstmt.setInt(6, sage);
+			pstmt.setString(7, sbirth);
+			
+			int a=pstmt.executeUpdate();
+			
+			if(a==1)
+				System.out.println("학생정보입력성공!!!");
+			else
+				System.out.println("학생정보입력실패!!!");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
