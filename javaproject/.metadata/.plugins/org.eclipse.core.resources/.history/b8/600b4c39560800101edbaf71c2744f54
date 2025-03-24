@@ -1,0 +1,54 @@
+package day0324;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class AddScore extends JFrame{
+	
+	Container cp;
+	JTextField tfName,tfJava,tfJsp,tfSpring;
+	JComboBox<String> cbBan;
+	JButton btnAdd;
+	
+	//생성자
+	public AddScore(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 250, 400);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(new Color(255, 255, 200));
+		initDesign();
+		this.setVisible(true);
+	}
+	
+	public void initDesign()
+	{
+		this.setLayout(null);
+		
+		JLabel title1=new JLabel("학생명");
+		JLabel title2=new JLabel("반");
+		JLabel title3=new JLabel("Java");
+		JLabel title4=new JLabel("Jsp");
+		JLabel title5=new JLabel("Spring");
+		
+		title1.setBounds(30, 30, 50, 50);
+		
+		this.add(title1)
+		
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    
+		new AddScore("성적 추가폼");
+	}
+}

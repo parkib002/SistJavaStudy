@@ -1,0 +1,11 @@
+package day0324;
+
+public class Snippet {
+	public static void main(String[] args) {
+		if(num==null)
+				{
+					break;
+				}
+	}
+}
+
