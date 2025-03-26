@@ -1,0 +1,45 @@
+package day0326;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import day0319.DbConnect;
+
+public class ShopDbModel {
+
+	DbConnect db=new DbConnect();
+	
+	//추가
+	public void insertShop(ShopDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="insert into values(seq_shop.nextval,?,?,?,?,sysdate)";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getSangpum());
+			pstmt.setString(2, dto.getPhoto());
+			pstmt.setInt(3, dto.getSu());
+			pstmt.setInt(4, dto.getDan());
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	//삭제
+	
+	//수정
+	
+	//조회
+	
+}

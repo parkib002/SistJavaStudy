@@ -1,0 +1,65 @@
+package day0326;
+
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+public class ShopMain extends JFrame implements ActionListener{
+	
+	Container cp;
+	JButton btnAdd,btnDel,btnUpdate,btnSelect;
+	
+	//생성자
+	public ShopMain(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(1000, 100, 500, 500);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(Color.ORANGE);
+		initdesign();
+		this.setVisible(true);
+	}
+	
+	public void initdesign()
+	{
+		this.setLayout(new GridLayout(2, 2)); //2행 2열의 그리드 레이아웃
+		
+		btnAdd=new JButton("상품추가");
+		btnSelect=new JButton("전체상품조회");
+		btnDel=new JButton("상품삭제");
+		btnUpdate=new JButton("상품수정");
+		
+		this.add(btnAdd);
+		this.add(btnDel);
+		this.add(btnSelect);
+		this.add(btnUpdate);
+		
+		btnAdd.addActionListener(this);
+		btnDel.addActionListener(this);
+		btnSelect.addActionListener(this);
+		btnUpdate.addActionListener(this);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    
+		new ShopMain("Shop Main");
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+
+

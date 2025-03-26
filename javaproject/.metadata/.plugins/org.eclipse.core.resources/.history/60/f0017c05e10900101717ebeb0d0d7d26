@@ -1,0 +1,113 @@
+package day0326;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
+
+import oracle.net.aso.j;
+
+public class ShopAdd extends JFrame implements ActionListener{
+	
+	Container cp;
+	JTextField tfSang,tfSu,tfDan;
+	JLabel lblPhoto;
+	String imageName;
+	JButton btnAdd,btnImage;
+	
+	PhotoDraw pdraw=new PhotoDraw(); //내부클래스
+	
+	//생성자
+	public ShopAdd(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(1000, 100, 500, 400);
+		
+		cp=this.getContentPane();
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(Color.white);
+		initdesign();
+		this.setVisible(true);
+	}
+	
+	//디자인
+	public void initdesign()
+	{
+		this.setLayout(null);
+		
+		JLabel lbl1=new JLabel("상품명");
+		lbl1.setBounds(30, 20, 50, 30);
+		this.add(lbl1);
+		
+		tfSang=new JTextField();
+		tfSang.setBounds(90, 25, 100, 20);
+		this.add(tfSang);
+		
+		//이미지 불러오는 버튼
+		btnImage=new JButton("사진선택");
+		btnImage.setBounds(150, 270, 200, 30);
+		this.add(btnImage);
+		
+		btnImage.addActionListener(this);
+		
+		//이미지 위치 미리 지정
+		pdraw.setBounds(200, 20, 100, 100);
+		this.add(pdraw);
+		
+		lblPhoto=new JLabel("이미지명");
+		lblPhoto.setBounds(100, 20, 50, 50);
+		lblPhoto.setBorder(new LineBorder(Color.PINK));
+		this.add(lblPhoto);
+		
+		JLabel lbl2=new JLabel("수량");
+		lbl2.setBounds(30, 100, 50, 30);
+		this.add(lbl2);
+		
+		tfSu=new JTextField();
+		tfSu.setBounds(90, 105, 100, 20);
+		this.add(tfSu);
+		
+		JLabel lbl3=new JLabel("단가");
+		lbl3.setBounds(30, 180, 50, 30);
+		this.add(lbl3);
+		
+		tfDan=new JTextField();
+		tfDan.setBounds(90, 185, 100, 20);
+		this.add(tfDan);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	//내부클래스
+	class PhotoDraw extends Canvas{
+		
+		@Override
+		public void paint(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paint(g);
+		}
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    
+		new ShopAdd("상품입력폼");
+	}
+
+	
+}
+
+

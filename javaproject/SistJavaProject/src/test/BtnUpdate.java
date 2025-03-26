@@ -1,0 +1,89 @@
+package test;
+
+import java.awt.Color;
+import java.awt.Container;
+
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class BtnUpdate extends JFrame{
+	
+	Container cp;
+	JTextField tfName,tfEmpno,tfBuseo,tfPosition,tfPay,tfAddr;
+	JButton btnMod;
+	String num; //수정할 번호
+	
+	//생성자
+	public BtnUpdate(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 250, 400);
+		
+		cp=this.getContentPane();
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(new Color(255, 200, 200));
+		initDesign();
+		//this.setVisible(true);
+	}
+	
+	public void initDesign()
+	{
+		this.setLayout(null);
+		
+		JLabel title1=new JLabel("사원명");
+		JLabel title2=new JLabel("사원번호");
+		JLabel title3=new JLabel("부서");
+		JLabel title4=new JLabel("직급");
+		JLabel title5=new JLabel("급여");
+		JLabel title6=new JLabel("주소");
+		
+		title1.setBounds(30, 20, 50, 50);
+		title2.setBounds(30, 60, 50, 50);
+		title3.setBounds(30, 100, 50, 50);
+		title4.setBounds(30, 140, 50, 50);
+		title5.setBounds(30, 180, 50, 50);
+		title6.setBounds(30, 220, 50, 50);
+		
+		this.add(title1);
+		this.add(title2);
+		this.add(title3);
+		this.add(title4);
+		this.add(title5);
+		this.add(title6);
+		
+		tfName=new JTextField(4);
+		tfEmpno=new JTextField(4);
+		tfBuseo=new JTextField(4);
+		tfPosition=new JTextField(4);
+		tfPay=new JTextField(4);
+		tfAddr=new JTextField(4);
+		
+		tfName.setBounds(90, 35, 70, 20);
+		this.add(tfName);
+		tfEmpno.setBounds(90, 75, 70, 20);
+		this.add(tfEmpno);
+		tfBuseo.setBounds(90, 115, 70, 20);
+		this.add(tfBuseo);
+		tfPosition.setBounds(90, 155, 70, 20);
+		this.add(tfPosition);
+		tfPay.setBounds(90, 195, 70, 20);
+		this.add(tfPay);
+		tfAddr.setBounds(90, 235, 70, 20);
+		this.add(tfAddr);
+		
+		//버튼
+		btnMod=new JButton("사원정보수정");
+		btnMod.setBounds(45, 300, 150, 25);
+		this.add(btnMod);
+	}
+	
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//    
+//		new BtnUpdate("사원 수정폼");
+//	}
+}
