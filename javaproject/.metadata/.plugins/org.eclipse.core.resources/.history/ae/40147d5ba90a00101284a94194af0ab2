@@ -1,0 +1,157 @@
+package test;
+
+import java.awt.Canvas;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.FileDialog;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+
+public class BtnAdd extends JFrame implements ActionListener{
+	
+	Container cp;
+	JTextField tfName,tfAge,tfGender,tfBuseo,tfPosition,tfPay,tfAddr;
+	JButton btnAdd,btnPhoto;
+	JLabel lblPaddr;
+	String imageName;
+	
+	PhotoDraw pd=new PhotoDraw();
+	
+	
+	//생성자
+	public BtnAdd(String title) {
+		super(title); //JFrame부모생성자를 통해서 창제목을 통해서 제목을 보게하자
+		
+		//위치 너비
+		this.setBounds(500, 100, 500, 500);
+		
+		cp=this.getContentPane();
+		//this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		cp.setBackground(new Color(255, 255, 200));
+		initDesign();
+		//this.setVisible(true);
+	}
+	
+	public void initDesign()
+	{
+		this.setLayout(null);
+		
+		JLabel title1=new JLabel("사원명");
+		JLabel title2=new JLabel("나이");
+		JLabel title3=new JLabel("성별");
+		JLabel title4=new JLabel("부서");
+		JLabel title5=new JLabel("직급");
+		JLabel title6=new JLabel("급여");
+		JLabel title7=new JLabel("주소");
+		
+		title1.setBounds(30, 20, 50, 50);
+		title2.setBounds(30, 60, 50, 50);
+		title3.setBounds(30, 100, 50, 50);
+		title4.setBounds(30, 140, 50, 50);
+		title5.setBounds(30, 180, 50, 50);
+		title6.setBounds(30, 220, 50, 50);
+		title7.setBounds(30, 260, 50, 50);
+	
+		this.add(title1);
+		this.add(title2);
+		this.add(title3);
+		this.add(title4);
+		this.add(title5);
+		this.add(title6);
+		this.add(title7);
+		
+		tfName=new JTextField(4);
+		tfAge=new JTextField(4);
+		tfGender=new JTextField(4);
+		tfBuseo=new JTextField(4);
+		tfPosition=new JTextField(4);
+		tfPay=new JTextField(4);
+		tfAddr=new JTextField(4);
+		
+		tfName.setBounds(90, 35, 70, 20);
+		this.add(tfName);
+		tfAge.setBounds(90, 75, 70, 20);
+		this.add(tfAge);
+		tfGender.setBounds(90, 115, 70, 20);
+		this.add(tfGender);
+		tfBuseo.setBounds(90, 155, 70, 20);
+		this.add(tfBuseo);
+		tfPosition.setBounds(90, 195, 70, 20);
+		this.add(tfPosition);
+		tfPay.setBounds(90, 235, 70, 20);
+		this.add(tfPay);
+		tfAddr.setBounds(90, 275, 70, 20);
+		this.add(tfAddr);
+		
+		//버튼
+		btnAdd=new JButton("사원정보추가");
+		btnAdd.setBounds(45, 320, 150, 25);
+		this.add(btnAdd);
+		
+		btnPhoto=new JButton("사원사진추가");
+		btnPhoto.setBounds(245, 320, 150, 25);
+		this.add(btnPhoto);
+		
+		lblPaddr=new JLabel();
+		lblPaddr.setBounds(300, 100, 200, 20);
+		this.add(this);
+		
+		pd.setBounds(300, 200, 300, 300);
+		this.add(pd);
+	}
+	
+	class PhotoDraw extends Canvas{
+
+		@Override
+		public void paint(Graphics g) {
+			// TODO Auto-generated method stub
+			super.paint(g);
+
+			if(imageName!=null)
+			{
+				Image image=new ImageIcon(imageName).getImage();
+				g.drawImage(image, 100, 50, 100, 100, this);
+			}
+		}
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+	
+		
+		Object ob=e.getSource();
+		
+		if(ob==btnPhoto)
+		{
+			FileDialog dlg=new FileDialog(this, "이미지가져오기", FileDialog.LOAD);
+			dlg.setVisible(true);
+			
+			//이미지명얻기
+			imageName=dlg.getDirectory()+dlg.getFile();
+			
+			//이미지명 라벨에 출력
+			lblPaddr.setText(imageName);
+			
+			//이미지출력
+			pd.repaint();
+		}
+		
+		
+	}
+	
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//    
+//		new BtnAdd("회원가입폼");
+//	}
+}

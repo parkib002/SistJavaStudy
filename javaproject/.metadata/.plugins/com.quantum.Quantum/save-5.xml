@@ -1,0 +1,134 @@
+<?xml version="1.0" ?>
+<SAVED_DATA>
+	<bookmarks>
+		<jdbcDriver className="oracle.jdbc.OracleDriver" name="Oracle JDBC driver" type="ORACLE" version="21.17.0.0.0">
+			<jar fileName="C:\sist0217\util\ojdbc11.jar" />
+		</jdbcDriver>
+		<jdbcDriver className="org.apache.derby.jdbc.EmbeddedDriver" name="Apache Derby Embedded JDBC Driver" type="DERBY" version="10.3.1.4 - (561794)">
+			<jar fileName="C:/Users/user/.p2/pool/plugins/com.quantum.derby_3.3.10/lib/derby.jar" />
+		</jdbcDriver>
+		<bookmark>
+			<name>(Internal) Derby</name>
+			<username>QUANTUM</username>
+			<password />
+			<prompt>false</prompt>
+			<connect>jdbc:derby:C:/Users/user/.p2/pool/plugins/com.quantum.derby_3.3.10/data/quantum</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>true</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>org.apache.derby.jdbc.EmbeddedDriver</driver>
+			<type>DERBY</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>C:/Users/user/.p2/pool/plugins/com.quantum.derby_3.3.10/lib/derby.jar</driverLocation>
+			<Other_Schemas schemaRule="useAll" />
+			<quickList />
+			<queryList />
+		</bookmark>
+		<bookmark>
+			<name>parkib003</name>
+			<username>parkib003</username>
+			<password>a1234</password>
+			<prompt>false</prompt>
+			<connect>jdbc:oracle:thin:@localhost:1521:XE</connect>
+			<autoCommit>true</autoCommit>
+			<autoCommitPreference>Always True</autoCommitPreference>
+			<autoCommitIgnoreView>false</autoCommitIgnoreView>
+			<quoteAll>false</quoteAll>
+			<sendQueryAsIs>false</sendQueryAsIs>
+			<stripNewline>false</stripNewline>
+			<shutdownOnDisconnect>false</shutdownOnDisconnect>
+			<defaultEncoding />
+			<driver>oracle.jdbc.OracleDriver</driver>
+			<type>ORACLE</type>
+			<substituteVariables>false</substituteVariables>
+			<variablesRegexp>\$\{(.*?)\}</variablesRegexp>
+			<driverLocation>C:\sist0217\util\ojdbc11.jar</driverLocation>
+			<Other_Schemas schemaRule="useAll" />
+			<quickList />
+			<queryList>
+				<query>
+					<queryString>insert into sawon values (seq_sawon.nextval,'손흥민',5618,'기획부','과장',4000000,'경기도 용인시')</queryString>
+				</query>
+				<query>
+					<queryString>insert into sawon values (seq_sawon.nextval,'김민재',7654,'홍보부','과장',3500000,'서울시 강서구')</queryString>
+				</query>
+				<query>
+					<queryString>insert into sawon values (seq_sawon.nextval,'김연아',2345,'홍보부','대리',2500000,'경기도 수원시')</queryString>
+				</query>
+				<query>
+					<queryString>insert into sawon values (seq_sawon.nextval,'유재석',6678,'개발부','과장',4800000,'서울시 역삼동')</queryString>
+				</query>
+				<query>
+					<queryString>create table admin (num number(5) primary key,
+ID varchar2(20),
+Password varchar2(20))</queryString>
+				</query>
+				<query>
+					<queryString>insert into admin values (seq_admin.nextval,'admin1','a1234')</queryString>
+				</query>
+				<query>
+					<queryString>insert into admin values (seq_admin.nextval,'admin2','1234a')</queryString>
+				</query>
+				<query>
+					<queryString>insert into admin values (seq_admin.nextval,'qwer1234','112233')</queryString>
+				</query>
+				<query>
+					<queryString>drop table shop</queryString>
+				</query>
+				<query>
+					<queryString>create table shop (num number(5) primary key,
+sangpum varchar2(20),
+photo varchar2(100),
+su number(7),
+dan number(8),
+guipday date)</queryString>
+				</query>
+				<query>
+					<queryString>create sequence seq_shop</queryString>
+				</query>
+				<query>
+					<queryString>delete from shop where num=2</queryString>
+				</query>
+				<query>
+					<queryString>drop table sawon</queryString>
+				</query>
+				<query>
+					<queryString>drop sequence seq_sawon</queryString>
+				</query>
+				<query>
+					<queryString>create table sawon (num number(5) primary key,
+name varchar2(20),
+age number(5),
+gender varchar2(20),
+buseo varchar2(20),
+position varchar2(20),
+pay number(7),
+addr varchar2(30))</queryString>
+				</query>
+				<query>
+					<queryString>create sequence seq_sawon</queryString>
+				</query>
+				<query>
+					<queryString>drop table admin</queryString>
+				</query>
+				<query>
+					<queryString>create table admin (num number(5) primary key,
+ID varchar2(20),
+PassWord varchar2(20))</queryString>
+				</query>
+				<query>
+					<queryString>drop sequence seq_admin</queryString>
+				</query>
+				<query>
+					<queryString>create sequence seq_admin</queryString>
+				</query>
+			</queryList>
+		</bookmark>
+	</bookmarks>
+</SAVED_DATA>

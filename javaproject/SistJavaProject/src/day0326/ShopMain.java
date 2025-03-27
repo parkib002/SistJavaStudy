@@ -82,7 +82,7 @@ public class ShopMain extends JFrame implements ActionListener{
 		
 		else if(ob==btnSelect)
 		{
-			ShopList list =new ShopList("상품조회폼");
+			ShopList list=new ShopList("상품조회폼");
 		}
 		
 		else if(ob==btnUpdate)
@@ -95,6 +95,7 @@ public class ShopMain extends JFrame implements ActionListener{
 				return;
 			
 			ShopDto dto=db.getOneSangpum(num);
+			
 			ShopUpdate update=new ShopUpdate("상품수정폼");
 			
 			//수정폼에 데이터 넣기
@@ -110,7 +111,6 @@ public class ShopMain extends JFrame implements ActionListener{
 			
 		}
 	}
-
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

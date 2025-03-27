@@ -2,6 +2,9 @@ package test;
 
 import java.awt.Color;
 import java.awt.Container;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -10,16 +13,20 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.border.LineBorder;
 
 import day0319.DbConnect;
 
 public class SawonSearch extends JFrame implements ActionListener{
+	
+	static final String fileName="C:\\sist0217\\image\\logoImg\\Sist로고.jpg";
 	
 	BtnAdd addScore=new BtnAdd("사원정보추가폼");
 	BtnUpdate updateScore=new BtnUpdate("사원정보수정폼");
@@ -41,7 +48,7 @@ public class SawonSearch extends JFrame implements ActionListener{
 		
 		cp=this.getContentPane();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		cp.setBackground(Color.ORANGE);
+		cp.setBackground(Color.LIGHT_GRAY);
 		initdesign();
 		
 		this.setVisible(true);
@@ -52,29 +59,31 @@ public class SawonSearch extends JFrame implements ActionListener{
 	{
 		this.setLayout(null);
 		
-		lblTitle=new JLabel("**사원정보관리사이트**");
-		lblTitle.setBounds(270, 50, 200, 50);
+		lblTitle=new JLabel("Sist Company");
+		lblTitle.setBounds(215, 90, 200, 50);
+		lblTitle.setBorder(new LineBorder(Color.PINK, 5, true));
+		lblTitle.setFont(new Font("Sist Company", Font.ITALIC, 30));
+		
 		this.add(lblTitle);
 		
 		lblId=new JLabel("ID");
-		lblId.setBounds(205, 150, 20, 20);
+		lblId.setBounds(195, 185, 20, 20);
 		this.add(lblId);
 		
 		lblPw=new JLabel("PW");
-		lblPw.setBounds(200, 200, 20, 20);
+		lblPw.setBounds(190, 240, 20, 20);
 		this.add(lblPw);
 		
-		id=new JTextField(4);
-		id.setBounds(250, 150, 200, 25);
+		id=new JTextField();
+		id.setBounds(220, 180, 200, 25);
 		this.add(id);
 		
-		pw=new JPasswordField(4);
-		pw.setEchoChar('*');
-		pw.setBounds(250, 200, 200, 25);
+		pw=new JPasswordField();
+		pw.setBounds(220, 240, 200, 25);
 		this.add(pw);
 		
 		btnLogin=new JButton("로그인");
-		btnLogin.setBounds(500, 150, 70, 80);
+		btnLogin.setBounds(450, 180, 70, 85);
 		this.add(btnLogin);
 		
 		btnLogin.addActionListener(this);
@@ -82,21 +91,22 @@ public class SawonSearch extends JFrame implements ActionListener{
 	}
 	
 	   // ID와 비밀번호가 일치하는지 확인하는 메소드
-    public  boolean checkDatabaseForMatchIdAndPw(String idinputText, String pwinputText) {
-        // DB 연결 설정
-        Connection conn=db.getConnection();
-        PreparedStatement stmt = null;
+    public boolean MatchIdPw(String id, String pw) {
+     
+        Connection conn = db.getConnection();
+        PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
+
             // SQL 쿼리문 (id와 password가 모두 일치하는지 확인)
-            String sql = "SELECT ID, PASSWORD FROM admin WHERE ID = ? AND PASSWORD = ?";
-            stmt = conn.prepareStatement(sql);
-            stmt.setString(1, idinputText);  // 입력된 id 설정
-            stmt.setString(2, pwinputText);  // 입력된 password 설정
+            String sql = "SELECT id, password FROM admin WHERE id = ? AND password = ?";
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setString(1, id);  // 입력된 id 설정
+            pstmt.setString(2, pw);  // 입력된 password 설정
 
             // 쿼리 실행
-            rs = stmt.executeQuery();
+            rs = pstmt.executeQuery();
 
             // 결과가 있으면 일치하는 값이 존재함
             if (rs.next()) {
@@ -105,15 +115,8 @@ public class SawonSearch extends JFrame implements ActionListener{
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
-            try {
-                if (rs != null) rs.close();
-                if (stmt != null) stmt.close();
-                if (conn != null) conn.close();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-        }
+			db.dbClose(rs, pstmt, conn);
+		}
         return false;  // 일치하는 값이 없음
     }
 	 
@@ -121,6 +124,15 @@ public class SawonSearch extends JFrame implements ActionListener{
 		// TODO Auto-generated method stub
     
 		new SawonSearch("사원조회");
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// TODO Auto-generated method stub
+		super.paint(g);
+		
+		Image image1=new ImageIcon(fileName).getImage();
+		g.drawImage(image1, 453, 110, 80, 80, Color.LIGHT_GRAY, this);
 	}
 
 	@Override
@@ -131,22 +143,24 @@ public class SawonSearch extends JFrame implements ActionListener{
 		
 		if(ob==btnLogin)
 		{
-			 String enteredId = id.getText();
-	            String enteredPw = pw.getText();
+			 String eId = id.getText();
+			 
+			 char[] ePwArray=pw.getPassword();
+	         String ePw = new String(ePwArray);
 
-	            if (enteredId.isEmpty()) 
+	            if (eId.isEmpty()) 
 	            {
 	                JOptionPane.showMessageDialog(this, "id를 입력해주세요");
 	            } 
 	            
-	            else if (enteredPw.isEmpty())
+	            else if (ePw.isEmpty())
 	            {
 	                JOptionPane.showMessageDialog(this, "pw를 입력해주세요");
 	            } 
 	            
 	            else 
 	            {
-	                if (checkDatabaseForMatchIdAndPw(enteredId, enteredPw)) 
+	                if (MatchIdPw(eId, ePw)==true) 
 	                {
 	                    sst.setVisible(true);  // 로그인 성공, SelectSawonTable 창 보이기
 	                } 
