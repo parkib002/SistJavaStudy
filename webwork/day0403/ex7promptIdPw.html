@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var rightId="korea";
+        var rightPw="1234";
+
+        function login()
+        {
+            var id=prompt("아이디를 입력하세요","ID");
+            
+            if(id==rightId){
+                
+                var pw=prompt("패스워드를 입력하세요","PASSWORD");
+               
+                if(pw==rightPw){
+                    document.write(id+"님이 방문하셨습니다");
+                }
+                else{
+                    alert("잘못된 비밀번호입니다");
+                }
+            }
+
+            else{
+                alert("잘못된 아이디 입니다");
+            }            
+            
+        }
+              
+        login();
+
+    </script>
+</body>
+</html>

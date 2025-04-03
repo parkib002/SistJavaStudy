@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // var userId=window.prompt("아이디입력","ID");
+
+        // if(userId=="대한민국")
+        // document.write(userId+"님이 로그인하셨습니다");
+
+        // var num=prompt("숫자입력",0);
+        // document.write(typeof(num)+"<br>"); //String
+
+        // var num1=parseInt(prompt("숫자1"));
+        // document.writeln(typeof(num1)+"<br>");
+
+        // var num2=Number(prompt("숫자2"));
+        // document.writeln(typeof(num2)+"<br>");
+
+        // document.write("숫자2개의 합계는 "+(num1+num2));
+
+    //당신의 이름은? 홍길동
+    //나의 이름은 홍길동입니다
+    //당신의 신장은?
+    //나의 키는 170cm입니다
+    //표준몸무게는 **kg입니다 (키-100)*0.9
+    
+        var name=prompt("당신의 이름은?");
+        document.write("나의 이름은 "+name+" 입니다<br>");
+
+        var height=parseInt(prompt("당신의 신장은?"));
+        document.write("나의 신장은 "+height+"cm 입니다<br>");
+
+        document.write("표준몸무게는 "+((height-100)*0.9)+"kg 입니다<br>");
+
+        //eval함수는 문자열내에서 연산가능
+        var n=eval("10.5+5");
+        document.write(n+"<br>");
+        document.write(parseFloat(n)+parseInt(n)); //30.5
+    </script>
+
+</body>
+</html>
