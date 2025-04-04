@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/buttonStyle.css" rel="stylesheet">
+    <title>Document</title>
+    <script>
+        function showImage(){
+            
+
+            var a=prompt("출력할 이미지의 인덱스 번호를 입력하세요");
+
+            var img=new Array();
+
+            img.push("<img src='../연예인사진/1.jpg'>");
+            img.push("<img src='../연예인사진/2.jpg'>");
+            img.push("<img src='../연예인사진/3.jpg'>");
+            img.push("<img src='../연예인사진/4.jpg'>");
+            img.push("<img src='../연예인사진/5.jpg'>");
+
+            result.innerHTML=img[a-1];
+
+            if(img[a-1]==null)
+        {
+            alert("해당 번호의 이미지는 없습니다");
+            result.innerHTML="이미지 출력하는 곳....";
+        }
+        }
+
+         function showImage2(){
+
+            result2.innerHTML="";
+
+            var a=prompt("몇번까지 출력하시겠습니까?");
+
+            var img2=new Array();
+
+            img2.push("<img src='../연예인사진/1.jpg'>");
+            img2.push("<img src='../연예인사진/2.jpg'>");
+            img2.push("<img src='../연예인사진/3.jpg'>");
+            img2.push("<img src='../연예인사진/4.jpg'>");
+            img2.push("<img src='../연예인사진/5.jpg'>");
+
+            if(img2[a-1]==null)
+        {
+            alert("해당 번호의 이미지는 없습니다");
+            result2.innerHTML="이미지 출력하는 곳....";
+        }
+        
+        else{
+
+            for(var i=0;i<a;i++)
+        {
+            result2.innerHTML+=img2[i];
+      
+        }
+
+        }
+    
+        }
+    </script>
+
+</head>
+<body>
+    <!-- 문제
+     1. 총 5개의 이미지를 배열 형태로 넣어놓기(폴더형태로)
+     2. prompt로 "출력할 이미지의 인덱스 번호를 입력하세요" 0번을 입력하면 0번 이미지 출력
+     3. 없는 인덱스 번호 쓰면 "해당 번호의 이미지는 없습니다"-->
+    <button id="btnImg" class="btn btn-green" type="button" onclick="showImage()">이미지 출력</button>
+    <hr>
+    <div id="result">이미지 출력하는 곳....</div>
+
+    <button id="btnImg2" class="btn btn-red" type="button" onclick="showImage2()">이미지 출력</button>
+    <hr>
+    <div id="result2">이미지 출력하는 곳....</div>
+    
+</body>
+</html>
