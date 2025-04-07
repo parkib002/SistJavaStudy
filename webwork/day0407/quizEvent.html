@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* #main_photo{
+
+        }
+
+        #large_photo{
+            width: 400px;
+            height: 500px;
+            border: 5px groove gray;
+        }
+
+        #photo_small
+        {
+            position: absolute;
+            left: 50px;
+            top: 100px;
+            width: 400px;
+            height: 600px;
+            border: 2px solid gray;
+            padding: 10px 10px;
+        } */
+    </style>
+</head>
+<body>
+    <h3>문제: 쇼핑몰 사진에 마우스 올리면(onmouseover) 큰 사진이 바뀌는 이벤트 만드세요</h3>
+
+    <div id="photo_small" class="myphoto">
+        <!-- 사진35개 for문으로 출력-->
+    </div>
+
+    <div id="main_photo">
+        <img src="../div_img/beauty4.jpg" id="large_photo">
+    </div>
+
+    <script>
+        for(var i=1;i<=35;i++){
+            photo_small.innerHTML+="<img src='../쇼핑몰사진/"+i+".jpg'>";
+        }
+        
+
+        document.querySelector("#photo_small").onmouseover=function(){
+            document.querySelector("#main_photo").innerHTML=
+        
+        }
+    </script>
+
+   
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+
+    <title>Document</title>
+    <style>
+
+        body *{
+             font-family: 'Black Han Sans';
+        }
+
+        div.leftDiv{
+            width: 200px;
+            margin: 30px 20px;
+        }
+
+        div.rightDiv{
+            margin: 30px;
+            height: 100px;
+            line-height: 100px;
+            font-size: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div class="leftDiv">
+        <input type="text" placeholder="input message" class="txt1 form-control">
+        <br>
+        <div class="input-group">
+            <input type="text" placeholder="input message" class="txt2 form-control">
+            <button type="button" id="btnok" class="btn btn-outline-info btn-sm">Ok</button>
+        </div>
+        <br>
+        <input type="text" placeholder="입력 후 엔터 누르면 적용" class="txt3 form-control">
+        <br>
+        <div class="input-group">
+            <b>배경색</b>
+            <input type="color" class="form-control" id="mycolor" value="#cfcfcf">
+        </div>
+
+        <div class="rightDiv"></div>
+    </div>
+
+    <script>
+        //직접입력시 메세지가 바로 나타나게 하기
+        document.querySelector("div.leftDiv>.txt1").onkeyup=function(e){
+            document.querySelector("div.rightDiv").innerHTML=e.target.value; //방법1
+           // document.querySelector("div.rightDiv").innerHTML=this.value; 방법2
+           //onkeydown은 한박자 느림
+        }
+
+        //ok버튼 클릭시 입력값 가져오기_querySelector이용
+        document.querySelector("div.leftDiv>div.input-group>.txt2").onchange=function(){
+            document.querySelector("div.rightDiv").innerHTML=this.value;
+        }
+
+        //배경색 변경
+        document.querySelector("#mycolor").onchange=function(){
+            document.querySelector("div.rightDiv").style.backgroundColor=this.value;
+        }
+
+        //입력 후 엔터 누르면 적용
+        document.querySelector("div.leftDiv>.txt3").onkeyup=function(e){
+            if(e.keyCode==13)
+            document.querySelector("div.rightDiv").innerHTML=this.value;
+            //this.value="";
+        }
+    </script>
+    
+</body>
+</html>
