@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #photo{
+            width: 400px;
+            height: 460px;
+            border: 5px solid green;
+        }
+
+        #msg{
+            font-size: 20px;
+            margin-top: 10px;
+            margin-left: 20px;
+        }
+    </style>
+    <script>
+        window.onload=function(){
+
+            var photo=document.getElementById("photo");
+            var msg=document.getElementById("msg");
+
+            //메세지배열
+            var msgarr=["자바스크립트 최고!!","오늘 벚꽃 만개한 날!!","아름다운 밤입니다~~"];
+            var colarr=["red","magenta","cyan","green","yellow","blue"];
+            setInterval(function(){
+
+            //1초마다 photo의 사진이 1~20중에 랜덤하게 변경하도록 해보세요
+            var rnd=parseInt(Math.random()*20)+1;
+
+            photo.setAttribute("src","../연예인사진/"+rnd+".jpg");
+            
+        },1000);
+
+        // 0.5초마다 랜덤하게 메세지 변경 0~2사이 랜덤값으로 변경해보자
+                setInterval(function(){
+
+                    var rnd=parseInt(Math.random()*3);
+
+                    msg.innerText=msgarr[rnd];
+
+                    var rnd2=parseInt(Math.random()*6);
+
+                    msg.style.color=colarr[rnd2];
+
+                },500);
+
+            //화살표함수
+            // setInterval(()=>{
+            //     var rnd=parseInt(Math.random()*3); //0~2사이의 랜덤값
+
+            //     //메세지를 랜덤하게 변경
+            //     msg.innerHTML=msgarr[rnd];
+            // },500);
+            
+        }
+    </script>
+</head>
+<body>
+    <img src="../연예인사진/17.jpg" id="photo">
+    <div id="msg">랜덤하게 메세지 출력</div>
+</body>
+</html>
