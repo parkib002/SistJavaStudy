@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <script>
+         $(function(){
+            // alert("load #3");
+            //모든 b태그의 글꼴18pt로 변경하시오
+            $("b").css("font-size","17pt");
+            // $("b").css("fontSize","17pt");
+
+            //b태그 중 클래스명이 happy인 태그의 배경색을 orange색으로 변경하시오
+            $("b.happy").css("background-color","orange");
+
+            //모든 h2태그의 border변경하고 글자색을 그린색으로 변경
+            //css가 2개 이상일 경우 연속으로 css해주거나 {}해준다
+            // $("h2").css("border","3px solid pink").css("color","green");
+            $("h2").css({
+               "border":"5px double blue","color":"green" 
+            });
+
+            //모든 이미지 속성인 src변경
+            //스타일 변경은 css 속성 변경은 attr
+            $("img").attr("src","../연예인사진/12.jpg");
+            $("img").css("width","200px");
+
+            //위의 코드를 한줄로 줄여보자
+            $("img").attr("src","../연예인사진/10.jpg").css({
+                "width":"100px","border":"5px dotted green"
+            });
+
+            //1.img태그중 클래스명이 myimg인 이미지를 변경하고 
+            // width,border,border-radius,box-shadow를 변경
+            $("img.myimg").attr("src","../연예인사진/15.jpg").css({
+                "width":"200px","border":"10px solid gray","border-radius":"100px", "box-shadow":"10px 10px blue"
+            });
+
+            //2.nice라는 span태그의 배경색과 글자색, 글자크기도 변경하라
+            $("span.nice").css({
+                "background-color":"green","color":"blue","font-size":"30px"
+            });
+            //3.youreimg라는 아이디의 이미지너비를 변경하고 title로  hello jquery라고 하시오
+            $("#yourimg").css("width","300px").attr({
+                "title":"hello jquery","src":"../연예인사진/18.jpg"});
+        });
+    </script>
+</head>
+<body>
+    <h3>JQuery에서 가장 많이 사용하는 함수_css,attr</h3>
+    <b class="happy">BTag Class Happy</b>
+    <br>
+    <b class="nice">BTag</b>
+    <br>
+    <span class="nice">SpanTag Class Nice</span>
+    <br>
+    <h2 class="happy">H2Tag class Happy</h2>
+    <b>내가 좋아하는 이미지들</b>
+    <img src="">
+    <img src="" class="myimg">
+    <img src="">
+    <img src="" id="yourimg">
+</body>
+</html>

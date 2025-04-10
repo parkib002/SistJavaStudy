@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <script>
+        $(function(){
+
+            //div photos의 이미지너비 각각 지정_너비, 보더, 높이 지정
+            $("div.photos>img:eq(0)").css({
+                "width":"150px","border":"10px dotted green","height":"100px"
+            });
+
+            $("div.photos>img:eq(1)").css({
+                "width":"200px","border":"5px solid yellow","height":"50px"
+            });
+
+            $("div.photos>img:eq(3)").css({
+                "width":"300px","border":"15px dashed black","height":"200px"
+            });
+            //div photos2의 이미지들 한번에 지정_너비, 보더, 높이 지정
+            $("div.photos2>img").css({
+                "width":"100px","border":"10px dashed blue","height":"100px"
+            });
+            //container one, three만 글자색 파랑색 변경
+            $("#container>.one,#container>.three").css("color","blue");
+            //container two 글꼴색상으로 three색상 변경하기
+            $("#container>.three").css("color",$("#container>.two").css("color"));
+            //photos아래 모든 이미지 자동차7번으로 변경
+            $("div.photos>img").attr("src","../mycar/mycar7.png");
+            //photos의 첫번째 이미지만 변경(자동차 3번으로)
+            $("div.photos>img:eq(0)").attr("src","../mycar/mycar3.png");
+            //photos2의 이미지중 1번 이후 이미지 모두 변경
+            $("div.photos2>img:gt(1)").attr("src","../Food/5.jpg");
+            //div one 아래 2개의 div 배경색 변경, 글꼴도 변경
+            $("div.one>div").css("background-color","green").css("font-family","Black Han Sans");
+
+            $("#container>.three").css("background-color", $("div.one>.three").css("background-color"))
+
+        })
+    </script>
+</head>
+<body>
+    <h>JQuery Css,Attr복습</h>
+    <div class="one">
+        <div class="two">one 아래 two</div>
+        <div class="three">one 아래 three</div>
+    </div>
+    <div class="one2">
+        <div class="two">one2 아래 two</div>
+        <div class="three">one2 아래 three</div>
+    </div>
+    <div id="container">
+        <div class="one">container 아래 one</div>
+        <div class="two">container 아래 two</div>
+        <div class="three">container 아래 three</div>
+    </div>
+    <div class="photos">
+        <img src="../mycar/mycar10.png">
+        <img src="../mycar/mycar11.png">
+        <img src="../mycar/">
+        <img src="../mycar/mycar13.png">
+    </div>
+    <div class="photos2">
+        <img src="../Food/1.jpg">
+        <img src="../Food/2.jpg">
+        <img src="../Food/3.jpg">
+        <img src="../Food/4.jpg">
+        <img src="../Food/5.jpg">
+    </div>
+</body>
+</html>
