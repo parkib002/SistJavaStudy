@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button type="button" class="btn btn-warning">쇼핑몰사진(26~35)</button>
+    <button type="button" class="btn btn-info">음식사진(3~12)</button>
+    <button type="button" class="btn btn-primary">연예인사진(5~14)</button>
+    <!-- 반복문으로 noimage 10개 넣어놓기
+     그리고 버튼 누를 때 해당사진으로 10개씩 채우기-->
+     <script>
+        for(var i=1;i<10;i++)
+        document.write('<img src="../이미지없음/이미지없음.jpg">')
+
+         $("button:eq(0)").click(function(){
+            
+            $("img").each(function(i){
+                
+                    $(this).attr("src","../쇼핑몰사진/"+(i+26)+".jpg")
+                
+            })
+         })
+         
+
+         $("button:eq(1)").click(function(){
+
+        $("img").each(function(i){
+    
+        $(this).attr("src","../Food/"+(i+3)+".jpg")
+    
+        })
+        })
+
+        $("button:eq(2)").click(function(){
+
+        $("img").each(function(i){
+
+        $(this).attr("src","../연예인사진/"+(i+5)+".jpg")
+
+        })
+        })
+     </script>
+     
+</body>
+</html>
