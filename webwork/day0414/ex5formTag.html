@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+    <style>
+        #result{
+            border: 10px groove blue;
+            height: 200px;
+            width: 550px;
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div style="margin-left: 50px;">
+        <h2>당신의 쌍용 강의장은?</h2>
+        <label><input type="radio" name="ban" value="1강의장" checked>1강의장&nbsp;</label>
+        <label><input type="radio" name="ban" value="2강의장">2강의장&nbsp;</label>
+        <label><input type="radio" name="ban" value="3강의장">3강의장&nbsp;</label>
+        <label><input type="radio" name="ban" value="4강의장">4강의장&nbsp;</label>
+        <label><input type="radio" name="ban" value="5강의장">5강의장&nbsp;</label>
+        <label><input type="radio" name="ban" value="6강의장">6강의장&nbsp;</label>
+
+        <h2>당신의 취미는?</h2>
+        <label><input type="checkbox" name="hobby" value="게임">게임&nbsp;</label>
+        <label><input type="checkbox" name="hobby" value="노래">노래&nbsp;</label>
+        <label><input type="checkbox" name="hobby" value="영화">영화&nbsp;</label>
+        <label><input type="checkbox" name="hobby" value="축구">축구&nbsp;</label>
+        <label><input type="checkbox" name="hobby" value="독서">독서&nbsp;</label>
+        <br>
+        <button type="button" class="btn btn-outline-success" style="margin-left: 150px;">결과확인</button>
+
+        <div id="result" style="color: blue; font-family: black han sans; font-size: 30px;"></div>
+    </div>
+    <script>
+        $("button").click(function(){
+
+            var ban=$("input[name='ban']:checked").val();
+            // alert(ban)
+
+          
+            var a=$("input[name='hobby']:checked").length;
+            // alert(a)
+
+            var s="저의 취미는 ";
+            var c="취미개수: "+a+"개";
+          
+            if(a==0)
+          
+            var s="저는 취미가 없습니다";
+          
+            else{
+                $("input[name='hobby']:checked").each(function(i){
+                    s+="["+$(this).val()+"]";
+                })
+            }
+
+            $("#result").html("저의 강의장은 "+ban+" 입니다<br>"+c+"<br>"+(a>0?s+"입니다":s))
+
+        });
+    </script>
+</body>
+</html>
