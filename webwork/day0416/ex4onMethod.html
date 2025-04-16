@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <!-- 기존방식: $(id).click(function(){})-->
+    <!-- on메서드 방식: $(document).on("click", id, function()) -->
+
+    <button type="button" id="add">+</button>
+
+    <script>
+        // $("#add").click(function(){
+        //     $("body").append("<button id='add'>+</button>");
+        // });
+
+        $(document).on("click","button[id='add']",function(){
+            $("body").append("<button id='add'>+</button>");
+        });
+    </script>
+    <hr>
+    <ul id="mylang">
+        <li>Java</li>
+        <li>Jsp</li>
+        <li>Html</li>
+        <li>Jquery</li>
+    </ul>
+    <script>
+        //정적클릭이벤트
+        $("#mylang").children().click(function(){
+            $(this).remove();
+        });
+        //이벤트로 향후에 li추가
+        $("#mylang").append('<li>Spring</li>') //안지워짐
+
+        $(document).on("click","li",function(){
+            $(this).remove(); //지워짐
+        })
+
+    </script>
+</body>
+</html>
