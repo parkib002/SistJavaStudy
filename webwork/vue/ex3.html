@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <b>이름: {{name}}<br>
+        주소: {{addr}} <br>
+        핸드폰: {{hp}}</b>
+        <button type="button" @:click="changeName('박창배')">이름 변경</button>
+        <button type="button" @:click="changeAddr('경기도 안양시')">주소 변경</button>
+        <button type="button" @:click="changeHp('010-222-3333')">핸드폰 변경</button>
+
+        <hr>
+        <h2>양방향 바인딩 v-model_binding</h2>
+
+        {{message}}
+
+        <div>{{$data}}</div>
+
+        <input v-model="message">
+
+        <h4>이미지 나타내기</h4>
+            <img v-bind:src="imgsrc">
+        <h4>이미지 나타내기</h4>
+            <input v-model="imgsrc">
+    </div>
+
+    <script>
+        const app=Vue.createApp({
+
+            data(){
+
+                return{
+                    name: '이수연',
+                    addr: '서울시 강남구 역삼동',
+                    hp: '010-111-2222',
+                    message: '다음 시간은 노드 설치',
+                    imgsrc:'../Food/1.jpg',
+                }
+            },
+
+            methods:{
+                changeName:function(myname){
+                    this.name=myname;
+                },
+                changeAddr(myaddr){
+                    this.addr=myaddr
+                },
+                changeHp(myhp){
+                    this.hp=myhp
+                }
+            }
+
+        })
+
+        app.mount('#app');
+    </script>
+    <style>
+
+    </style>
+</body>
+</html>
