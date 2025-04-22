@@ -7,7 +7,7 @@
         <img :src="h.imgSrc">
         <h4>{{ h.name}}</h4>
         <h4>{{ h.company }}</h4>
-        <button type="button" @click="h.likes++">{{h.likes}}</button>
+        <button type="button" @click="h.likes++">{{"♥좋아요"+h.likes}}</button>
   </div>
   
   
@@ -62,5 +62,10 @@ export default {
 a{
   color: blue;
   padding: 10px;
+}
+
+button{
+  color: red;
+  width: 150px;
 }
 </style>
