@@ -31,13 +31,17 @@
 					s+="가격: "+item.price+"<br>";
 					s+="개수: "+item.cnt+"<br>";
 					s+="=======================================<br>"
-				})
+				});
 				
 				$("#show").html(s);
-			}
+			},
+			error: function(xhr, status, error) {
+	            alert("에러 발생: " + error);
+	        }
+	    });
 			
 		})
-	})
+	
 </script>
 </body>
 </html>

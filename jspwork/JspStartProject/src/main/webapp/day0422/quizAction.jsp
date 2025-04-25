@@ -17,8 +17,8 @@
 	String date=request.getParameter("ipsaday");
 	String imgSrc=request.getParameter("gift");
 	String food=request.getParameter("food");
-	String [] lang=request.getParameterValues("lang");
 	String color=request.getParameter("color");
+	String [] lang=request.getParameterValues("lang");
 	
 %>
 
@@ -44,7 +44,7 @@
 	{
 		for(int i=0;i<lang.length;i++)
 		{%>
-			<b>[<%=lang[i] %>&nbsp;]</b>
+			<b>[<%=lang[i] %>]&nbsp;</b>
 		<%}
 		%>
 			<br>

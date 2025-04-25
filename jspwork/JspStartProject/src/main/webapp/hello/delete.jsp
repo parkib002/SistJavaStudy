@@ -13,8 +13,7 @@
 </head>
 <body>
 <%
-	request.setCharacterEncoding("utf-8");
-	String num=request.getParameter("num");
+	String num=request.getParameter("no");
 	
 	HelloDao dao=new HelloDao();
 	dao.deleteHello(num);

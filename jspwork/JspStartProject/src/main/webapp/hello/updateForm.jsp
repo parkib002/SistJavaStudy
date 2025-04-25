@@ -47,7 +47,7 @@
 		<tr>
 			<td colspan="2" align="center">
 			<!-- num hidden 처리 위치는 폼 안 어디든 상관없다-->
-				<input type="text" name="num" value="<%=num %>">
+				<input type="hidden" name="num" value="<%=num %>">
 				<input type="submit" value="DB수정" class="btn btn-info">
 				<input type="button" value="목록이동" onclick="location.href='helloList.jsp'"
 				class="btn btn-warning">

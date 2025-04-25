@@ -48,7 +48,7 @@
 				<button type="button" class="btn btn-success btn-sm"
 				onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
 				<button type="button" class="btn btn-warning btn-sm"
-				onclick="location.href='delete.jsp?num=<%=dto.getNum()%>'">삭제</button>
+				onclick="location.href='delete.jsp?no=<%=dto.getNum()%>'">삭제</button>
 			</td>
 		</tr>
 	<%}

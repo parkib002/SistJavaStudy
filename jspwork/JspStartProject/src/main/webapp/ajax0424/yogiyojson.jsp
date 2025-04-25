@@ -5,16 +5,6 @@
 <%@page import="oracle.db.DbConnect"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-   <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<title>Insert title here</title>
-</head>
-<body>
 <%
 	DbConnect db=new DbConnect();
 	Connection conn=db.getConnection();
@@ -38,8 +28,8 @@
 		String cnt=rs.getString("cnt");
 		
 		s+="{";
-		s+="\"번호\":\""+food_no+"\",\"음식명\":\""+food_name+"\",\"사진\":\""+food_photo+"\",\"가격\":\""+price
-				+"\",\"개수\":\""+cnt+"\"";
+		s+="\"food_no\":\""+food_no+"\",\"food_name\":\""+food_name+"\",\"food_photo\":\""+food_photo+"\",\"price\":\""+price
+				+"\",\"cnt\":\""+cnt+"\"";
 		s+="},";
 		
 	}
@@ -57,5 +47,3 @@
 	s+="]";
 %>
 <%=s %>
-</body>
-</html>
