@@ -25,10 +25,6 @@ $(function(){
 		
 		if(a==true)
 			location.href="delete.jsp?num=<%=dto.getNum() %>"
-			else
-			location.href="gaipList.jsp";
-			
-		
 			
 	})
 })
