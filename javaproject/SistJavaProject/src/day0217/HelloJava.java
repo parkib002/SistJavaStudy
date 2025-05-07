@@ -6,6 +6,6 @@ public class HelloJava {
 		
 		System.out.println("오늘은 자바를 시작하는 날");
 		System.out.println("잘들 배워봅시다!!!Strat");
-		System.out.println("git test");
+		//System.out.println("git test");
 	}
 }
