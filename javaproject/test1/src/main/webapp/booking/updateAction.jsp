@@ -50,7 +50,7 @@ dto.setFoodprice(foodprice);
 dto.setNum(num);
 
 BookingDao dao=new BookingDao();
-dao.updateBooking(num);
+dao.updateBooking(dto);
 
 response.sendRedirect("bookingList.jsp");
 %>

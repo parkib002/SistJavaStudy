@@ -143,7 +143,7 @@ public class BookingDao {
 		
 	}
 	
-	public void updateBooking(String num)
+	public void updateBooking(BookingDto dto)
 	{
 		Connection conn=db.getConnection();
 		PreparedStatement pstmt=null;
@@ -151,7 +151,6 @@ public class BookingDao {
 		String sql="update booking set name=?,gender=?,bookday=?,inwon=?,message=?,foodphoto=?,foodprice=? where num=?";
 		
 		try {
-			BookingDto dto=new BookingDto();
 			
 			pstmt=conn.prepareStatement(sql);
 			
@@ -162,7 +161,7 @@ public class BookingDao {
 			pstmt.setString(5, dto.getMessage());
 			pstmt.setString(6, dto.getFoodphoto());
 			pstmt.setString(7, dto.getFoodprice());
-			pstmt.setString(8, num);
+			pstmt.setString(8, dto.getNum());
 			
 			pstmt.execute();
 		} catch (SQLException e) {

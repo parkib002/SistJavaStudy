@@ -1,4 +1,5 @@
 <%@page import="booking.BookingDao"%>
+<%@page import="booking.BookingDao"%>
 <%@page import="java.util.StringTokenizer"%>
 <%@page import="booking.BookingDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
