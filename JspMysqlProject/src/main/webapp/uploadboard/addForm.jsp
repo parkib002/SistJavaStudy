@@ -50,7 +50,7 @@ function readURL(input) {
 	 	<th class="table-warning">사진업로드</th>
 	 	<td>
 	 		<input type="file" name="photo" class="form-control"
-	 		style="width: 150px;" required="required"
+	 		style="width: 300px;" required="required"
 	 		onchange="readURL(this);">
 	 	</td>
 	 </tr>

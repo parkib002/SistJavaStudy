@@ -6,7 +6,7 @@ public class UploadDto {
 
 	private String num;
 	private String writer;
-	private String subjecy;
+	private String subject;
 	private String content;
 	private String imgname;
 	private String pass;
@@ -25,11 +25,12 @@ public class UploadDto {
 	public void setWriter(String writer) {
 		this.writer = writer;
 	}
-	public String getSubjecy() {
-		return subjecy;
+	
+	public String getSubject() {
+		return subject;
 	}
-	public void setSubjecy(String subjecy) {
-		this.subjecy = subjecy;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 	public String getContent() {
 		return content;
