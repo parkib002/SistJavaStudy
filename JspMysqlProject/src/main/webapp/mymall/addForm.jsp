@@ -19,6 +19,7 @@
 <body>
 <div style="margin: 100px 100px; width: 400px;">
 	<form action="addAction.jsp" method="post">
+	<h3 class="alert alert-info">상품추가</h3>
 	  <table class="table table-bordered">
 	    <tr>
 	      <th class="table-success" width="100">상품명</th>
@@ -77,7 +78,7 @@
 	    <tr>
 	      <td colspan="2" align="center">
 	        <input type="submit" class="btn btn-outline-success"
-	        value="상품저장">
+	        value="상품추가">
 	      	<input type="button" class="btn btn-outline-info"
 	      	value="상품목록" onclick="location.href='mallList.jsp'"> 
 	      </td>

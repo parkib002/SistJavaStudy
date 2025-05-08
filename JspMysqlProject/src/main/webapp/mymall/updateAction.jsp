@@ -1,3 +1,5 @@
+<%@page import="mymall.MymallDao"%>
+<%@page import="mymall.MymallDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,6 +12,30 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%
+	request.setCharacterEncoding("utf-8");
 
+	String sangpum=request.getParameter("sangpum");
+	String photo=request.getParameter("photo");
+	String color=request.getParameter("color");
+	String price=request.getParameter("price");
+	String ipgoday=request.getParameter("ipgoday");
+	String num=request.getParameter("num");
+	
+	MymallDto dto=new MymallDto();
+	
+	dto.setSangpum(sangpum);
+	dto.setPhoto("../image/쇼핑몰사진/"+photo+".jpg");
+	dto.setColor(color);
+	dto.setPrice(Integer.parseInt(price));
+	dto.setIpgoday(ipgoday);
+	dto.setNum(num);
+	
+	MymallDao dao=new MymallDao();
+	
+	dao.updateMymall(dto);
+	
+	response.sendRedirect("mallList.jsp");
+%>
 </body>
 </html>

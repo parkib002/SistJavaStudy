@@ -26,62 +26,67 @@
 	
 %>
 </head>
+<script type="text/javascript">
+$(function(){
+	
+	$("#del").click(function(){
+		
+		var a=confirm("해당 상품을 삭제하시겠습니까?")
+		
+		if(a==true){
+			location.href="deleteAction.jsp?num=<%=dto.getNum()%>";
+			}
+	})
+})
+</script>
 <body>
 <div style="margin: 100px 100px; width: 400px;">
 	<form action="addAction.jsp" method="post">
+	<h3 class="alert alert-info">상세보기</h3>	
 	<input type="hidden" value="<%=dto.getNum() %>">
 	  <table class="table table-bordered">
 	    <tr>
 	      <th class="table-success" width="100">상품명</th>
 	      <td>
-	        <input type="text" name="sangpum" required="required"
-	        class="form-control" style="width: 150px;" value="<%=dto.getSangpum()%>">
+	        <h3><%=dto.getSangpum() %></h3>
 	      </td>
 	    </tr>
 	    
 	    <tr>
 	      <th class="table-success">상품이미지</th>
 	      <td class="input-group">
-			<input type="text" name="photo" value="<%=dto.getSangpum()%>">
-			<img src="<%=dto.getPhoto() %>" width="50" height="50" id="myphoto">
-			<script type="text/javascript">
-			$("#photo").click(function(){
-				var a=$(this).val();
-				
-				$("#myphoto").attr("src","../image/쇼핑몰사진/"+a+".jpg");
-			})
-			</script>	      
+			
+			<img src="<%=dto.getPhoto() %>" width="100" height="50" id="myphoto">
+			
 	      </td>
 	    </tr>
 	    
 	     <tr>
 	      <th class="table-success" width="100">색상</th>
-	      <td>
-	        <input type="color" name="color" 
-	        class="form-control" style="width: 150px;" value="<%=dto.getColor()%>">
+	      <td style="background-color: <%=dto.getColor() %>">
 	      </td>
 	    </tr>
 	    
 	     <tr>
 	      <th class="table-success" width="100">가격</th>
 	      <td>
-	        <input type="text" name="price" required="required"
-	        class="form-control" style="width: 150px;" value="<%=dto.getPrice()%>">
+	       <h3><%=dto.getPrice() %>원</h3>
 	      </td>
 	    </tr>
 	    
 	     <tr>
 	      <th class="table-success" width="100">입고날짜</th>
 	      <td>
-	        <input type="date" name="ipgoday" required="required"
-	        class="form-control" style="width: 200px;" value=<%=dto.getIpgoday()%>>
+	        <h3><%=dto.getIpgoday() %></h3>
 	      </td>
 	    </tr>
 	    
 	    <tr>
 	      <td colspan="2" align="center">
-	        <input type="submit" class="btn btn-outline-success"
-	        value="상품저장">
+	        <input type="button" class="btn btn-outline-success"
+	        value="상품수정" onclick="location.href='updateForm.jsp?num=<%=dto.getNum()%>'">
+	        <input type="button" id="del" class="btn btn-outline-warning"
+	        value="상품삭제">
 	      	<input type="button" class="btn btn-outline-info"
 	      	value="상품목록" onclick="location.href='mallList.jsp'"> 
 	      </td>

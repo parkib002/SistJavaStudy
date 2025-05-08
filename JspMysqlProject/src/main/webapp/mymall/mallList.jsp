@@ -56,7 +56,7 @@
 	  			  <td class="select" onclick="location.href='detailPage.jsp?num=<%=dto.getNum()%>'"><%=dto.getSangpum() %></td>
 	  			  <td style="background-color:<%=dto.getColor() %>"></td>
 	  			  <td align="right"><%=nf.format(dto.getPrice()) %></td>
-	  			  <td><%=dto.getIpgoday() %></td>
+	  			  <td><%=sdf.format(dto.getWriteday()) %></td>
 	  			</tr>
 	  		<%}
 	  	}
