@@ -2,7 +2,10 @@ package uploadboard;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Vector;
 
 import mysql.db.DbConnect;
 
@@ -34,6 +37,196 @@ public class UploadDao {
 			db.dbClose(pstmt, conn);
 		}
 		
+	}
+	
+	//전체 리스트 num의 내림차순
+	
+	public List<UploadDto> getAllDatas()
+	{
+		List<UploadDto> list=new Vector<UploadDto>();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from uploadboard order by num desc";
+		
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next())
+			{
+				UploadDto dto=new UploadDto();
+				
+				dto.setNum(rs.getString("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setImgname(rs.getString("imgname"));
+				dto.setPass(rs.getString("pass"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+				
+				list.add(dto);
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return list;
+		
+	}
+	
+	//조회수 1증가하는 메서드
+	public void updateReadCount(String num)
+	{
+		String sql="update uploadboard set readcount=readcount+1 where num=?";
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
+	//num에 대한 dto반환
+	public UploadDto getData(String num)
+	{
+		UploadDto dto=new UploadDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from uploadboard where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				dto.setNum(rs.getString("num"));
+				dto.setWriter(rs.getString("writer"));
+				dto.setSubject(rs.getString("subject"));
+				dto.setContent(rs.getString("content"));
+				dto.setImgname(rs.getString("imgname"));
+				dto.setPass(rs.getString("pass"));
+				dto.setReadcount(rs.getInt("readcount"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return dto;
+	}
+	
+	//num과 pass를 받아서 비번이 맞으면 true,false반환
+	
+	public boolean isEqualPass(String num,String pass)
+	{
+		boolean flag=false;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select count(*) from uploadboard where num=? and pass=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			pstmt.setString(2, pass);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+			{
+				if(rs.getInt(1)==1) //비번이 맞는 경우
+					flag=true;
+				//초기값이 false이므로 0인 경우 false를 전달 안해도 됨
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return flag;
+	}
+	
+	//수정..제목, 내용, 이미지
+	
+	//삭제
+	public void deleteData(String num)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from uploadboard where num="+num;
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
+	public void updateData(UploadDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update uploadboard set content=?,imgname=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getContent());
+			pstmt.setString(2, dto.getImgname());
+			pstmt.setString(3, dto.getNum());
+			
+			pstmt.execute();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
 	}
 	
 }

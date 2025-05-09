@@ -38,6 +38,8 @@
 	UploadDao dao=new UploadDao();
 	dao.insertBoardList(dto);
 	
+	response.sendRedirect("boardList.jsp");
+	
 %>
 </body>
 </html>
