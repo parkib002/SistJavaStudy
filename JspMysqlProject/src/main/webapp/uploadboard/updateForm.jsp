@@ -32,6 +32,7 @@ function readURL(input) {
 </head>
 <%
 	String num=request.getParameter("num");
+	String currentPage=request.getParameter("currentPage");
 	UploadDao dao=new UploadDao();
 	UploadDto dto=dao.getData(num);
 %>
@@ -39,6 +40,7 @@ function readURL(input) {
 <div style="margin: 100px 100px; width: 600px;">
 	<form action="updateAction.jsp" method="post" enctype="multipart/form-data">
 	<input type="hidden" name="num" value="<%=num%>">
+	<input type="hidden" name="currentPage" value="<%=currentPage%>">
 	<table class="table table-bordered">
 	 <tr>
 	 	<th class="table-warning">작성자</th>

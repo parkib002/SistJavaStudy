@@ -12,6 +12,7 @@
 </head>
 <body>
 <%
+try{
 request.setCharacterEncoding("utf-8");
 
 String savePath = application.getRealPath("/save");
@@ -22,6 +23,7 @@ MultipartRequest multi = new MultipartRequest(request, savePath, maxSize, "UTF-8
 
 
 String num=multi.getParameter("num");
+String currentPage=multi.getParameter("currentPage");
 String photo=multi.getFilesystemName("photo");
 String pass=multi.getParameter("pass");
 String content=multi.getParameter("content");
@@ -38,14 +40,16 @@ boolean flag=dao.isEqualPass(num, pass);
 
 if(flag){
 	dao.updateData(dto);
-	response.sendRedirect("boardList.jsp");
+	response.sendRedirect("detailView.jsp?num="+num+"&currentPage="+currentPage);
 }else{%>
 	<script type="text/javascript">
 		alert("비밀번호가 맞지 않습니다");
 		history.back();
 	</script>
 <%}
-
+}catch(Exception e){
+	System.out.println("업로드 오류: "+e.getMessage());
+}
 %>
 </body>
 </html>
