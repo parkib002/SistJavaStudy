@@ -3,7 +3,6 @@
     pageEncoding="UTF-8"%>
 <%
 	String idx=request.getParameter("idx");
-	System.out.println(idx);
 
 	UboardAnswerDao dao=new UboardAnswerDao();
 	

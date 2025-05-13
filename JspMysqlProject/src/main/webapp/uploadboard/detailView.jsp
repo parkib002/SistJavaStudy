@@ -1,3 +1,4 @@
+<%@page import="uploadboard.UboardAnswerDao"%>
 <%@page import="uploadboard.UboardAnswerDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="uploadboard.UploadDao"%>
@@ -18,6 +19,7 @@
 		
 		//처음시작시 댓글 목록 호출
 		list();
+		$("div.aupdateform").hide();
 		
 		//insert
 		var num=$("#num").val();
@@ -62,7 +64,37 @@
 				
 		});
 		
+		$(document).on("click",".mod",function(){
+			
+			//alert("수정")
+			$("div.aform").toggle();
+			$("div.aupdateform").toggle();
+			
+			$.ajax({
+				
+				type:"get",
+				url:"dtoAnswer.jsp",
+				dataType:"json",
+				data:{"idx":$(this).attr("idx")},
+				success:function(res){
+					
+					//alert("확인")
+					$("#unickname").val(res.nickname);
+					$("#ucontent").val(res.content);
+					$("#idx").val(res.idx);
+				}
+				
+			})
+			
+		})
+		
+
 		$(document).on("click",".del",function(){
+			
+			
+			if(!confirm("삭제하시려면 [확인]을 누르세요")){
+				return;
+			}
 			
 			$.ajax({
 				
@@ -76,6 +108,36 @@
 				
 			})
 		})
+		
+		$("#btnUSend").click(function(){
+			
+			//alert("확인")
+			var a=$("#unickname").val();
+			var b=$("#ucontent").val();
+			var c=$("#idx").val();
+			
+			//alert(a);
+			//alert(b);
+			//alert(c);
+			
+			$.ajax({
+				
+				type:"get",
+				url:"updateAnswer.jsp",
+				dataType:"html",
+				data:{"idx":c,"nickname":a,"content":b},
+				success:function(){
+					//alert("확인");
+					$("div.aupdateform").hide();
+					$("div.aform").show();
+					list();
+				}
+			})
+			
+			
+			
+		})
+		
 	});
 	
 	function list()
@@ -100,7 +162,7 @@
 					s+="<div>"+item.nickname+": "+item.content+"&nbsp;&nbsp;&nbsp;&nbsp;";
 					s+="<span class='aday'>"+item.writeday+"</span&nbsp;&nbsp;&nbsp;&nbsp;>";
 					s+="<i class='bi bi-trash del' idx="+item.idx+"></i>";
-					s+="<i class='bi bi-pencil-square'></i>"
+					s+="<i class='bi bi-pencil-square mod' idx="+item.idx+"></i>"
 					s+="</div>";
 					
 				});
@@ -123,6 +185,7 @@
 	
 	//현재 페이지 번호
 	String currentPage=request.getParameter("currentPage");
+	
 	
 %>
 </head>
@@ -157,6 +220,7 @@
 				<div class="alist">
 					댓글목록
 				</div>
+				<!-- 입력폼 -->
 				<div class="aform input-group">
 				<input type="text" id="nickname" class="form-control"
 				style="width: 80px;" placeholder="닉네임">
@@ -165,6 +229,20 @@
 				<button type="button" id="btnSend"
 				class="btn btn-info btn-sm" style="margin-left: 10px">저장</button>
 				</div>
+				
+				<!-- 수정폼 -->
+				<div class="aupdateform input-group">
+				<input type="hidden" id="idx" value="">
+				<input type="text" id="unickname" class="form-control"
+				style="width: 80px;" placeholder="닉네임" value="">
+				<input type="text" id="ucontent" class="form-control"
+				style="width: 300px; margin-left: 10px;"placeholder="댓글메세지" value="">
+				<button type="button" id="btnUSend"
+				class="btn btn-info btn-sm" style="margin-left: 10px">수정</button>
+				</div>
+				<script type="text/javascript">
+				
+				</script>
 			</td>
 		</tr>
 		
