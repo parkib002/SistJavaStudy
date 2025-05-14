@@ -21,9 +21,19 @@
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 	
 %>
+
+<script type="text/javascript">
+function openDel(num){
+	
+	window.open("deletePassForm.jsp?num="+num,"","left=100px,top=100px,width=500px,height=600px");
+}
+</script>
 <body>
 <!-- 번호 회원명 아이디 비밀번호 가입날짜 수정/삭제 -->
 <div style="margin: 100px 100px; width: 800px;">
+	<button type="button" class="btn btn-info"
+	onclick="location.href='../hlog/loginForm.jsp'"
+	style="margin-left: 400px">login</button>
 	<table class="table table-bordered">
 			<tr>
 					<th>번호</th>
@@ -47,7 +57,8 @@
 					<td><%=dto.getHp() %></td>
 					<td><%=sdf.format(dto.getGaipday()) %></td>
 					<td><button type="button" class="btn btn-info">수정</button>
-					<button type="button" class="btn btn-warning">삭제</button>
+					<button type="button" class="btn btn-warning"
+					onclick="openDel('<%=dto.getNum()%>')">삭제</button>
 					</td>
 			</tr>
 		<%}
