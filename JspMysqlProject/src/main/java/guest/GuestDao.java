@@ -59,6 +59,7 @@ public class GuestDao {
 				GuestDto dto=new GuestDto();
 				
 				dto.setNum(rs.getString("num"));
+				dto.setMyid(rs.getString("myid"));
 				dto.setPhoto(rs.getString("photo"));
 				dto.setContent(rs.getString("content"));
 				dto.setGaipday(rs.getTimestamp("gaipday"));
@@ -101,5 +102,58 @@ public class GuestDao {
 		}
 		
 		return total;
+	}
+	
+	public void deleteGuest(String num)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="delete from guest where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, num);
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+		
+	}
+	
+	public void getData(String num)
+	{
+		GuestDto dto=new GuestDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from guest where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+			dto.setNum(rs.getString("num"));
+			dto.setMyid(rs.getString("myid"));
+			dto.setPhoto(rs.getString("photo"));
+			dto.setContent(rs.getString("content"));
+			dto.setGaipday(rs.getTimestamp("gaipday"));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
 	}
 }

@@ -66,34 +66,43 @@
 <body>
 	<jsp:include page="guestForm.jsp"/>
 	<hr>
-	<h3>총 <%=totalCount %>개의 방명록글이 있습니다</h3>
+	<h3 style="font-family: Dongle; font-size: 3em;">총 <%=totalCount %>개의 방명록글이 있습니다</h3>
 	<div>
-	<table class="table table-bordered" style="width: 500px;">
-	<tr>
-		<th>번호</th>
-		<th>사진</th>
-		<th>내용</th>
-		<th>작성일자</th>
-	</tr>
 	
 	
 	<%
 		for(int i=0;i<list.size();i++)
 		{
 		GuestDto dto=list.get(i);%>
-		<tr>
-			<td><%=no-i %></td>
-			<td><img src='../save/<%=dto.getPhoto() %>'
-			style="max-width: 30px; max-height: 30px;"></td>
-			<td><%=dto.getContent() %> </td>
-			<td><%=sdf.format(dto.getGaipday()) %> </td>
-		</tr>	
+		<div style="border: 1px solid black; border-radius:10px 10px 10px 10px; margin: 20px; 20px; width: 400px;
+		font-family: Orbit;">
+			<h3>번호: <%=no-i %></h3>
+			<h3>아이디: <%=dto.getMyid() %></h3>
+			<h3>이미지: <img src='../save/<%=dto.getPhoto() %>'
+			style="max-width: 30px; max-height: 30px;"></h3>
+			<h3>내용: <%=dto.getContent() %> </h3>
+			<h3>작성날짜: <%=sdf.format(dto.getGaipday()) %> </h3>
+		<%
+			String loginok=(String)session.getAttribute("loginok");
+			String sessionid=(String)session.getAttribute("mid");
+			
+			//로그인중이면서 로그인한 아이디와 글쓴 아이디가 같을 경우에만 보이게
+			if(loginok!=null && sessionid.equals(dto.getMyid())){
+				%>
+			<hr>	
+			<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
+			<i class="bi bi-pencil-fill mod"></i>
+			<i class="bi bi-trash-fill del"
+			onclick="location.href='deleteAction.jsp?num=<%=dto.getNum()%>&photo=<%=dto.getPhoto()%>'"></i>
+			</div>
+			<%}
+		%>
+		</div>
 		<%}
 	%>
-	</table>
 	</div>
 	
-	<div style="width: 800px;">
+	<div style="width: 400px;" class="d-flex justify-content-center">
 	<ul class="pagination">
 	<%
 		//이전

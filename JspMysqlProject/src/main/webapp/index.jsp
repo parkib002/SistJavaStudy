@@ -18,7 +18,7 @@
 	onclick="location.href='hoewon/hoewonList.jsp'"
 	style="width: 200px;">회원 리스트</button><br><br>
 	<button type="button" class="btn btn-info"
-	onclick="location.href='guest/guestForm.jsp'"
+	onclick="location.href='guest/guestList.jsp'"
 	style="width: 200px;">회원 방명록</button>
 </div>
 </body>
