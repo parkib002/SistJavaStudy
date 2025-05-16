@@ -11,12 +11,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
-		
-	for(var i=1;i<=15;i++)
-		{
-		document.write("<img src='./image/쇼핑몰사진/"+i+".jpg';>")
-		}
-</script>
+<%
+	request.setCharacterEncoding("utf-8");
+
+	String id=request.getParameter("id");
+%>
+<div style="margin: 200px 200px;">
+<img alt="" src="../image/avata/b7.png">
+<h1><%=id%>님의 회원가입이 정상적으로 완료되었습니다.</h1>
+<br><br>
+<button type="button" class="btn btn-success">로그인</button>
+<button type="button" class="btn btn-success" onclick="location.href='index.jsp'">메인</button>
+</div>
 </body>
 </html>

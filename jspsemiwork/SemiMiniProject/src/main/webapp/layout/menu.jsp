@@ -20,6 +20,9 @@
 	<a href="<%=root%>">Shop</a>&nbsp;&nbsp;&nbsp;
 </body>
 </html>-->
+<%
+	String id=request.getParameter("id");
+%>
 <!DOCTYPE html>
 <html class="csstransforms no-csstransforms3d csstransitions"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
@@ -41,36 +44,27 @@
 			<a id="menu-toggle" class="button dark" href="#"><i class="icon-reorder"></i></a>
 			<nav id="navigation">
 				<ul id="main-menu">
-					<li class="current-menu-item"><a href="#">Home</a></li>
+					<li class="current-menu-item"><a href="<%=root%>">Home</a></li>
 					<li class="parent">
-						<a href="#">Features</a>
+						<a href="#">Member</a>
 						<ul class="sub-menu">
-							<li><a href="#"><i class="icon-wrench"></i> Elements</a></li>
-							<li><a href="#"><i class="icon-credit-card"></i>  Pricing Tables</a></li>
-							<li><a href="#"><i class="icon-gift"></i> Icons</a></li>
-							<li>
-								<a class="parent" href="#"><i class="icon-file-alt"></i> Pages</a>
-								<ul class="sub-menu">
-									<li><a href="#">Full Width</a></li>
-									<li><a href="#">Left Sidebar</a></li>
-									<li><a href="#">Right Sidebar</a></li>
-									<li><a href="#">Double Sidebar</a></li>
-								</ul>
+							<li><a href="index.jsp?main=member/memberList.jsp"><i class="icon-wrench"></i> 회원목록</a></li>
+							<li><a href="index.jsp?main=member/memberForm.jsp"><i class="icon-credit-card"></i> 회원가입</a></li>
+							<li><a href="index.jsp?main=login/loginForm.jsp"><i class="icon-gift"></i><%=id==null?"로그인":"로그아웃" %></a></li>
+							<li><a href="index.jsp?main=member/myPage.jsp"><i class="icon-wrench"></i> 마이페이지</a></li>
 							</li>
 						</ul>
 					</li>
-					<li><a href="#">Portfolio</a></li>
+					<li><a href="<%=root%>/guestform.jsp">방문인사</a></li>
 					<li class="parent">
-						<a href="#">Blog</a>
+						<a href="#">게시판</a>
 						<ul class="sub-menu">
-							<li><a href="#">Large Image</a></li>
-							<li><a href="#">Medium Image</a></li>
-							<li><a href="#">Masonry</a></li>
-							<li><a href="#">Double Sidebar</a></li>
-							<li><a href="#">Single Post</a></li>
+							<li><a href="#">Q&A</a></li>
+							<li><a href="<%=root%>/board/boardList.jsp">고객게시판</a></li>
+							<li><a href="#">Smart게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Contact</a></li>
+					<li><a href="<%=root%>/shop/shopList.jsp">Shop</a></li>
 				</ul>
 			</nav>
 			<div class="clear"></div>

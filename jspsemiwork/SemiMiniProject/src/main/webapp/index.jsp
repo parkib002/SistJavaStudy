@@ -5,9 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-   <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 <style type="text/css">
 div.layout{
@@ -47,8 +47,15 @@ div.main{
 	height: 1000px;
 	font-size: 13px;
 	font-family: 'Black Han Sans';
-	left: 300px;
-	top: 200px;
+	left: 350px;
+	top: 300px;
+	border: 0px solid gray;
+}
+
+.main img{
+	width: 200px;
+	heigt: 500px;
+	margin: 15px 15px;
 }
 
 a, a:hover{
@@ -81,5 +88,6 @@ a, a:hover{
 <div class="layout main">
 	<jsp:include page="<%=mainPage %>"/>
 </div>
+
 </body>
 </html>
