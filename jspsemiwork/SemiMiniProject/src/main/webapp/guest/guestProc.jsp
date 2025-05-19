@@ -40,7 +40,7 @@
 	dao.insertGuest(dto);
 
 	//목록이동
-	response.sendRedirect("guestList.jsp");
+	response.sendRedirect("../index.jsp?main=guest/guestList.jsp?currentPage=1");
 	}catch(Exception e){
 		
 	}

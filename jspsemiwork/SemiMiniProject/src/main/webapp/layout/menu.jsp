@@ -1,27 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!--  <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+
 <%
 	//프로젝트 경로 구하기
 	String root=request.getContextPath();
-%>
-<body>
-	<a href="<%=root%>">메인(홈)</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">로그인</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">회원가입</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">방명록</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">Q&A</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">고객게시판</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>">Shop</a>&nbsp;&nbsp;&nbsp;
-</body>
-</html>-->
-<%
-	String id=request.getParameter("id");
+
+	//로그인에 관한 세션
+	String loginok=(String)session.getAttribute("loginok");	
+	
+	//아이디 세션
+	String myid=(String)session.getAttribute("myid");
 %>
 <!DOCTYPE html>
 <html class="csstransforms no-csstransforms3d csstransitions"><head>
@@ -48,14 +36,22 @@
 					<li class="parent">
 						<a href="#">Member</a>
 						<ul class="sub-menu">
-							<li><a href="index.jsp?main=member/memberList.jsp"><i class="icon-wrench"></i> 회원목록</a></li>
+							<%
+								if(loginok!=null && myid.equals("admin")){%>
+									
+								<li><a href="index.jsp?main=member/memberList.jsp"><i class="icon-wrench"></i> 회원목록</a></li>
+									
+								<%}
+							%>
+							
 							<li><a href="index.jsp?main=member/memberForm.jsp"><i class="icon-credit-card"></i> 회원가입</a></li>
-							<li><a href="index.jsp?main=login/loginForm.jsp"><i class="icon-gift"></i><%=id==null?"로그인":"로그아웃" %></a></li>
+							<li><a href="index.jsp?main=login/loginMain.jsp"><i class="icon-gift"></i>
+							<%=loginok==null?"로그인":"로그아웃" %></a></li>
 							<li><a href="index.jsp?main=member/myPage.jsp"><i class="icon-wrench"></i> 마이페이지</a></li>
 							</li>
 						</ul>
 					</li>
-					<li><a href="<%=root%>/guestform.jsp">방문인사</a></li>
+					<li><a href="index.jsp?main=guest/guestList.jsp">방문인사</a></li>
 					<li class="parent">
 						<a href="#">게시판</a>
 						<ul class="sub-menu">

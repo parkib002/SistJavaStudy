@@ -10,7 +10,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+ <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
@@ -80,13 +80,13 @@
 		font-family: Orbit;">
 			<h3>번호: <%=no-i %></h3>
 			<h3>아이디: <%=dto.getMyid() %></h3>
-			<h3>이미지: <img src='../save/<%=dto.getPhoto() %>'
+			<h3>이미지: <img src='./save/<%=dto.getPhoto() %>'
 			style="max-width: 30px; max-height: 30px;"></h3>
 			<h3>내용: <%=dto.getContent() %> </h3>
 			<h3>작성날짜: <%=sdf.format(dto.getGaipday()) %> </h3>
 		<%
 			String loginok=(String)session.getAttribute("loginok");
-			String sessionid=(String)session.getAttribute("mid");
+			String sessionid=(String)session.getAttribute("myid");
 			
 			//로그인중이면서 로그인한 아이디와 글쓴 아이디가 같을 경우에만 보이게
 			if(loginok!=null && sessionid.equals(dto.getMyid())){
@@ -95,7 +95,7 @@
 			<div style="text-align: center; margin-top: 10px; margin-bottom: 10px;">
 			<i class="bi bi-pencil-fill mod"></i>
 			<i class="bi bi-trash-fill del"
-			onclick="location.href='deleteAction.jsp?num=<%=dto.getNum()%>&photo=<%=dto.getPhoto()%>'"></i>
+			onclick="location.href='./index.jsp?main=/guest/deleteAction.jsp?num=<%=dto.getNum()%>&photo=<%=dto.getPhoto()%>'"></i>
 			</div>
 			<%}
 		%>
@@ -111,7 +111,7 @@
 		if(startpage>1)
 		{%>
 			<li class="page-item">
-				<a class="page-link" href="guestList.jsp?currentPage=<%=startpage-1%>"
+				<a class="page-link" href="./index.jsp?main=guest/guestList.jsp?currentPage=<%=startpage-1%>"
 				style="color: black;">
 					이전
 				</a>
@@ -123,11 +123,11 @@
 			if(pp==currentPage)
 			{%>
 				<li class="page-item active">
-					<a class="page-link" href="guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+					<a class="page-link" href="./index.jsp?main=guest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
 				</li>
 			<%}else{%>
 				<li class="page-item">
-					<a class="page-link" href="guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
+					<a class="page-link" href="./index.jsp?main=guest/guestList.jsp?currentPage=<%=pp%>"><%=pp %></a>
 				</li>
 			<%}
 			

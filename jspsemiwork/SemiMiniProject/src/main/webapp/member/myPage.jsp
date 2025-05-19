@@ -18,9 +18,12 @@
 </head>
 <body>
 <%
+	String myid=(String)session.getAttribute("myid");
+	String loginok=(String)session.getAttribute("loginok");
+
 	MemberDao dao=new MemberDao();
 
-	List<MemberDto> list=dao.getAllMembers();
+	MemberDto dto=dao.getIdData(myid);
 
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
 %>
@@ -34,9 +37,6 @@ $(function(){
 		var num=$("#delnum").val();
 		var pass=$("#delpass").val();
 		
-		//alert(num);
-		//alert(pass);
-		
 		location.href="./index.jsp?main=/member/deleteMypage.jsp?num="+num+"&pass="+pass;
 	})
 	
@@ -48,11 +48,14 @@ $(function(){
 		$("#delnum").val(num);
 	}
 </script>
+
+<%
+	if(loginok!=null){%>
+		
+		
 <div style="margin: 200px 100px; width: 700px;">
 	<table class="table table-bordered">
-		<%
-			for(MemberDto dto:list)
-			{%>
+		
 				<tr>
 					<td rowspan="4" align="center">
 						<img alt="" src="image2/img/jquery_img.jpg;"
@@ -60,7 +63,8 @@ $(function(){
 					</td>
 					<td>회원명: <%=dto.getName() %></td>
 					<td rowspan="4" align="center" valign="middle">
-						<button type="button" class="btn btn-info">수정</button>
+						<button type="button" class="btn btn-info"
+						onclick="location.href='member/updateForm.jsp?num=<%=dto.getNum()%>'">수정</button>
 						  <button type="button" class="btn btn-primary tal" data-bs-toggle="modal" data-bs-target="#myModal"
 						  onclick="delMypage(<%=dto.getNum()%>)">
    							 탈퇴
@@ -85,11 +89,15 @@ $(function(){
 					가입일: <%=sdf.format(dto.getGaipday()) %>
 					</td>
 				</tr>
-			<%}
-		%>
+			
 	</table>
 </div>
 
+	<%}
+	else{
+		%>
+		<jsp:include page="../login/loginForm.jsp"/>
+<%} %>
 <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">

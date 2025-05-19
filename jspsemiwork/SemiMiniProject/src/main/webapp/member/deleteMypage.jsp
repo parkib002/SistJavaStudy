@@ -21,10 +21,10 @@
 	boolean flag=dao.checkPass(num, pass);
 	
 	if(flag){
-		//dao.deleteMember(num);
+		dao.deleteMember(num);
 	%>
 		<script type="text/javascript">
-		alert("삭제성공!")
+		alert("회원 탈퇴 성공!")
 		location.href='./index.jsp';
 		</script>
 	<% 

@@ -13,6 +13,7 @@
 <%
 	String num=request.getParameter("num");
 	String photo=request.getParameter("photo");
+	String currentPage=request.getParameter("currentPage");
 
 	String uploadPath=getServletContext().getRealPath("/save");
 	
@@ -28,7 +29,9 @@
 	
 	dao.deleteGuest(num);
 	
-	response.sendRedirect("guestList.jsp");
 %>
+<script type="text/javascript">
+ 	location.href="./index.jsp?main=guest/guestList.jsp?currentPage=1";
+</script>
 </body>
 </html>

@@ -10,13 +10,20 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 </head>
+<%
+	String saveok=(String)session.getAttribute("saveok");
+	String myid="";
+	if(saveok!=null){
+		myid=(String)session.getAttribute("myid");
+	}
+%>
 <body>
 <div style="margin: 100px 200px; width: 200px;">
    <h2 class="alert alert-success">회원로그인</h2>
    <form action="login/loginAction.jsp" method="post">
      <input type="text" name="id" class="form-control"
      style="width: 200px;" placeholder="로그인할 아이디"
-     required="required" ><br>
+     required="required" value="<%=myid%>"><br>
      <input type="password" name="pass" class="form-control"
      style="width: 200px;" placeholder="로그인할 비밀번호"
      required="required">
@@ -24,7 +31,8 @@
      <button type="submit" class="btn btn-success btn-lg"
      style="width: 200px;">로그인</button><br>
      
-     <input type="checkbox" name="savechk"> 아이디저장
+     <input type="checkbox" name="savechk"
+     <%=saveok==null?"":"checked" %>> 아이디저장
     
    </form>
 </div>

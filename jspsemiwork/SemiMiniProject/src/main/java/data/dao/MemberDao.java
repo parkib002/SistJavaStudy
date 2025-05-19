@@ -257,4 +257,93 @@ public class MemberDao {
 		}
 	}
 	
+	//수정
+	
+	//로그인_아이디와 비번체크 
+	public boolean checkIdPass(String id,String pass)
+	{
+		boolean flag=false;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where id=? and pass=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			pstmt.setString(2, pass);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next())
+				flag=true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return flag;
+	}
+	
+	public MemberDto getIdData(String id)
+	{
+		MemberDto dto=new MemberDto();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from member where id=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) 
+			{
+				dto.setNum(rs.getString("num"));
+				dto.setName(rs.getString("name"));
+				dto.setId(rs.getString("id"));
+				dto.setEmail(rs.getString("email"));
+				dto.setGaipday(rs.getTimestamp("gaipday"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return dto;
+	}
+	
+	public void updateData(MemberDto dto)
+	{
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		
+		String sql="update member set name=?,email=? where num=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, dto.getName());
+			pstmt.setString(2, dto.getEmail());
+			pstmt.setString(3, dto.getNum());
+			
+			pstmt.execute();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			db.dbClose(pstmt, conn);
+		}
+	}
+	
 }
