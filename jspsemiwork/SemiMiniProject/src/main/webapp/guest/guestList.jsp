@@ -1,3 +1,6 @@
+<%@page import="data.dao.GuestAnswerDao"%>
+<%@page import="data.dto.GuestAnswerDto"%>
+<%@page import="org.apache.el.parser.AstDiv"%>
 <%@page import="data.dto.GuestDto"%>
 <%@page import="data.dao.GuestDao"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -63,8 +66,44 @@
 	List<GuestDto> list=dao.selectGuest(startNum, perPage);
 	
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+	
+	String loginok=(String)session.getAttribute("loginok");
+	
+	GuestAnswerDao dao2=new GuestAnswerDao();
+	
+	
+	
 %>
 </head>
+<script type="text/javascript">
+$(function(){
+	
+	$(".answer").hide();
+
+	 $(".toggle-answer-btn").click(function() {
+	        // 클릭된 버튼 기준으로 가장 가까운 게시글 div 내의 .answer를 찾음
+	        $(this).closest("div").siblings(".answer").slideToggle();
+	    });
+	
+	$(".del").click(function(){
+		
+		var idx=$(this).attr("idx");
+		
+		$.ajax({
+			
+			type:"post",
+			url:"guest/answerDelete.jsp",
+			dataType:"html",
+			data:{"idx":idx},
+			success: function(){
+				
+				location.reload();
+			}
+		})
+		
+		})
+})
+</script>
 <body>
 	<jsp:include page="guestForm.jsp"/>
 	<hr>
@@ -84,8 +123,8 @@
 			style="max-width: 30px; max-height: 30px;"></h3>
 			<h3>내용: <%=dto.getContent() %> </h3>
 			<h3>작성날짜: <%=sdf.format(dto.getGaipday()) %> </h3>
+		
 		<%
-			String loginok=(String)session.getAttribute("loginok");
 			String sessionid=(String)session.getAttribute("myid");
 			
 			//로그인중이면서 로그인한 아이디와 글쓴 아이디가 같을 경우에만 보이게
@@ -96,12 +135,70 @@
 			<i class="bi bi-pencil-fill mod"></i>
 			<i class="bi bi-trash-fill del"
 			onclick="location.href='./index.jsp?main=/guest/deleteAction.jsp?num=<%=dto.getNum()%>&photo=<%=dto.getPhoto()%>'"></i>
+			<button type="button" class="btn btn-info btn-sm toggle-answer-btn"
+			>댓글등록/보기</button>
+			<hr>
+			</div>
+			<%}
+			else{%>
+			<div style="text-align: center;">
+			<hr>
+				<button type="button" class="btn btn-info btn-sm toggle-answer-btn" 
+			>댓글등록/보기</button>
+			<hr>
 			</div>
 			<%}
 		%>
+		
+			<div class="answer">
+		<%
+			if(loginok!=null){%>
+				
+				<div class="answerform">
+					<form action="guest/answerInsert.jsp" method="post" class="input-group">
+					<input type="hidden" name="num" value="<%=dto.getNum()%>">
+					<input type="hidden" name="myid" value="<%=sessionid%>">
+					<textarea style="width: 230px; height: 70px;"
+					name="content" required="required"
+					class="form-control"></textarea>
+					<button type="submit" class="btn btn-info"
+					style="width: 50px; height: 70px; font-size: 15px;">등록</button>
+					</form>				
+				</div>
+			<%}
+		%>	
+				<div class="answerlist">
+					<%List<GuestAnswerDto> list2=dao2.getAllGuestAnswer(dto.getNum());
+					%><h6>개수: <%=list2.size() %></h6>
+					<%for(int j=0;j<list2.size();j++){
+						GuestAnswerDto dto2=list2.get(j);
+					%>
+					
+					<h6>아이디: <%=dto2.getMyid() %></h6>
+					<h6>댓글: <%=dto2.getContent().replace("\n", "<br>") %></h6>
+					<%
+						//글작성자와 댓글 쓴 작성자가 같을 경우
+						if(dto.getMyid().equals(dto2.getMyid())){%>
+							<h6>작성자</h6>
+						<%}
+					
+						if(loginok!=null && sessionid.equals(dto2.getMyid())){%>
+							
+							<i class="bi bi-trash-fill del" idx=<%=dto2.getIdx() %>></i>
+						<%}
+							
+					%>
+						
+					</ul>
+					<hr>
+					<%}%>
+				</div>
+			</div>
 		</div>
 		<%}
 	%>
+	
+	
 	</div>
 	
 	<div style="width: 400px;" class="d-flex justify-content-center">

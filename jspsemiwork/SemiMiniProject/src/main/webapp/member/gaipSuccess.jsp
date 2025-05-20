@@ -20,7 +20,8 @@
 <img alt="" src="../image/avata/b7.png">
 <h1><%=id%>님의 회원가입이 정상적으로 완료되었습니다.</h1>
 <br><br>
-<button type="button" class="btn btn-success">로그인</button>
+<button type="button" class="btn btn-success"
+onclick="location.href='./index.jsp?main=login/loginMain.jsp'">로그인</button>
 <button type="button" class="btn btn-success" onclick="location.href='index.jsp'">메인</button>
 </div>
 </body>

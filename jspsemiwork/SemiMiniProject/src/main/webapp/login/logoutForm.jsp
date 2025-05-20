@@ -19,7 +19,6 @@
 
 	String id=(String)session.getAttribute("myid");
 	
-	System.out.println(id);
 
 	MemberDto dto=dao.getIdData(id);
 

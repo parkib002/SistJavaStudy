@@ -14,15 +14,17 @@
 
 	String num=request.getParameter("num");
 	String name=request.getParameter("name");
-	String email=request.getParameter("email");
+	String email1=request.getParameter("email1");
+	String email2=request.getParameter("email2");
 	
 	MemberDto dto=new MemberDto();
 	
 	dto.setName(name);
-	dto.setEmail(email);
+	dto.setEmail(email1+"@"+email2);
 	dto.setNum(num);
 	
 	MemberDao dao=new MemberDao();
+	
 	dao.updateData(dto);
 %>
 <script type="text/javascript">

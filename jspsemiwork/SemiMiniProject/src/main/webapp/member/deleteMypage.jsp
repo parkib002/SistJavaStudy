@@ -16,16 +16,18 @@
 	String pass=request.getParameter("pass");
 	String num=request.getParameter("num");
 	
+	
 	MemberDao dao=new MemberDao();
 	
 	boolean flag=dao.checkPass(num, pass);
 	
 	if(flag){
 		dao.deleteMember(num);
+		session.removeAttribute("loginok");
 	%>
 		<script type="text/javascript">
 		alert("회원 탈퇴 성공!")
-		location.href='./index.jsp';
+		location.href="./index.jsp";
 		</script>
 	<% 
 	}

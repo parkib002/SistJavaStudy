@@ -10,9 +10,11 @@
 <%
 	//loginok세션제거
 	session.removeAttribute("loginok");
-	
-	//loginmain으로 이동
-	response.sendRedirect("../index.jsp?main=login/loginMain.jsp");
+	String root=request.getContextPath();
 %>
+
+<script type="text/javascript">
+	location.href="<%=root%>";
+</script>
 </body>
 </html>

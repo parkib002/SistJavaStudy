@@ -60,7 +60,13 @@
 							<li><a href="#">Smart게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="<%=root%>/shop/shopList.jsp">Shop</a></li>
+					<li><a href="<%=root%>/shop/shopList.jsp">Shop</a>
+						<ul class="sub-menu">
+							<li><a href="#">ShopForm</a></li>
+							<li><a href="#">ShoppingMall</a></li>
+							<li><a href="index.jsp?main=shop/map.jsp">오시는길</a></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 			<div class="clear"></div>
