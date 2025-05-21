@@ -56,7 +56,7 @@
 						<a href="#">게시판</a>
 						<ul class="sub-menu">
 							<li><a href="#">Q&A</a></li>
-							<li><a href="<%=root%>/board/boardList.jsp">고객게시판</a></li>
+							<li><a href="index.jsp?main=/board/boardList.jsp">답변형 고객게시판</a></li>
 							<li><a href="#">Smart게시판</a></li>
 						</ul>
 					</li>

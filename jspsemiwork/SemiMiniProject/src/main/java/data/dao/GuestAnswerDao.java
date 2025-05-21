@@ -100,4 +100,58 @@ public class GuestAnswerDao {
 			}
 			
 		}
+		
+		//idx에 대한 dto
+		public String getGuestAnswerData(String idx)
+		{
+			String content="";
+			
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			ResultSet rs=null;
+			
+			String sql="select content from guestanswer where idx=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setString(1, idx);
+				
+				rs=pstmt.executeQuery();
+				
+				if(rs.next())
+					content=rs.getString("content");
+				
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(rs, pstmt, conn);
+			}
+			
+			return content;
+		}
+		
+		public void updateGuestAnswer(GuestAnswerDto dto)
+		{
+			Connection conn=db.getConnection();
+			PreparedStatement pstmt=null;
+			
+			String sql="update guestanswer set content=? where idx=?";
+			
+			try {
+				pstmt=conn.prepareStatement(sql);
+				
+				pstmt.setString(1, dto.getContent());
+				pstmt.setString(2, dto.getIdx());
+				
+				pstmt.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally {
+				db.dbClose(pstmt, conn);
+			}
+					
+		}
 }

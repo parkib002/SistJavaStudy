@@ -17,6 +17,8 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <title>Insert title here</title>
 <%
 	GuestDao dao=new GuestDao();
@@ -102,6 +104,51 @@ $(function(){
 		})
 		
 		})
+		
+		$(".mod").click(function(){
+			
+		var idx=$(this).attr("idx");
+		
+		//alert(idx)
+		
+		$("#idx").val(idx);
+		
+		$.ajax({
+			
+			type:"get",
+			dataType:"json",
+			url:"guest/answerContent.jsp",
+			data:{"idx":idx},
+			success:function(res){
+				
+				
+				
+				$("#idx").val(res.idx);
+				$("#ucontent").val(res.content);
+				
+			}
+		})
+		
+		})
+		
+		$("#btnupdate").click(function(){
+			
+				var idx=$("#idx").val();
+				var content=$("#ucontent").val();
+		
+			$.ajax({
+				
+				type:"get",
+				dataType:"html",
+				url:"guest/answerUpdate.jsp",
+				data:{"idx":idx,"content":content},
+				success:function(){
+					
+					location.reload();
+				}
+			})
+		})
+		
 })
 </script>
 <body>
@@ -184,7 +231,9 @@ $(function(){
 					
 						if(loginok!=null && sessionid.equals(dto2.getMyid())){%>
 							
-							<i class="bi bi-trash-fill del" idx=<%=dto2.getIdx() %>></i>
+							<i class="bi bi-trash-fill del" style="color: red" idx=<%=dto2.getIdx() %>></i>
+							<i class="bi bi-pencil-fill mod" style="color: blue" idx=<%=dto2.getIdx() %>
+							data-bs-toggle="modal" data-bs-target="#myModal"></i>
 						<%}
 							
 					%>
@@ -242,6 +291,35 @@ $(function(){
 			<%}
 	%>
 	</ul>
+	
+
+<!-- The Modal -->
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">댓글 수정</h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="updateform">
+        <input type="text" class="form-control" id="ucontent" value="">
+        <input type="hidden" value="" id="idx">
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-success" data-bs-dismiss="modal" id="btnupdate">수정</button>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">닫기</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+	
 	</div>
 </body>
 </html>
