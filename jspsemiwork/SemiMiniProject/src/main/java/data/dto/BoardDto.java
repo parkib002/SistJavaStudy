@@ -11,7 +11,7 @@ public class BoardDto {
 	private String pass;
 	private int regroup;
 	private int restep;
-	private int reglevel;
+	private int relevel;
 	private int readcount;
 	private Timestamp writeday;
 	
@@ -58,10 +58,10 @@ public class BoardDto {
 		this.restep = restep;
 	}
 	public int getReglevel() {
-		return reglevel;
+		return relevel;
 	}
-	public void setReglevel(int reglevel) {
-		this.reglevel = reglevel;
+	public void setReglevel(int relevel) {
+		this.relevel = relevel;
 	}
 	public int getReadcount() {
 		return readcount;

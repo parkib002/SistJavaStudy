@@ -16,13 +16,14 @@
 	BoardDao dao=new BoardDao();
 
 	//답글인 경우 제목에 원글 제목 붙여주기
-	/*if(num!=null)
+	if(num!=null)
 	{
 		regroup=request.getParameter("regroup");
 		restep=request.getParameter("restep");
 		relevel=request.getParameter("relevel");
 		
-	}*/
+		subject="[답글]"+dao.getData(num).getSubject();
+	}
 %>
 <body>
 	<div>
@@ -53,7 +54,7 @@
 					<th class="table-warning">제목</th>
 					<td>
 						<input type="text" name="subject" class="form-control"
-						style="width: 100px;">
+						style="width: 100px;" value="<%=subject%>">
 					</td>
 				</tr>
 					<tr>
