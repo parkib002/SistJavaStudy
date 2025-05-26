@@ -62,8 +62,15 @@
 					</li>
 					<li><a href="<%=root%>/shop/shopList.jsp">Shop</a>
 						<ul class="sub-menu">
-							<li><a href="#">ShopForm</a></li>
-							<li><a href="#">ShoppingMall</a></li>
+							
+							<%
+								if(loginok!=null && myid.equals("admin"))
+								{%>
+							<li><a href="index.jsp?main=shop/addForm.jsp">ShopForm</a></li>
+								<%}
+							%>
+							
+							<li><a href="index.jsp?main=shop/shopList.jsp">ShoppingMall</a></li>
 							<li><a href="index.jsp?main=shop/map.jsp">오시는길</a></li>
 						</ul>
 					</li>
@@ -73,4 +80,5 @@
 		</div>
 	</header>	
 </div>    
-</body></html>
+</body>
+</html>

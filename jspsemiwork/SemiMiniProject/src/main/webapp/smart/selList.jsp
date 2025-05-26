@@ -31,6 +31,60 @@
 	  dto.setAnswercount(acount);
   }
 %>
+<script type="text/javascript">
+	$(function(){
+		
+		//전체클릭시 체크값 모두 얻어서 그 체크값 전다랗기
+		$(".alldelcheck").click(function(){
+			
+			//전체체크얻기
+			var chk=$(this).is(":checked");
+			console.log(chk);
+			
+			//전체체크를 번호의 체크에 일괄전달(prop)
+			$(".alldel").prop("checked",chk);
+			
+			//삭제 버튼 클릭시 삭제
+
+		})
+		
+		$("#btndel").click(function(){
+				
+			//체크된 길이
+			var len=$(".alldel:checked").length;
+			
+			if(len==0){
+				alert("삭제할 글을 최소 한 개 이상 선택해주세요");
+			}else{
+				
+				var a=confirm(len+"개의 글을 삭제하려면 [확인]을 눌러주세요");
+				
+				//체크된 value의 num값 얻기
+				var n="";
+				
+				$(".alldel:checked").each(function(idx){
+					
+					n+=$(this).val()+",";	
+				})				
+				
+				//마지막 컴마 제거
+				n=n.substring(0,n.length-1);
+				console.log(n);
+				
+				if(a){
+				//삭제파일로 전송
+				location.href="./index.jsp?main=smart/allDelete.jsp?nums="+n;
+				}else{
+				history.back();
+				}
+			}
+			
+			
+		})
+		
+	})
+
+</script>
 <body>
   <div>
     <button type="button" class="btn btn-success"
@@ -62,7 +116,10 @@
     	     SmartDto dto=list.get(i);
     	   %>
     		   <tr>
-    		     <td align="center"><%=list.size()-i %></td>
+    		     <td align="center">
+				 <input type="checkbox" value="<%=dto.getNum()%>" class="alldel">    		     
+    		     <%=list.size()-i %>
+    		     </td>
     		     <td>
     		            		        
     		        <a href="index.jsp?main=smart/content.jsp?num=<%=dto.getNum()%>"
@@ -83,9 +140,18 @@
     		     <td><%=dto.getReadcount() %></td>
     		   </tr>
     		   
-    	   <%}
-            
-       }
+    	   <%}%>
+         	<tr>
+				<td colspan="5">
+					<input type="checkbox" class="alldelcheck">전체선택
+					<span>
+						<button type="button" class="btn btn-danger" id="btndel">삭제</button>
+						&nbsp;&nbsp;&nbsp;
+						<button type="button" class="btn btn-success" onclick="location.href='index.jsp?main=smart/smartform.jsp'">글쓰기</button>
+					</span>
+				</td>         	
+         	</tr>
+       <%}
      %>
   </table>
 </div>
