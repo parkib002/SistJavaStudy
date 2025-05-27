@@ -35,6 +35,8 @@
 		$("a.godetail").click(function(){
 			
 			var shopnum=$(this).attr("shopnum");
+			
+			location.href="index.jsp?main=shop/detailPage.jsp?shopnum="+shopnum;
 		})
 	})
 </script>
@@ -71,8 +73,9 @@
 							<%=dto.getSangpum() %>
 							<br>
 							<b style="color: red;">
-							할인: <%=discount %>%&nbsp;&nbsp;
+							할인: <%=discount %>%
 							</b>
+							<br>
 							<span>
 							<strike>원가: <%=dto.getPrice() %></strike>
 							</span>
@@ -99,7 +102,7 @@
   <div class="tab-pane fade" id="nav-sang" role="tabpanel" aria-labelledby="nav-sang-tab" tabindex="0">
   	<table class="table table-bordered">
   		<caption align="top">상의</caption>
-				<tr align="center">
+				<tr>
 			<%	int num=0;
 				for(int i=0;i<list.size();i++){
 				int discount=(int)(Math.random()*21)+20;
@@ -116,6 +119,7 @@
 							<b style="color: red;">
 							할인: <%=discount %>%
 							</b>
+							<br>
 							<span>
 							<strike>원가: <%=dto.getPrice() %></strike>
 							</span>
@@ -141,7 +145,7 @@
   <div class="tab-pane fade" id="nav-ha" role="tabpanel" aria-labelledby="nav-ha-tab" tabindex="0">
   	<table class="table table-bordered">
   		<caption align="top">하의</caption>
-				<tr align="center">
+				<tr>
 			<%	int num2=0;
 				for(int i=0;i<list.size();i++){
 				int discount=(int)(Math.random()*21)+20;
@@ -158,9 +162,11 @@
 							<b style="color: red;">
 							할인: <%=discount %>%
 							</b>
+							<br>
 							<span>
 							<strike>원가: <%=dto.getPrice() %></strike>
 							</span>
+							<br>
 							<span>
 							<%
 								int price=(int)(dto.getPrice()-(dto.getPrice()*(discount/100.0)));

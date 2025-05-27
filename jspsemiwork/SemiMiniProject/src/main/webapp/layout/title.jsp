@@ -1,3 +1,4 @@
+<%@page import="data.dao.ShopDao"%>
 <%@page import="data.dto.MemberDto"%>
 <%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -25,7 +26,21 @@
 	MemberDao dao=new MemberDao();
 	
 	MemberDto dto=dao.getIdData(myid);
+	
+	//shopdao
+	ShopDao sdao=new ShopDao();
+	//카트 개수
+	int cartSize=sdao.getCartList(myid).size();
 %>
+<script type="text/javascript">
+	$(function(){
+	$(".mypage").click(function(){
+		
+		location.href="index.jsp?main=shop/myCart.jsp";
+	})
+	})
+		
+</script>
 <body>
 	<a href="<%=root%>">
 		<img alt="" src="./image2/img/jquery_img.jpg" style="height: 100px; width: 100px;'">
@@ -40,6 +55,7 @@
 		<b><%=dto.getName() %>님 로그인중</b>
 		<button type="button" class="btn btn-danger"
 		style="width: 100px;" onclick="location.href='./index.jsp?main=login/logoutAction.jsp'">Logout</button>
+		<i class="bi bi-cart mypage"></i>
 	<%}
 	%>
 	</div>
