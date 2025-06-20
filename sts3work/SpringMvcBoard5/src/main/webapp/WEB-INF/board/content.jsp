@@ -13,42 +13,17 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="alert alert-info">3번째 예제 출력</h3>
-<br>
-<h4>메뉴 이름을 입력 후 엔터를 눌러주세요</h4>
-<input type="text" id="search" name="name" class="form-control"
-style="width: 150px;">
-<br><br>
-<h2 id="foodName"></h2>
-<br>
-<img alt="" src="" id="photo">
+작성자: ${dto.writer }<br>
+작성일: <fmt:formatDate value="${dto.writeday }"
+pattern="yyyy-MM-dd HH:mm"/><br>
+제목: ${dto.subject }<br>
+내용:
+<pre>
+	${dto.content }
+</pre>
 
-<script type="text/javascript">
-	//메뉴명 입력 후 엔터 누를 때 출력
-	$("#search").keyup(function(e){
-		
-		if(e.keyCode==13){
-			
-			var name=$(this).val();
-			
-			$.ajax({
-				
-				type:"get",
-				url:"list3",
-				dataType:"json",
-				data:{"name":name},
-				success:function(res){
-					
-					$("#foodName").empty();
-					$("#foodName").append(res.name);
-					$("#photo").attr("src","image/Food/"+res.photo)
-					
-				}
-			})
-		}
-		
-	})
-	
-</script>
-</body>
+<button type="button" onclick="location.href='writeform'">글쓰기</button>
+<button type="button" onclick="location.href='updateform?num=${dto.num}'">수정</button>
+<button type="button" onclick="location.href='delete?num=${dto.num}'">삭제</button>
+<button type="button" onclick="location.href='list'">목록</button>
 </html>

@@ -13,42 +13,39 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="alert alert-info">3번째 예제 출력</h3>
-<br>
-<h4>메뉴 이름을 입력 후 엔터를 눌러주세요</h4>
-<input type="text" id="search" name="name" class="form-control"
-style="width: 150px;">
-<br><br>
-<h2 id="foodName"></h2>
-<br>
-<img alt="" src="" id="photo">
-
-<script type="text/javascript">
-	//메뉴명 입력 후 엔터 누를 때 출력
-	$("#search").keyup(function(e){
+<form action="write" method="post">
+	<table class="table table-bordered" style="width: 400px;">
+		<caption align="top"><b>글쓰기</b></caption>
+		<tr>
+			<th width="100">작성자</th>
+			<td>
+				<input type="text" name="writer" class="form-control"
+				style="width: 100px;">
+			</td>
+		</tr>
 		
-		if(e.keyCode==13){
-			
-			var name=$(this).val();
-			
-			$.ajax({
-				
-				type:"get",
-				url:"list3",
-				dataType:"json",
-				data:{"name":name},
-				success:function(res){
-					
-					$("#foodName").empty();
-					$("#foodName").append(res.name);
-					$("#photo").attr("src","image/Food/"+res.photo)
-					
-				}
-			})
-		}
+		<tr>
+			<th width="100">제목</th>
+			<td>
+				<input type="text" name="subject" class="form-control"
+				style="width: 280px;">
+			</td>
+		</tr>
 		
-	})
-	
-</script>
+		<tr>
+			<td colspan="2">
+				<textarea style="width: 380px; height: 100px;"
+				class="form-control" name="content"></textarea>
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<button type="submit" class="btn btn-outline-info"
+				style="width: 150px;">db에 저장</button>
+			</td>
+		</tr>
+	</table>
+</form>
 </body>
 </html>

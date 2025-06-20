@@ -13,42 +13,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3 class="alert alert-info">3번째 예제 출력</h3>
-<br>
-<h4>메뉴 이름을 입력 후 엔터를 눌러주세요</h4>
-<input type="text" id="search" name="name" class="form-control"
-style="width: 150px;">
-<br><br>
-<h2 id="foodName"></h2>
-<br>
-<img alt="" src="" id="photo">
-
-<script type="text/javascript">
-	//메뉴명 입력 후 엔터 누를 때 출력
-	$("#search").keyup(function(e){
-		
-		if(e.keyCode==13){
-			
-			var name=$(this).val();
-			
-			$.ajax({
-				
-				type:"get",
-				url:"list3",
-				dataType:"json",
-				data:{"name":name},
-				success:function(res){
-					
-					$("#foodName").empty();
-					$("#foodName").append(res.name);
-					$("#photo").attr("src","image/Food/"+res.photo)
-					
-				}
-			})
-		}
-		
-	})
-	
-</script>
+<!-- <a href="list">스프링 게시판 연습</a> -->
+<c:redirect url="list"/>
 </body>
 </html>
