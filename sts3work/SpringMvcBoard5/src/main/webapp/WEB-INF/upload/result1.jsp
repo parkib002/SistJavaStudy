@@ -13,10 +13,16 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="list">스프링 게시판 연습</a><br>
-<a href="car/list">자동차 리스트</a><br>
-<a href="upload/form1">이미지 리스트_1</a><br>
-<a href="upload/form2">이미지 리스트_2</a><br>
-<%-- <c:redirect url="list"/> --%>
+<h2>제목: ${title }</h2>
+
+<c:if test="${fileName=='no' }">
+	<b>이미지 없음</b>
+</c:if>
+
+<c:if test="${fileName!='no' }">
+	<img alt="" src="../image/${fileName }">
+</c:if>
+
+<h2>업로드할 실제 경로: ${path }</h2>
 </body>
 </html>

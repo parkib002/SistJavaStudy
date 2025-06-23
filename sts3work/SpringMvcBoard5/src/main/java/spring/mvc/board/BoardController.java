@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonCreator.Mode;
 
 import spring.board.data.BoardDaoInter;
 import spring.board.data.BoardDto;
@@ -87,7 +86,7 @@ public class BoardController {
 	{
 		dao.updateBoard(dto);
 		
-		return "redirect:list";
+		return "redirect:content?num="+dto.getNum();
 	}
 	
 	@GetMapping("/delete")

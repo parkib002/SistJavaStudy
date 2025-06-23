@@ -13,10 +13,31 @@
 <title>Insert title here</title>
 </head>
 <body>
-<a href="list">스프링 게시판 연습</a><br>
-<a href="car/list">자동차 리스트</a><br>
-<a href="upload/form1">이미지 리스트_1</a><br>
-<a href="upload/form2">이미지 리스트_2</a><br>
-<%-- <c:redirect url="list"/> --%>
+	<form action="save1" method="post" enctype="multipart/form-data">
+	  <table class="table table-bordered" style="width: 400px;">
+	  	<caption align="top"><b>스프링 업로드_1개</b></caption>
+	  	<tr>
+	  		<th>제목</th>
+	  		<td>
+	  			<input type="text" name="title" class="form-control"
+	  			style="width: 200px;">
+	  		</td>
+	  	</tr>
+	  	
+	  	<tr>
+	  		<th>업로드</th>
+	  		<td>
+	  			<input type="file" name="photo" class="form-control"
+	  			style="width: 200px;">
+	  		</td>
+	  	</tr>
+	  	
+	  	<tr>
+	  		<td colspan="2" align="center">
+	  			<button type="submit" class="btn btn-success">업로드#1</button>
+	  		</td>
+	  	</tr>
+	  </table>
+	</form>
 </body>
 </html>
