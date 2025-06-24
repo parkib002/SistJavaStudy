@@ -3,6 +3,7 @@ package spring.mvc.board;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.servlet.http.HttpSession;
@@ -61,6 +62,54 @@ public class UploadController {
 		model.addObject("path", path);
 		
 		model.setViewName("upload/result1");
+		
+		return model;
+	}
+	
+	@GetMapping("/form2")
+	public String form2()
+	{
+		return "upload/form2";
+	}
+	
+	//폼2 submit
+	@PostMapping("/save2")
+	public ModelAndView read2(@RequestParam String title,
+			@RequestParam ArrayList<MultipartFile> photo,
+			HttpSession session)
+	{
+		ModelAndView model=new ModelAndView();
+		
+		String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		
+		ArrayList<String> files=new ArrayList<String>();
+		
+		//파일명 담기
+		for(MultipartFile f:photo)
+		{
+			String fileName=sdf.format(new Date())+"_"+f.getOriginalFilename();
+			files.add(fileName);
+		
+			//업로드
+			try {
+				f.transferTo(new File(path+"\\"+fileName));
+			} catch (IllegalStateException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+				
+		}
+		
+		model.addObject("title", title);
+		model.addObject("files", files);
+		model.addObject("path", path);
+		
+		model.setViewName("upload/result2");
 		
 		return model;
 	}
