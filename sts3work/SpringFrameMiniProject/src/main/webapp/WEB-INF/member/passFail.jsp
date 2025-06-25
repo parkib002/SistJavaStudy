@@ -12,21 +12,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 </head>
-<c:set var="root" value="<%=request.getContextPath() %>"></c:set>
 <body>
-	<img alt="" src="${root }/image/shop.jpg" style="width: 100px;" height="100px;">
-	
-	<span>
-		<c:if test="${sessionScope.loginok==null }">
-			<button type="button" class="btn btn-success"
-			onclick="location.href='${root}/login/form'">Login</button>
-		</c:if>
-		
-		<c:if test="${sessionScope.loginok!=null }">
-			<b>${sessionScope.myid }님이 로그인중입니다</b>
-			<button type="button" class="btn btn-danger"
-			onclick="location.href='${root}/login/logoutprocess'">Logout</button>
-		</c:if>
-	</span>		
+<script type="text/javascript">
+	alert("비밀번호가 맞지 않습니다");
+	history.back();
+</script>
 </body>
 </html>

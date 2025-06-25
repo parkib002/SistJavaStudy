@@ -13,6 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>로그인폼</h1>
+<script type="text/javascript">
+	alert("아이디 또는 비밀번호가 맞지 않습니다");
+	history.back();
+</script>
 </body>
 </html>

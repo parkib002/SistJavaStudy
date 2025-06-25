@@ -12,21 +12,34 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 </head>
-<c:set var="root" value="<%=request.getContextPath() %>"></c:set>
 <body>
-	<img alt="" src="${root }/image/shop.jpg" style="width: 100px;" height="100px;">
-	
-	<span>
-		<c:if test="${sessionScope.loginok==null }">
-			<button type="button" class="btn btn-success"
-			onclick="location.href='${root}/login/form'">Login</button>
-		</c:if>
-		
-		<c:if test="${sessionScope.loginok!=null }">
-			<b>${sessionScope.myid }님이 로그인중입니다</b>
-			<button type="button" class="btn btn-danger"
-			onclick="location.href='${root}/login/logoutprocess'">Logout</button>
-		</c:if>
-	</span>		
+<form action="loginprocess" method="post">
+	<table class="table table-bordered" style="width: 300px;">
+		<caption align="top"><b>회원 로그인</b></caption>
+			<tr>
+				<th>아이디</th>
+				<td>
+				<input type="text" name="id" class="form-control"
+				style="width: 150px;" required="required">
+				</td>
+			</tr>
+			
+			<tr>
+				<th>비밀번호</th>
+				<td>
+				<input type="password" name="pass" class="form-control"
+				style="width: 150px;" required="required">
+				</td>
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" class="btn btn-info" value="로그인">
+					<input type="button" class="btn btn-success" value="회원가입"
+					onclick="location.href='../member/form'">
+				</td>
+			</tr>
+	</table>
+</form>
 </body>
 </html>

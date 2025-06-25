@@ -15,7 +15,7 @@
 <c:set var="root" value="<%=request.getContextPath() %>"></c:set>
 <body>
 	<a href="${root }/home">Home</a>&nbsp;&nbsp;
-	<a href="${root }/login/form">Login</a>&nbsp;&nbsp;
+	<a href="${root }/member/myinfo">Mypage</a>&nbsp;&nbsp;
 	<a href="${root }/member/list">Member</a>&nbsp;&nbsp;
 	<a href="${root }/board/list">Board</a>&nbsp;&nbsp;
 	<a href="${root }/shop/list">Myshop</a>&nbsp;&nbsp;

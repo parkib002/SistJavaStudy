@@ -15,7 +15,20 @@
 <c:set var="root" value="<%=request.getContextPath() %>"></c:set>
 <body>
 	<a href="${root }/">
-		<img alt="" src="${root }/image/jquery_img.jpg" style="width: 100px; height: 100px;"><br>
+		<img alt="" src="${root }/image/jquery_img.jpg" style="width: 100px; height: 100px;">
 	</a>
+	
+	<span>
+		<c:if test="${sessionScope.loginok==null }">
+			<button type="button" class="btn btn-success"
+			onclick="location.href='${root}/login/form'">Login</button>
+		</c:if>
+		
+		<c:if test="${sessionScope.loginok!=null }">
+			<b>${sessionScope.myid }님이 로그인중입니다</b>
+			<button type="button" class="btn btn-danger"
+			onclick="location.href='${root}/login/logoutprocess'">Logout</button>
+		</c:if>
+	</span>		
 </body>
 </html>

@@ -8,4 +8,29 @@
 	<insert id="insertOfMember" parameterType="Member">
 		insert into member values(null,#{name},#{id},#{pass},#{hp},now())
 	</insert>
+	
+	<select id="AllListOfMember" resultType="Member">
+		select * from member order by num
+	</select>
+	
+	<select id="loginCheckOfMember" resultType="int" parameterType="HashMap">
+		select count(*) from member where id=#{id} and pass=#{pass}
+	</select>
+	
+	<select id="selectOneOfMember" parameterType="String" resultType="Member">
+		select * from member where num=#{num}
+	</select>
+	
+	<select id="passCheckOfMember" parameterType="HashMap" resultType="int">
+		select count(*) from member where num=#{num} and pass=#{pass}
+	</select>
+	
+	<update id="updateOfMember" parameterType="Member">
+		update member set name=#{name}, hp=#{hp} where num=#{num}
+	</update>
+	
+	<delete id="deleteOfMember" parameterType="String">
+		delete from member where num=#{num}
+	</delete>
+	
 </mapper>

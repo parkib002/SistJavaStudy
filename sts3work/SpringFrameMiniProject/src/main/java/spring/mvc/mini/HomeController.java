@@ -35,13 +35,7 @@ public class HomeController {
 	@GetMapping("/login/form")
 	public String login()
 	{
-		return "/login/loginForm";
+		return "/login/loginMain";
 	}
 	
-	//¸â¹ö¸®½ºÆ®
-	@GetMapping("/member/list")
-	public String member()
-	{
-		return "/member/memberList";
-	}
 }
