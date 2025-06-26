@@ -15,14 +15,6 @@ public class HomeController {
 		return "/layout/main";
 	}
 	
-	@GetMapping("/board/list")
-	public String blist()
-	{
-		//return "input.tiles";
-		
-		return "/board/boardList";
-	}
-	
 	@GetMapping("/shop/list")
 	public String slist()
 	{

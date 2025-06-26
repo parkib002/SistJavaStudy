@@ -120,10 +120,9 @@ public class MemeberController {
 	}
 	
 	@GetMapping("/member/delete")
-	public String delete(@RequestParam String num)
+	@ResponseBody
+	public void delete(@RequestParam String num)
 	{
 		dao.deleteMember(num);
-		
-		return "redirect:list";
 	}
 }
