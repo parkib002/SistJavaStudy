@@ -19,4 +19,8 @@ public interface BoardDaoInter {
 	public BoardDto getOneData(int num);
 	
 	public void updateReadCount(int num);
+	
+	public void updateBoard(BoardDto dto);
+	
+	public void deleteBoard(int num);
 }

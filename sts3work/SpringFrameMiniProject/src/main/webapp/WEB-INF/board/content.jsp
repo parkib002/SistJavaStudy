@@ -22,6 +22,17 @@
 				<fmt:formatDate value="${dto.writeday }" pattern="yyyy-MM-dd"/>
 			</span>
 			<h6>작성자: ${dto.writer }</h6>
+			
+			<div>
+				<c:if test="${dto.photo!='no' }">
+					<c:forTokens var="pho" items="${dto.photo }" delims=",">
+						<a href="download?clip=${pho }">
+							<i class="bi bi-cloud-download"></i>
+							<span>${pho }</span>
+						</a>
+					</c:forTokens>
+				</c:if>
+			</div>
 		</td>
 	</tr>
 	
@@ -41,6 +52,36 @@
 		</td>
 	</tr>
 	
+	<!-- 댓글 -->
+	<tr>
+		<td>
+			<div id="answer">댓글 목록 출력</div>
+			<table>
+			<c:forEach var="adto" items="${alist }" varStatus="i">
+				<tr>
+					<td>
+						닉네임: ${adto.nickname }&nbsp;&nbsp;&nbsp;${adto.writeday }
+					</td>
+				</tr>
+			</c:forEach>
+			</table>
+			
+			<form action="ainsert" method="post">
+				<input type="hidden" name="num" value="${dto.num }">
+				<input type="hidden" name="currentPage" value="${currentPage }">
+				<div class="input-group">
+				<input type="text" name="nickname" class="form-control"
+				style="width: 100px;" required="required" placeholder="닉네임">
+				<input type="password" name="pass" class="form-control"
+				style="width: 100px;" required="required" placeholder="비밀번호"></div>
+				<br><br>
+				<input type="text" name="content" class="form-control"
+				style="width: 500px;" required="required" placeholder="댓글내용입력">
+				<button type="submit" class="btn btn-info btn-sm">확인</button>
+			</form>
+		</td>
+	</tr>
+	
 	<tr>
 		<td align="right">
 			<button type="button" class="btn btn-outline-warning"
@@ -48,11 +89,11 @@
 			<button type="button" class="btn btn-outline-warning"
 			onclick="location.href='form?num=${dto.num}&regroup=${dto.regroup }&restep=${dto.restep }&relevel=${dto.relevel }&currentPage=${currentPage }'">답글쓰기</button>
 			<button type="button" class="btn btn-outline-warning"
-			onclick="location.href=''">수정</button>
+			onclick="location.href='updateform?num=${dto.num}&currentPage=${currentPage }'">수정</button>
 			<button type="button" class="btn btn-outline-warning"
-			onclick="location.href=''">삭제</button>
+			onclick="location.href='deleteform?num=${dto.num}&currentPage=${currentPage }'">삭제</button>
 			<button type="button" class="btn btn-outline-warning"
-			onclick="location.href=''">목록</button>
+			onclick="location.href='list?currentPage=${currentPage}'">목록</button>
 		</td>
 	</tr>
 </table>

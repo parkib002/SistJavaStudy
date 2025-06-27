@@ -19,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import spring.mvc.dao.AnswerDao;
 import spring.mvc.dao.BoardDao;
+import spring.mvc.dto.AnswerDto;
 import spring.mvc.dto.BoardDto;
 
 @Controller
@@ -27,6 +29,8 @@ public class BoardController {
 	
 	@Autowired
 	BoardDao dao;
+	@Autowired
+	AnswerDao adao;
 	
 	@GetMapping("/board/list")
 	public ModelAndView blist(
@@ -104,11 +108,13 @@ public class BoardController {
 		model.addObject("currentPage", currentPage);
 		
 		//제목에 답글일 경우 해당 제목 넣어보기
-		/*
-		 * String subject=""; if(num>0) {
-		 * 
-		 * }
-		 */
+		String subject="";
+		
+		if(num>0) {
+			subject=dao.getOneData(num).getSubject();
+		}
+		
+		model.addObject("subject", subject);
 		
 		model.setViewName("/board/writeForm");
 		
@@ -180,12 +186,126 @@ public class BoardController {
 		//dto
 		BoardDto dto=dao.getOneData(num);
 		
+		List<AnswerDto> alist=adao.getAllAnswer(num);
+		
+		System.out.println(alist);
+		
 		model.addObject("dto", dto);
 		model.addObject("currentPage", currentPage);
+		model.addObject("alist", alist);
 		
 		model.setViewName("/board/content");
 		
 		return model;
 	}
+	
+	@GetMapping("/board/updateform")
+	public ModelAndView form2(@RequestParam int num,
+			@RequestParam int currentPage)
+	{
+		ModelAndView model=new ModelAndView();
 		
+		BoardDto dto=dao.getOneData(num);
+		
+		model.addObject("dto", dto);
+		model.addObject("currentPage", currentPage);
+		
+		model.setViewName("/board/updateForm");
+		
+		return model;
+	}
+	
+	//수정submit
+	@PostMapping("/board/update")
+	public String update(@ModelAttribute BoardDto dto,
+			@RequestParam ArrayList<MultipartFile> upload,
+			HttpSession session,
+			@RequestParam int currentPage)
+	{
+		//업로드할 실제 경로
+		String path=session.getServletContext().getRealPath("/WEB-INF/photo");
+		//System.out.println(path);
+	
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		
+		String photo="";
+		
+		//사진선택 안하면 "no", 하면 날짜 붙인 파일에 db에는 ,로 나열
+		
+		if(upload.get(0).getOriginalFilename().equals("")) 
+			photo=null;
+		
+		else {
+			
+			//수정전 이전의 사진들 지우기
+			String old_photos=dao.getOneData(dto.getNum()).getPhoto();
+			
+			if(!"no".equals(old_photos))
+			{
+				String [] old_photo=old_photos.split(",");
+				
+				for(String p:old_photo)
+				{
+					String uploadPath=session.getServletContext().getRealPath("/WEB-INF/photo");
+					
+					File file=new File(uploadPath+"\\"+p);
+					file.delete(); 
+				}
+			}
+			
+			for(MultipartFile f:upload)
+			{
+				String fname=sdf.format(new Date())+"_"+f.getOriginalFilename();
+				photo+=fname+",";
+				
+				//업로드
+				try {
+					f.transferTo(new File(path+"\\"+fname));
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			
+			//photo마지막 컴마 제거
+			photo=photo.substring(0, photo.length()-1);
+		}
+		
+		//dto에 photo넣어주기
+		dto.setPhoto(photo);
+		
+		//dao update
+		dao.updateBoard(dto);
+		
+		return "redirect:list?num="+dto.getNum()+"&currentPage="+currentPage;
+	}
+	
+	@GetMapping("/board/deleteform")
+	public String delete(@RequestParam int num,
+			@RequestParam int currentPage,
+			HttpSession session)
+	{
+		String photo=dao.getOneData(num).getPhoto();
+		
+		if(!"no".equals(photo))
+		{
+			String [] photos=photo.split(",");
+			
+			for(String p:photos)
+			{
+				String uploadPath=session.getServletContext().getRealPath("/WEB-INF/photo");
+				
+				File file=new File(uploadPath+"\\"+p);
+				file.delete(); 
+			}
+		}
+		
+		dao.deleteBoard(num);
+		
+		return "redirect:list?currentPage="+currentPage;
+	}
+	
 }

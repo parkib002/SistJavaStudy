@@ -13,40 +13,26 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="insert" method="post" enctype="multipart/form-data">
-	<!-- hidden5개 넣기 -->
-	<input type="hidden" name="num" value="${num }">
-	<input type="hidden" name="regroup" value="${regroup}">
-	<input type="hidden" name="restep" value="${restep }">
-	<input type="hidden" name="relevel" value="${relevel }">
+<form action="update" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="num" value="${dto.num }">
 	<input type="hidden" name="currentPage" value="${currentPage }">
 	
 	<table class="table table-bordered" style="width: 500px;">
-		<caption align="top"><b>
-			<c:if test="${num==0 }">새글쓰기</c:if>
-			<c:if test="${num!=0 }">답글쓰기</c:if>
-		</b></caption>
+		<caption align="top"><b>수정폼</b></caption>
 		
 		<tr>
 			<th width="100">작성자</th>
 			<td>
 				<input type="text" name="writer" class="form-control"
-				style="width: 120px;" required="required">
+				style="width: 120px;" required="required" value="${dto.writer }">
 			</td>
 		</tr>
 		
 		<tr>
 			<th width="100">제목</th>
 			<td>
-			<c:if test="${num==0 }">
 				<input type="text" name="subject" class="form-control"
-				style="width: 250px;" required="required">
-			</c:if>
-			
-			<c:if test="${num!=0 }">
-				<input type="text" name="subject" class="form-control"
-				style="width: 250px;" readonly="readonly" value="${subject }">
-			</c:if>
+				style="width: 250px;" required="required" value="${dto.subject }">
 			
 			</td>
 		</tr>
@@ -62,14 +48,16 @@
 		<tr>
 			<td colspan="2">
 				<textarea style="width: 480px; height: 100px;"
-				name="content" class="form-control" required="required"></textarea>
+				name="content" class="form-control" required="required">
+					${dto.content }
+				</textarea>
 			</td>
 		</tr>
 		
 		<tr>
 			<td colspan="2" align="center">
 				<button type="submit" class="btn btn-outline-info"
-				>저장</button>
+				>수정</button>
 			</td>
 		</tr>
 	</table>	

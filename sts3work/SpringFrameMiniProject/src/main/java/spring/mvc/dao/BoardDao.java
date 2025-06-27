@@ -92,4 +92,16 @@ public class BoardDao implements BoardDaoInter {
 		session.update("UpdateReadCountOfBoard", num);
 	}
 
+	@Override
+	public void updateBoard(BoardDto dto) {
+		
+		session.update("UpdateOfBoard", dto);
+	}
+
+	@Override
+	public void deleteBoard(int num) {
+
+		session.delete("DeleteOfBoard", num);
+	}
+
 }
