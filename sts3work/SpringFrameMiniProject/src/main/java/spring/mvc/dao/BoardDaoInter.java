@@ -23,4 +23,8 @@ public interface BoardDaoInter {
 	public void updateBoard(BoardDto dto);
 	
 	public void deleteBoard(int num);
+	
+	public List<BoardDto> getAllList();
+	
+	public List<BoardDto> getAllPhoto();
 }

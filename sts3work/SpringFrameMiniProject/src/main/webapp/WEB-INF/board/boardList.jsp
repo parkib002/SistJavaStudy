@@ -18,7 +18,6 @@
 		<span><button type="button" class="btn btn-success btn sm"
 		onclick="location.href='form'">글쓰기</button></span>
 	</caption>
-	
 	<tr align="center">
 		<th width="80">번호</th>
 		<th width="280">제목</th>
@@ -56,6 +55,12 @@
 				<!-- 사진이 있을 경우 아이콘 표시 -->
 				<c:if test="${dto.photo!='no' }">
 					<i class="bi bi-card-image" style="color: gray;"></i>
+				</c:if>
+				
+				<!-- 댓글개수출력 -->
+				<c:if test="${dto.acount>0 }">
+					<a href="content?num=${dto.num }&currentPage=${currentPage}#answer"
+					style="color: red;">[${dto.acount }]</a>
 				</c:if>
 				</td>
 				<td>${dto.writer }</td>

@@ -1,5 +1,6 @@
 package spring.mvc.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,6 +25,23 @@ public class AnswerDao implements AnswerDaoInter {
 	public List<AnswerDto> getAllAnswer(int num) {
 		
 		return session.selectList("SelectAllOfAnswer", num);
+	}
+
+	@Override
+	public int getCheckPass(int idx, String pass) {
+		
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		
+		map.put("idx", idx);
+		map.put("pass", pass);
+		
+		return session.selectOne("PassCheckOfAnswer", map);
+	}
+
+	@Override
+	public void deleteAnswer(int idx) {
+		
+		session.delete("DeleteOfAnswer", idx);
 	}
 
 }

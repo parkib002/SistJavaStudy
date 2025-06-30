@@ -12,6 +12,40 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 </head>
+<script type="text/javascript">
+$(function(){
+	
+	$(".del").click(function(){
+		
+		var idx=$(this).attr("id");
+		var pass=prompt("비밀번호를 입력해주세요");
+		
+		if(pass==null)
+			return;
+		
+		$.ajax({
+			
+			type:"get",
+			url:"delete",
+			dataType:"json",
+			data:{"idx":idx,"pass":pass},
+			success:function(res){
+				
+				if(res.result==1){
+					
+					alert("댓글이 정상적으로 삭제되었습니다");
+					location.reload();
+				}else
+					alert("비밀번호가 일치하지 않습니다");
+				
+			}
+				
+		})
+	})
+	
+})
+
+</script>
 <body>
 <table class="table table-bordered" style="width: 600px;">
 	<tr>
@@ -55,16 +89,18 @@
 	<!-- 댓글 -->
 	<tr>
 		<td>
-			<div id="answer">댓글 목록 출력</div>
-			<table>
+			<div id="answer">
+			<b>전체 댓글: ${acount }개</b><br>
 			<c:forEach var="adto" items="${alist }" varStatus="i">
-				<tr>
-					<td>
-						닉네임: ${adto.nickname }&nbsp;&nbsp;&nbsp;${adto.writeday }
-					</td>
-				</tr>
+					 ${adto.nickname } : ${adto.content } &nbsp;&nbsp;
+					<span style="color: gray; font-size: 0.9em;">
+						<fmt:formatDate value="${adto.writeday }" pattern="yyyy-MM-dd"/>
+					</span>	&nbsp;&nbsp;
+						<i class="bi bi-pencil-square mod" style="cursor: pointer;" id="${adto.idx }"></i>
+						<i class="bi bi-trash-fill del" style="cursor: pointer;" id="${adto.idx }"></i><br>
 			</c:forEach>
-			</table>
+			</div>
+			
 			
 			<form action="ainsert" method="post">
 				<input type="hidden" name="num" value="${dto.num }">

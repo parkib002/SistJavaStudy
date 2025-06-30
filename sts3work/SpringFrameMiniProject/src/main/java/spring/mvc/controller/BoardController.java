@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -73,6 +74,12 @@ public class BoardController {
 		no=totalCount-(currentPage-1)*perPage;
 		
 		List<BoardDto> list=dao.getList(startNum, perPage);
+		
+		//list에 각 글에 대한 댓글 개수 추가하기
+		for(BoardDto bd:list)
+		{
+			bd.setAcount(adao.getAllAnswer(bd.getNum()).size());
+		}
 		
 		model.addObject("list", list);
 		model.addObject("startPage", startPage);
@@ -187,12 +194,14 @@ public class BoardController {
 		BoardDto dto=dao.getOneData(num);
 		
 		List<AnswerDto> alist=adao.getAllAnswer(num);
-		
-		System.out.println(alist);
+
+		//댓글 개수
+		int acount=alist.size();
 		
 		model.addObject("dto", dto);
 		model.addObject("currentPage", currentPage);
 		model.addObject("alist", alist);
+		model.addObject("acount", acount);
 		
 		model.setViewName("/board/content");
 		
@@ -306,6 +315,21 @@ public class BoardController {
 		dao.deleteBoard(num);
 		
 		return "redirect:list?currentPage="+currentPage;
+	}
+	
+	//ajax리스트로 이동
+	@GetMapping("/rest/list")
+	public ModelAndView list()
+	{
+		ModelAndView model=new ModelAndView();
+		
+		List<BoardDto> list=dao.getAllList();
+		
+		model.addObject("list", list);
+		
+		model.setViewName("/board/ajaxList");
+		
+		return model;
 	}
 	
 }

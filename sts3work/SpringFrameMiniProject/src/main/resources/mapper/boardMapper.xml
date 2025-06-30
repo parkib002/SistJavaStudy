@@ -49,4 +49,13 @@
 	<delete id="DeleteOfBoard" parameterType="int">
 		delete from reboard where num=#{num}
 	</delete>
+	
+	<!-- 페이징 없는 전체 출력 -->
+	<select id="SelectAllOfBoard" resultType="Board">
+		select * from reboard order by num desc
+	</select>
+	
+	<select id="SelectAllPhotoOfBoard" resultType="Board">
+		select photo from reboard order by num desc
+	</select>
 </mapper>

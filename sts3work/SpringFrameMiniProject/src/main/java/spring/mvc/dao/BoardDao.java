@@ -104,4 +104,16 @@ public class BoardDao implements BoardDaoInter {
 		session.delete("DeleteOfBoard", num);
 	}
 
+	@Override
+	public List<BoardDto> getAllList() {
+		
+		return session.selectList("SelectAllOfBoard");
+	}
+
+	@Override
+	public List<BoardDto> getAllPhoto() {
+
+		return session.selectList("SelectAllPhotoOfBoard");
+	}
+
 }
