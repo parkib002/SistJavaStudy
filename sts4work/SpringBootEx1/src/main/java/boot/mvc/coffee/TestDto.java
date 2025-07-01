@@ -1,4 +1,4 @@
-package boot.mvc.ex1;
+package boot.mvc.coffee;
 
 import lombok.Data;
 
