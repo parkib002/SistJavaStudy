@@ -22,4 +22,14 @@ public class ShopDao {
 	{
 		return shopInter.findAll();
 	}
+	
+	public ShopDto getOneData(int num)
+	{
+		return shopInter.getById(num);
+	}
+	
+	public void deleteData(int num)
+	{
+		shopInter.deleteById(num);
+	}
 }
