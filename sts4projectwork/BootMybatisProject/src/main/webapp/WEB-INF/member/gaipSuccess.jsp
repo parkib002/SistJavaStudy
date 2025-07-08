@@ -13,6 +13,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+<script type="text/javascript">
+	alert("가입성공");
+	history.back();
+</script>
 </body>
 </html>
