@@ -166,6 +166,9 @@ $(function(){
 	<li>
 		<a href="${root }/board/list">게시판</a>
 	</li>
+	<li>
+		<a href="${root }/member/mypage">마이페이지</a>
+	</li>
 </ul>
 
 <div class="modal" id="myModal">

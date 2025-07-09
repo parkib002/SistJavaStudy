@@ -21,4 +21,14 @@ public interface MemberMapperInter {
 	public int loginIdPassCheck(Map<String, String> map);
 	
 	public MemberDto getDataById(String id);
+	
+	//수정삭제
+	public MemberDto getDataByNum(String num);
+	
+	public void updateMember(MemberDto dto);
+	
+	public void deleteMember(String num);
+	
+	public void updatePhoto(Map<String, String> map);
+	
 }

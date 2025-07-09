@@ -56,4 +56,33 @@ public class MemberService implements MemberServiceInter {
 		return mapperInter.getDataById(id);
 	}
 
+	@Override
+	public MemberDto getDataByNum(String num) {
+		
+		return mapperInter.getDataByNum(num);
+	}
+
+	@Override
+	public void updateMember(MemberDto dto) {
+
+		mapperInter.updateMember(dto);
+	}
+
+	@Override
+	public void deleteMember(String num) {
+		
+		mapperInter.deleteMember(num);
+	}
+
+	@Override
+	public void updatePhoto(String num, String photo) {
+
+		Map<String, String> map=new HashMap<>();
+		
+		map.put("num", num);
+		map.put("photo", photo);
+		
+		mapperInter.updatePhoto(map);
+	}
+
 }

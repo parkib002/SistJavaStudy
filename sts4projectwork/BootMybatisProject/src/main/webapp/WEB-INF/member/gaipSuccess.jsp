@@ -13,9 +13,10 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:set var="root" value="<%=request.getContextPath() %>"/>
 <script type="text/javascript">
 	alert("가입성공");
-	history.back();
+	location.href="../../";
 </script>
 </body>
 </html>

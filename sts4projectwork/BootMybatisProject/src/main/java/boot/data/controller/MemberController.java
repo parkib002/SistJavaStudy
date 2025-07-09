@@ -34,6 +34,16 @@ public class MemberController {
 		return "member/addForm";
 	}
 	
+	@GetMapping("/member/mypage")
+	public String mypage(Model model)
+	{
+		List<MemberDto> list=service.getAllMembers();
+		
+		model.addAttribute("list", list);
+		
+		return "member/myPage";
+	}
+	
 	@GetMapping("/member/list")
 	public String memList(Model model)
 	{
@@ -93,4 +103,74 @@ public class MemberController {
 		
 		return "/member/gaipSuccess";
 	}
+	
+	//마이페이지에서 프로필 사진만 변경하고자 할 때
+	@PostMapping("member/updatephoto")
+	@ResponseBody
+	public void photoUpload(String num,
+			MultipartFile photo,
+			HttpSession session)
+	{
+		//업로드될 경로 구하기
+		String path=session.getServletContext().getRealPath("/membersave");
+		
+		//System.out.println(path);
+		String old_photo=service.getDataByNum(num).getPhoto();
+		
+		File file=new File(path+"\\"+old_photo);
+		
+		file.delete();
+		
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
+		
+		String fileName=sdf.format(new Date())+"_"+photo.getOriginalFilename();
+		
+		//업로드
+		try {
+			photo.transferTo(new File(path+"\\"+fileName));
+			
+			//db수정
+			service.updatePhoto(num, fileName);
+			
+			//상단 프로필 사진도 변경
+			session.setAttribute("loginphoto", fileName);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	@PostMapping("member/update")
+	@ResponseBody
+	public void update(@ModelAttribute MemberDto dto,
+			HttpSession session)
+	{
+		session.setAttribute("loginname", dto.getName());
+		
+		service.updateMember(dto);
+	}
+	
+	@PostMapping("member/delete")
+	@ResponseBody
+	public void delete(String num,
+			HttpSession session)
+	{
+		session.removeAttribute("myid");
+		session.removeAttribute("loginphoto");
+		session.removeAttribute("loginok");
+		session.removeAttribute("loginname");
+		
+		String photo=service.getDataByNum(num).getPhoto();
+		 
+		String path=session.getServletContext().getRealPath("/membersave");
+			 
+		File file=new File(path+"\\"+photo);
+		file.delete();
+			 
+		service.deleteMember(num);
+	}
+	
 }

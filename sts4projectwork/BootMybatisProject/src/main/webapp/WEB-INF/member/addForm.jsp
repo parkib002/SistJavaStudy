@@ -59,15 +59,16 @@ $(function(){
 	//2번째 비밀번호 입력시 체크
 	$("#pass2").keyup(function(){
 		
-		var p1=$("#pass").val();
+		var p1=$("#pass1").val();
 		var p2=$("#pass2").val();
 		
 		if(p1==p2){
 			
 			$("span.passsuccess").text("ok");
-		}else
+			
+		}else{
 			$("span.passsuccess").text("fail");
-		
+		}
 	})
 	
 	//아이디 입력 증복 체크
@@ -143,7 +144,7 @@ function check(){
 			
 			<tr>
 				<td class="input-group">
-					<input type="password" style="width: 120px;" class="form-control" name="pass" id="pass"
+					<input type="password" style="width: 120px;" class="form-control" name="pass" id="pass1"
 					placeholder="숫자4자리" required="required">&nbsp;&nbsp;
 					<input type="password" style="width: 120px;" class="form-control" id="pass2"
 					placeholder="숫자4자리" required="required">&nbsp;&nbsp;
