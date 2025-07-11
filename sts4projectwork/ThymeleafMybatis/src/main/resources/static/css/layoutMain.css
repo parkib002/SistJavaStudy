@@ -1,0 +1,162 @@
+/*css*/
+body {
+    font-family: 'Nanum Brush Script', sans-serif; /* Fallback 폰트 추가 */
+    box-sizing: border-box; /* 패딩, 보더 포함하여 요소 크기 계산 */
+    margin: 0; /* body 기본 마진 제거 */
+    display: flex;
+    flex-direction: column; /* 자식 요소들을 세로로 정렬 */
+    min-height: 100vh; /* 최소 뷰포트 높이 설정, 푸터 고정에 중요 */
+}
+
+/* 모든 요소에 폰트 적용 */
+body * {
+    font-family: 'Nanum Brush Script', sans-serif;
+}
+
+/* 기본 링크 스타일 */
+a:link, a:visited {
+    color: black;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out; /* 부드러운 색상 전환 효과 */
+}
+
+a:hover {
+    color: hotpink;
+}
+
+/* 헤더 컨테이너 */
+.main-header {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 로고를 가운데 정렬 */
+    height: 120px;
+    padding: 10px 30px;
+    background-color: #fffaf0; /* 은은한 배경색 추가 */
+    border-bottom: 1px solid #eee; /* 하단 경계선 추가 */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* 그림자 효과로 입체감 */
+}
+
+/* 헤더 로고 */
+.header-logo {
+    /* flex-grow: 1; 이 속성은 justify-content: center 때문에 더 이상 필요 없음 */
+    text-align: center; /* 로고 이미지를 중앙 정렬 */
+}
+
+.header-logo a {
+    display: inline-block;
+}
+
+.header-logo img {
+    height: 70px;
+    max-width: 100%;
+    object-fit: contain; /* 이미지 비율 유지 */
+}
+
+/* 주 메뉴 */
+ul.mymenu {
+    list-style: none;
+    margin: 0; /* 기본 마진 제거 */
+    padding: 20px 0; /* 상하 패딩 */
+    display: flex; /* 플렉스 박스로 가로 정렬 */
+    justify-content: center; /* 메뉴 아이템 중앙 정렬 */
+    background-color: #f8f8f8; /* 메뉴바 배경색 */
+    border-bottom: 1px solid #eee;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+ul.mymenu li {
+    width: 120px; /* 메뉴 아이템 너비 조정 */
+    height: 45px; /* 메뉴 아이템 높이 조정 */
+    line-height: 45px;
+    text-align: center;
+    background-color: #ffe4e1;
+    margin: 0 8px; /* 좌우 마진으로 간격 조정 */
+    border: 1px solid #ffb6c1; /* 연한 핑크 테두리 */
+    border-radius: 25px; /* 더 둥근 모서리 */
+    cursor: pointer;
+    transition: all 0.3s ease-in-out; /* 부드러운 전환 효과 */
+}
+
+ul.mymenu li:hover {
+    background-color: #ff69b4; /* 호버 시 핫핑크 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2); /* 더 강한 그림자 */
+    transform: translateY(-3px); /* 약간 위로 떠오르는 효과 */
+}
+
+ul.mymenu li a {
+    color: black;
+    font-size: 1.3em; /* 메뉴 폰트 크기 증가 */
+    font-weight: bold;
+    display: block; /* 링크 전체 영역 클릭 가능하게 */
+}
+
+ul.mymenu li:hover a {
+    color: white; /* 호버 시 폰트 색상 변경 */
+}
+
+/* 메인 콘텐츠 영역 */
+.content {
+    flex-grow: 1; /* 콘텐츠 영역이 남은 공간을 모두 차지하도록 설정 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px; /* 내부 패딩 */
+    text-align: center;
+    background-color: #ffffff; /* 흰색 배경 */
+}
+
+.content img {
+    max-width: 100%; /* 이미지 크기 반응형 */
+    height: auto;
+    border-radius: 10px; /* 이미지 모서리 둥글게 */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* 이미지에도 그림자 효과 */
+}
+
+footer {
+    width: 100%;
+    text-align: center;
+    background-color: #ffe4e1;
+    border-top: 1px solid #ffb6c1;
+    margin-top: auto;
+    overflow: hidden; /* 이미지가 푸터 영역을 벗어날 경우 숨김 */
+    
+    /* ✨ 핵심 수정 1: 푸터의 고정 높이를 설정합니다. */
+    /* 어떤 이미지가 오든 이 높이 안에 꽉 차게 들어갑니다. */
+    /* 원하는 푸터의 높이에 따라 이 값을 조절하세요. */
+    height: 250px; /* 예를 들어, 100px 또는 150px, 200px 등으로 설정할 수 있습니다. */
+    
+    display: flex; /* 이미지를 푸터 중앙에 배치하기 위함 */
+    align-items: center; /* 세로 중앙 정렬 */
+    justify-content: center; /* 가로 중앙 정렬 */
+}
+
+footer img {
+    /* ✨ 핵심 수정 2: 이미지의 너비와 높이를 부모(footer)에 꽉 채웁니다. */
+    width: 100%;  
+    height: 100%; 
+    
+    /* ✨ 핵심 수정 3: 이미지가 비율을 유지하며 부모 영역을 꽉 채우도록 합니다. */
+    /* 이 속성 때문에 이미지의 일부가 잘릴 수 있습니다. */
+    object-fit: cover; 
+    
+    /* opacity: 0.8; /* (선택 사항) */
+}
+/* 모바일 반응형 디자인 */
+@media (max-width: 768px) {
+    .main-header {
+        height: auto; /* 높이 자동 조절 */
+        padding: 15px;
+    }
+
+    ul.mymenu {
+        flex-direction: column; /* 메뉴 아이템 세로로 정렬 */
+        padding: 10px 0;
+    }
+
+    ul.mymenu li {
+        width: 80%; /* 메뉴 아이템 너비 증가 */
+        margin: 8px auto; /* 중앙 정렬 및 상하 간격 */
+    }
+}
+	

@@ -1,0 +1,21 @@
+	<header th:fragment="headerFragment">
+	<div class="main-header">
+ 	 <div class="header-logo">
+    <a th:href="@{/}">
+      <img src="/avata/jquery_img.jpg" style="height: 70px; max-width: 100%;">
+    </a>
+
+	</div>
+</div>
+<ul class="mymenu">
+	<li>
+		<a th:href="@{/}">Home</a>
+	</li>
+	<li>
+		<a th:href="@{/shop/list}">Shop</a>
+	</li>
+	<li>
+		<a th:href="@{/board/list}">Board</a>
+	</li>
+</ul>
+	</header>
