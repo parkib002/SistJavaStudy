@@ -28,43 +28,29 @@
 </head>
 <body>
 <div class="container">
-<jsp:include page="../../layout/header.jsp"/>
-<form action="insert" method="post" enctype="multipart/form-data">
-	<table class="table table-bordered" style="width: 500px;">
-		<caption align="top"><b>상품정보 입력</b></caption>
-		<tr>
-			<th>상품명</th>
-			<td>
-				<input type="text" name="sangpum" class="form-control"
-				style="width: 200px;" required="required">
-			</td>
-		</tr>
+	<jsp:include page="../../layout/header.jsp"/>
+<table class="table table-bordered" style="width: 600px;">
+	<tr>
+		<td width="100">
+			<c:if test="${dto.uploadfile=='no' }">
+				<img src="/save/noimage.jpeg">
+			</c:if>
+			
+			<c:if test="${dto.uploadfile!='no' }">
+				<img src="/boardsave/${dto.uploadfile }">
+			</c:if>
+		</td>
 		
-		<tr>
-			<th>상품가격</th>
-			<td>
-				<input type="text" name="price" class="form-control"
-				style="width: 200px;" required="required">
-			</td>
-		</tr>
-		
-		<tr>
-			<th>상품이미지</th>
-			<td>
-				<input type="file" name="upload" class="form-control"
-				style="width: 200px;" multiple="multiple">
-			</td>
-		</tr>
-		
-		<tr>
-			<td colspan="2" align="center">
-				<button type="submit" class="btn btn-outline-info">저장</button>
-				<button type="button" class="btn btn-outline-success"
-				onclick="location.href='list'">목록</button>
-			</td>
-		</tr>
-	</table>
-</form>
+		<td>
+			제목: ${dto.subject }<br>
+			작성자: ${dto.myid }<br>
+			조회수: ${dto.readcount }<br>
+			등록일: <fmt:formatDate value="${dto.writeday }" pattern="yyyy-MM-dd"/><br>
+			내용: ${dto.content }
+		</td>
+	</tr>
+	
+</table>
 </div>
 </body>
 </html>

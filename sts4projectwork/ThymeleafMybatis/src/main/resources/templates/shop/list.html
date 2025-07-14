@@ -1,58 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{layout/layoutMain}">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<link
+	href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+	rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+	crossorigin="anonymous">
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+	crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 <title>Insert title here</title>
 
 </head>
 <body>
-<div class="container">
+	<div layout:fragment="content" class="content">
 
 
-<div class="alert alert-success" style="width: 800px;">
-	<b>총 [[${count }]]개의 상품이 입고중입니다</b>
-</div>
+		<div class="alert alert-success" style="width: 800px;">
+			<b>총 [[${count }]]개의 상품이 입고중입니다</b>
+		</div>
 
-	<table class="table" style="width: 800px;">
-		<caption>
-			<span style="float: right;">
-				<button type="button" class="btn btn-outline-info"
-				onclick="location.href='addform'">상품추가</button>
-			</span>
-		</caption>
-		
-		<table class="table table-bordered">
-    	<thead>
-        <tr class="table-warning">
-            <th>번호</th>
-            <th>상품명</th>
-            <th>가격</th>
-            <th>색상</th>
-            <th>사진</th>
-            <th>입고일</th>
-        </tr>
-  	  </thead>
-   	 <tbody>
-        <tr th:each="shop, status : ${list}">
-            <td th:text="${status.index + 1}">1</td>
-            <td th:text="${shop.sangpum}">상품명</td>
-            <td th:text="${shop.price}">가격</td>
-            <td th:style="'background-color:' + ${shop.color}"></td>
-            <td><img th:src="@{/save/{file}(file=${shop.photo})}" width="80"></td>
-             <td th:text="${shop.ipgoday}"></td>
-        </tr>
-    </tbody>
-</table>
-		
-	
-		
-	</table>
+			<caption>
+				<span style="float: right;">
+					<button type="button" class="btn btn-outline-info"
+						onclick="location.href='addform'" style="margin-bottom: 20px;">상품추가</button>
+				</span>
+			</caption>
+
+			<table class="table table-bordered" style="width: 800px;">
+				<thead>
+					<tr class="table-warning">
+						<th>번호</th>
+						<th>상품명</th>
+						<th>가격</th>
+						<th>색상</th>
+						<th>사진</th>
+						<th>입고일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="shop, status : ${list}" valign="middle">
+						<td th:text="${status.index + 1}"></td>
+						<td><a th:href="@{/shop/detail(num=${shop.num})}">[[${shop.sangpum}]]</a></td>
+						<td>[[${shop.price}]]</td>
+						<td th:style="'background-color:' + ${shop.color}"></td>
+						<td><img th:if="${shop.photo == 'no'}"
+							src="/avata/noimage.jpeg" width="80"> <img
+							th:if="${shop.photo != 'no'}"
+							th:src="@{/save/{file}(file=${shop.photo})}" width="80"></td>
+						<td th:text="${shop.ipgoday}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+		</table>
 	</div>
 </body>
 </html>

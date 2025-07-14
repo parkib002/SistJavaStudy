@@ -49,9 +49,29 @@ public class ShopController {
 			@RequestParam("upload") MultipartFile upload,
 			HttpSession session)
 	{
-		
-		
 		service.insertShop(dto,upload,session);
+		
+		return "redirect:list";
+	}
+	
+	@GetMapping("/shop/detail")
+	public ModelAndView detail(@RequestParam("num") int num)
+	{
+		ModelAndView model=new ModelAndView();
+		
+		ShopDto dto=service.getData(num);
+		
+		model.addObject("dto", dto);
+		
+		model.setViewName("shop/detailPage");
+		
+		return model;
+	}
+	
+	@GetMapping("/shop/delete")
+	public String delete(@RequestParam("num") int num, HttpSession session)
+	{
+		service.deleteShop(num, session);
 		
 		return "redirect:list";
 	}

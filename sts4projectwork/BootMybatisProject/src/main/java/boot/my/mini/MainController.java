@@ -12,10 +12,4 @@ public class MainController {
 		return "main/mainPage";
 	}
 	
-	@GetMapping("/board/list")
-	public String board()
-	{
-		return "board/boardList";
-	}
-
 }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layoutMain}">
 <head>
 <meta charset="UTF-8">
 <link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
@@ -35,7 +37,7 @@ $(function(){
 </script>
 </head>
 <body>
-	
+	<div layout:fragment="content" class="content">
 	<form action="insert" method="post" enctype="multipart/form-data">
 		<table class="table table-bordered" style="width: 600px;">
 			<caption align="top"><b>상품추가</b></caption>
@@ -77,7 +79,9 @@ $(function(){
 			
 			<tr>
 				<td colspan="2" align="center">
-					<input type="submit" class="btn btn-outline-primary" value="상품추가" style="width: 200px;">	
+					<input type="submit" class="btn btn-outline-primary" value="상품추가" style="width: 200px;">
+					<input type="button" class="btn btn-outline-info" value="목록이동" style="width: 200px;"
+					onclick="location.href='list'">	
 				</td>
 			</tr>
 		</table>

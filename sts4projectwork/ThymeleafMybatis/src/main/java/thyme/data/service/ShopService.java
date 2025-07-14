@@ -31,12 +31,16 @@ public class ShopService {
 		
 		System.out.println(path);
 		
-		 File dir = new File(path);
-		 if (!dir.exists()) dir.mkdirs();
+		String fileName="";
+		
+		if(upload.isEmpty()) {
+			
+			fileName="no";
+		}else {
 		
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
 		
-		String fileName=sdf.format(new Date())+"_"+upload.getOriginalFilename();
+		fileName=sdf.format(new Date())+"_"+upload.getOriginalFilename();
 		
 		try {
 			upload.transferTo(new File(path+"\\"+fileName));
@@ -48,6 +52,8 @@ public class ShopService {
 			e.printStackTrace();
 		}
 		
+		
+		}
 		dto.setPhoto(fileName);
 		
 		shopinter.insertShop(dto);
@@ -57,6 +63,26 @@ public class ShopService {
 		
 		return shopinter.getAllSangpums();
 	}
+	
+	public ShopDto getData(int num) {
+		
+		return shopinter.getData(num);
+	}
 
+	public void deleteShop(int num,HttpSession session) {
+		
+		String path=session.getServletContext().getRealPath("/save");
+		
+		String photo=shopinter.getData(num).getPhoto();
+		
+		File file=new File(path+"\\"+photo);
+		
+		if(file.exists()) {
+			
+			file.delete();
+		}
+		
+		shopinter.deleteShop(num);
+	}
 
 }

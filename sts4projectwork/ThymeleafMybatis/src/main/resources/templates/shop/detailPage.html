@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+layout:decorate="~{layout/layoutMain}">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Dongle&family=Nanum+Brush+Script&family=Orbit&family=Song+Myung&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="content" class="content">
+
+ <h3 class="alert alert-info">[[${dto.sangpum}]] 상세보기</h3>
+
+	<table class="table table-bordered" style="width: 600px;">
+		<tr valign="middle">
+			<td width="200"><img th:src="@{/save/{file}(file=${dto.photo})}" width="150"></td>
+			<td>
+				<h5>상품명: [[${dto.sangpum}]]</h5><br>
+				<h5>가격: [[${dto.price}]]</h5><br>
+				<div th:style="'background-color:' + ${dto.color}">
+				색상: [[${dto.color}]]
+				</div><br>
+				<h5>입고일: [[${dto.ipgoday}]]</h5><br>
+				<h5>
+					<span th:text="${#calendars.format(dto.writeday,'yyyy-MM-dd HH:mm')}"></span>
+				</h5><br>
+				<button type="button" class="btn btn-outline-info" onclick="location.href='list'">목록</button>	
+				<button type="button" class="btn btn-outline-primary" onclick="location.href='addform'">등록</button>				
+				<button type="button" class="btn btn-outline-danger" th:onclick="|location.href='@{./delete(num=${dto.num})}'|">삭제</button>
+			</td>
+		</tr>
+	</table>
+</div>
+</body>
+</html>

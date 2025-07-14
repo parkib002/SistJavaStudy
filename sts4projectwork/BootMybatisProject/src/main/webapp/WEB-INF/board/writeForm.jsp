@@ -10,6 +10,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <style type="text/css">
   body{
@@ -31,28 +33,27 @@
 <jsp:include page="../../layout/header.jsp"/>
 <form action="insert" method="post" enctype="multipart/form-data">
 	<table class="table table-bordered" style="width: 500px;">
-		<caption align="top"><b>상품정보 입력</b></caption>
+		<caption align="top"><b>회원전용 게시판</b></caption>
 		<tr>
-			<th>상품명</th>
+			<th>제목</th>
 			<td>
-				<input type="text" name="sangpum" class="form-control"
-				style="width: 200px;" required="required">
+				<input type="text" name="subject" class="form-control"
+				style="width: 350px;" required="required">
 			</td>
 		</tr>
 		
 		<tr>
-			<th>상품가격</th>
-			<td>
-				<input type="text" name="price" class="form-control"
-				style="width: 200px;" required="required">
-			</td>
-		</tr>
-		
-		<tr>
-			<th>상품이미지</th>
+			<th>업로드</th>
 			<td>
 				<input type="file" name="upload" class="form-control"
-				style="width: 200px;" multiple="multiple">
+				style="width: 300px;">
+			</td>
+		</tr>
+		
+		<tr>
+			<td colspan="2">
+				<textarea style="width: 480px; height: 100px;"
+				name="content" required="required" class="form-control"></textarea>
 			</td>
 		</tr>
 		
