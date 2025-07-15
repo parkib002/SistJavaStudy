@@ -29,7 +29,7 @@ public class BoardService {
 	{
 		Map<String, String> map=new HashMap<>();
 		
-		map.put("searchcolumn", searchword);
+		map.put("searchcolumn", searchcolumn);
 		map.put("searchword", searchword);
 		
 		return mapper.getTotalCount(map);

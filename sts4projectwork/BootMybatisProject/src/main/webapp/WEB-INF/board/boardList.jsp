@@ -31,10 +31,33 @@
 <body>
 <div class="container">
 	<jsp:include page="../../layout/header.jsp"/>
+	
 <c:if test="${sessionScope.myid!=null}">
 <button type="button" class="btn btn-outline-info"
 onclick="location.href='addform'">글쓰기</button>
 </c:if>
+
+<br>
+
+	<!-- 검색창 -->
+	<form action="list">
+		<div style="width: 500px;" class="input-group">
+			<select style="max-width: 100px;" class="form-control" name="searchcolumn">
+					<option value="subject" ${param.searchcolumn == 'subject' ? 'selected' : ''}>제목</option>
+				<option value="content" ${param.searchcolumn == 'content' ? 'selected' : ''}>내용</option>
+				<option value="name" ${param.searchcolumn == 'name' ? 'selected' : ''}>작성자</option>
+				<option value="myid" ${param.searchcolumn == 'myid' ? 'selected' : ''}>아이디</option>
+			</select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
+			<input type="text" name="searchword" class="form-control" style="max-width: 300px;" value="${param.searchword }">
+			&nbsp;&nbsp;
+			<button type="submit" class="btn btn-outline-info">검색</button>&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-outline-success"
+			onclick="location.href='list?searchcolumn=myid&searchword=${sessionScope.myid}'">내가 쓴 글</button>&nbsp;&nbsp;&nbsp;
+			<button type="button" class="btn btn-outline-warning"
+			onclick="location.href='list'">전체목록</button>
+		</div>
+	</form>
 
 <br><br>
 

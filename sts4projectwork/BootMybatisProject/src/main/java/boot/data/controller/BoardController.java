@@ -51,6 +51,7 @@ public class BoardController {
 		
 		no=totalCount-(currentPage-1)*perPage;
 		
+		
 		List<BoardDto> list=service.getList(sc, sw, startNum, perPage);
 		
 		model.addObject("list", list);
@@ -61,7 +62,7 @@ public class BoardController {
 		model.addObject("no", no);
 		model.addObject("currentPage", currentPage);
 		
-		System.out.println("totalCount= "+totalCount);
+		//System.out.println("totalCount= "+totalCount);
 		
 		model.setViewName("board/boardList");
 		
@@ -89,6 +90,9 @@ public class BoardController {
 			@RequestParam String currentPage,
 			Model model)
 	{
+		//조회수
+		service.updateReadCount(num);
+		
 		BoardDto dto=service.getData(num);
 		
 		model.addAttribute("dto", dto);
