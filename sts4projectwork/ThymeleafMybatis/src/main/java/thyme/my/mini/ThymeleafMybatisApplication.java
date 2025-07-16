@@ -3,11 +3,15 @@ package thyme.my.mini;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
 @ComponentScan({"thyme.my.mini","thyme.data.*"})
 @MapperScan("thyme.data.mapper")
+@EntityScan("thyme.data.dto")
+@EnableJpaRepositories("thyme.data.repository")
 public class ThymeleafMybatisApplication {
 
 	public static void main(String[] args) {

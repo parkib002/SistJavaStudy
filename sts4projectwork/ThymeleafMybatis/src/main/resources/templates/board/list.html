@@ -12,7 +12,40 @@ layout:decorate="~{layout/layoutMain}">
 </head>
 <body>
 <div layout:fragment="content" class="content">
-	<h1>숍리스트입니다</h1>
-</div>
+
+
+		<div class="alert alert-info" style="width: 800px;">
+			<b>총 [[${totalCount }]]개의 차량이 등록되어 있습니다</b>
+		</div>
+
+				<span style="float: right;">
+					<button type="button" class="btn btn-outline-info"
+						onclick="location.href='addform'" style="margin-bottom: 20px;">차량등록</button>
+				</span>
+
+			<table class="table table-bordered" style="width: 800px;">
+				<thead>
+					<tr class="table-warning">
+						<th>번호</th>
+						<th>자동차명</th>
+						<th>색상</th>
+						<th>가격</th>
+						<th>구입일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="car, status : ${list}" valign="middle">
+						<td th:text="${status.index + 1}"></td>
+						<td><a th:href="@{/board/detail(num=${car.num})}">[[${car.carname}]]</a></td>
+						<td th:style="'background-color:' + ${car.carcolor}"></td>
+						<td th:text="${#numbers.formatInteger(car.carprice,0,'COMMA')}"></td>
+						<td th:text="${car.guipday}"></td>
+					</tr>
+				</tbody>
+			</table>
+
+
+
+	</div>
 </body>
 </html>
