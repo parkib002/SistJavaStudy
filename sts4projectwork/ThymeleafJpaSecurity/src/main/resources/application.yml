@@ -1,0 +1,22 @@
+server:
+  port: 9002
+  servlet:
+    session:
+      timeout: 90m
+spring:
+  thymeleaf:
+    cache: false
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/rain?serverTimezone=Asia/Seoul
+    username: parkib002
+    password: 1234
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: false
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
