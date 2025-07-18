@@ -1,0 +1,21 @@
+div.inp {
+
+    width: 400px;
+    height: 300px;
+    border: 3px solid gray;
+    padding: 30px 30px;
+    font-size: 20px;
+    font-family: 'Dongle';
+}
+
+div.result {
+
+    position: absolute;
+    left: 100px;
+    top: 600px;
+    width: 300px;
+    height: 300px;
+    padding: 30px 30px;
+    font-size: 20px;
+    background-color: blue;
+}
