@@ -4,6 +4,7 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
+import { Key } from '@mui/icons-material';
 
 const QuizApp = () => {
 
@@ -12,11 +13,21 @@ const QuizApp = () => {
     const [grade, setGrade] = useState('');
     const [color, setColor] = useState('gray');
 
+    const handleEvent2 = (e) => {
+        if (e.key === 'Enter') {
+            setName('');
+            setScore(0);
+            setGrade('')
+
+            document.getElementById('name').value  // 수정: () 지움
+            document.getElementById('score').value // 수정: () 지움
+
+        }
+    }
+
     const handleEvent = (e) => {
 
         var color = e.target.value;
-
-        console.log(color)
 
         setColor(color)
 
@@ -28,13 +39,13 @@ const QuizApp = () => {
 
             <div className='input'>
                 <span>이름</span>
-                <input type="text" className='form-control'
+                <input type="text" className='form-control' id='name'
                     onChange={(e) => {
 
                         setName(e.target.value);
                     }} />
                 <span>점수</span>
-                <input type="text" className='form-control'
+                <input type="text" className='form-control' id='score'
                     onChange={(e) => {
 
                         setScore(e.target.value);
@@ -48,14 +59,17 @@ const QuizApp = () => {
                         } else
                             setGrade('');
 
-                    }} />
+                    }}
+                    onKeyUp={handleEvent2}
+                />
+
+
 
                 <FormControl>
                     <RadioGroup
                         row
                         aria-labelledby="demo-row-radio-buttons-group-label"
                         name="row-radio-buttons-group"
-                        id="button"
                         onClick={handleEvent}>
 
                         <FormControlLabel value="black" control={<Radio />} label="black" />
