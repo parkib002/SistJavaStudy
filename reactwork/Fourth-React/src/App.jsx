@@ -7,10 +7,12 @@ import FourApp from './components/FourApp';
 import SixApp from './components/SixApp';
 import FiveApp from './components/FiveApp';
 import SevenApp from './components/SevenApp';
+import EightApp from './components/EightApp';
+import NineApp from './components/NineApp';
 
 function App() {
 
-  const [index, setIndex] = useState(2);
+  const [index, setIndex] = useState(8);
 
   return (
 
@@ -27,9 +29,11 @@ function App() {
         <option value="5">FiveApp 확인</option>
         <option value="6">SixApp 확인</option>
         <option value="7">SevenApp 확인</option>
+        <option value="8">EightApp 확인</option>
+        <option value="9">NineApp 확인</option>
       </select>
 
-      {index === 1 ? <OneApp /> : index === 2 ? <TwoApp /> : index === 3 ? <ThreeApp /> : index === 4 ? <FourApp /> : index === 5 ? <FiveApp /> : index === 6 ? <SixApp /> : index === 7 ? <SevenApp /> : index}
+      {index === 1 ? <OneApp /> : index === 2 ? <TwoApp /> : index === 3 ? <ThreeApp /> : index === 4 ? <FourApp /> : index === 5 ? <FiveApp /> : index === 6 ? <SixApp /> : index === 7 ? <SevenApp /> : index === 8 ? <EightApp /> : index === 9 ? <NineApp /> : index}
     </div>
   )
 }

@@ -11,9 +11,11 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
+
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
@@ -22,6 +24,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -39,4 +42,23 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.line {
+  border: 3px solid gray;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Orbit';
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+.circle {
+  width: 60px;
+  height: 60px;
+  border: 1px solid gray;
+  border-radius: 100px;
+  float: left;
+  margin-right: 10px;
+  line-height: 60px;
 }
