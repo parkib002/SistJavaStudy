@@ -12,6 +12,7 @@ const EightSubApp2 = ({ colorelt }) => {
     const addCircle = () => {
 
         colorelt(color);
+
     }
 
     return (

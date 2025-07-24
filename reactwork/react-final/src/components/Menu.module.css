@@ -1,0 +1,49 @@
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1.2rem 0 1.5rem 0;
+    margin: 0;
+    list-style: none;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.menu li {
+    margin: 0;
+}
+
+.menu a {
+    display: block;
+    padding: 0.5rem 1.2rem;
+    border-radius: 8px;
+    color: #4f8cff;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: background 0.2s, color 0.2s;
+}
+
+.menu a.active,
+.menu a:focus {
+    background: #4f8cff;
+    color: #fff;
+}
+
+.menu a:hover {
+    background: #ffb347;
+    color: #222;
+}
+
+@media (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.7rem 0;
+    }
+
+    .menu a {
+        font-size: 1rem;
+        padding: 0.5rem 0.7rem;
+    }
+}

@@ -34,6 +34,12 @@ const EightApp = () => {
         setColorelt(colorelt.concat(color));
     }
 
+    const deleteColor = (idx) => {
+
+
+        setColorelt(colorelt.filter((_, i) => i !== idx));
+    }
+
     return (
         <div>
             <h2>EightApp_부모 자식간 이벤트 과제</h2>
@@ -47,14 +53,15 @@ const EightApp = () => {
             {/* 두번째 자식 이벤트로 변경할 곳 */}
             <br /><br />
             {
-                colorelt.map((col, idx) => (<div className='circle' key={idx} style={{ backgroundColor: col }}>{idx}</div>))
+                colorelt.map((col, idx) => (<div className='circle' key={idx} style={{ backgroundColor: col }}
+                    onDoubleClick={() => deleteColor(idx)}>{idx + 1}</div>))
             }
             <br style={{ clear: 'both' }} />
             <EightSubApp1 message={messageEvent} color={colorEvent} image={imageEvent} />
 
             <br /><br />
 
-            <EightSubApp2 colorelt={coloreltEvent} />
+            <EightSubApp2 colorelt={coloreltEvent} del={deleteColor} />
 
         </div>
     )
