@@ -7,7 +7,7 @@ const Title = () => {
     return (
         <div className={styles.titleWrap}>
             <img src={img} alt="로고" />
-            <span className={styles.titleText}>React Spring_boot Project</span>
+            <span className={styles.titleText}>React & Spring_boot Project</span>
             <img src={img2} alt="로고" />
         </div>
     )

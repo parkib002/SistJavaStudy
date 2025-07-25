@@ -1,7 +1,7 @@
 import React from 'react'
 import { About, Main, Menu, Title } from './components'
 import { Route, Routes } from 'react-router-dom'
-import Shop from './shop/Shop'
+import { Shop, ShopForm, ShopDetail } from './shop'
 import Board from './board/Board'
 import Member from './member/Member'
 import Login from './login/Login'
@@ -14,7 +14,12 @@ const RouterMain = () => {
             <div>
                 <Routes>
                     <Route path='/' element={<Main />} />
+
+                    {/* Shop */}
                     <Route path='/shop/list' element={<Shop />} />
+                    <Route path='/shop/form' element={<ShopForm />} />
+                    <Route path='/shop/detail/:num' element={<ShopDetail />} />
+
                     <Route path='/board/list' element={<Board />} />
                     <Route path='/member/form' element={<Member />} />
                     <Route path='/login' element={<Login />} />

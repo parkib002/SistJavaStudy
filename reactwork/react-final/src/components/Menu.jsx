@@ -10,7 +10,7 @@ const Menu = () => {
             <li><NavLink to='/member/form' className={({ isActive }) => isActive ? 'active' : ''}>Member</NavLink></li>
             <li><NavLink to='/shop/list' className={({ isActive }) => isActive ? 'active' : ''}>Shop</NavLink></li>
             <li><NavLink to='/board/list' className={({ isActive }) => isActive ? 'active' : ''}>Board</NavLink></li>
-            <li><NavLink to='/about' className={({ isActive }) => isActive ? 'active' : ''}>About</NavLink></li>
+            <li><NavLink to='/about' className={({ isActive }) => isActive ? 'active' : ''}>오시는 길</NavLink></li>
         </ul>
     )
 }
