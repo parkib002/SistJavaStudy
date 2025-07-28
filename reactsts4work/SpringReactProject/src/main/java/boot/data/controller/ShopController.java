@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,38 +22,37 @@ import boot.data.service.ShopService;
 import jakarta.servlet.http.HttpSession;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173") //다른 포트 접속 허용
+@CrossOrigin(origins = "http://localhost:5173") // 다른 포트 접속 허용
 @RequestMapping("/shop")
 public class ShopController {
-	
+
 	@Autowired
 	private ShopService shopService;
-	
+
 	String photoName;
-	
-	//photo업로드
+
+	// photo업로드
 	@PostMapping("/upload")
-	public String fileUpload(@RequestParam("uploadFile") MultipartFile uploadFile,HttpSession session)
-	{
-		String fileName=uploadFile.getOriginalFilename();
-		
-		String path=session.getServletContext().getRealPath("/save");
-		
-		File file=new File(path+"\\"+photoName);
-		
-		if(file.exists())
+	public String fileUpload(@RequestParam("uploadFile") MultipartFile uploadFile, HttpSession session) {
+		String fileName = uploadFile.getOriginalFilename();
+
+		String path = session.getServletContext().getRealPath("/save");
+
+		File file = new File(path + "\\" + photoName);
+
+		if (file.exists())
 			file.delete();
-		
-		//파일명 변경
-		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmss");
-		
-		photoName=sdf.format(new Date())+"_"+uploadFile.getOriginalFilename();
-		
-		System.out.println("fileName: "+fileName+"==>"+photoName);
-		
-		//save업로드
+
+		// 파일명 변경
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
+
+		photoName = sdf.format(new Date()) + "_" + uploadFile.getOriginalFilename();
+
+		System.out.println("fileName: " + fileName + "==>" + photoName);
+
+		// save업로드
 		try {
-			uploadFile.transferTo(new File(path+"\\"+photoName));
+			uploadFile.transferTo(new File(path + "\\" + photoName));
 		} catch (IllegalStateException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,30 +60,28 @@ public class ShopController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return photoName;
 	}
-	
-	//insert
-	//@RequestBody는 json으로 보낸 것을 자바 클래스로 변환해야 하므로 사용
+
+	// insert
+	// @RequestBody는 json으로 보낸 것을 자바 클래스로 변환해야 하므로 사용
 	@PostMapping("/insert")
-	public void insertShop(@RequestBody ShopDto dto) 
-	{
-		//업로드한 사진명
+	public void insertShop(@RequestBody ShopDto dto) {
+		// 업로드한 사진명
 		dto.setPhoto(photoName);
-		
+
 		shopService.insertShop(dto);
-		
-		photoName=null;
+
+		photoName = null;
 	}
-	
-	//select
+
+	// select
 	@GetMapping("/list")
-	public List<ShopDto> list()
-	{
+	public List<ShopDto> list() {
 		return shopService.getAllShopDatas();
 	}
-	
+
 	@GetMapping("/detail")
 	public ShopDto detail(@RequestParam("num") Integer num)
 	{
@@ -91,4 +89,12 @@ public class ShopController {
 		
 		return dto;
 	}
+
+	 
+	@DeleteMapping("/delete")
+	public void delete(@RequestParam("num") Integer num, HttpSession session)
+	{
+		shopService.deleteShop(num, session);
+	}
+
 }

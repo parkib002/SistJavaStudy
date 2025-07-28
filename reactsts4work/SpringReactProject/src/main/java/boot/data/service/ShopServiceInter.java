@@ -3,6 +3,7 @@ package boot.data.service;
 import java.util.List;
 
 import boot.data.dto.ShopDto;
+import jakarta.servlet.http.HttpSession;
 
 public interface ShopServiceInter {
 	
@@ -11,5 +12,7 @@ public interface ShopServiceInter {
 	public List<ShopDto> getAllShopDatas();
 	
 	public ShopDto getOneShopData(Integer num);
+	
+	public void deleteShop(Integer num,HttpSession session);
 
 }

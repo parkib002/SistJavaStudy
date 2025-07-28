@@ -1,6 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const ShopDetail = () => {
 
@@ -14,16 +20,35 @@ const ShopDetail = () => {
     const navi = useNavigate();
 
     let photoUrl = "http://localhost:9000/save/";
+    let detailUrl = `http://localhost:9000/shop/detail?num=${num}`;
+    let deleteUrl = `http://localhost:9000/shop/delete?num=${num}`;
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    // ✅ 진짜 삭제 요청
+    const handleDeleteConfirm = () => {
+        axios.delete(deleteUrl)
+            .then(res => {
+                alert("삭제 성공");
+                navi("/shop/list");
+            })
+            .catch(err => {
+                alert(err);
+            });
+        setOpen(false); // 닫기
+    }
 
     const detailData = () => {
-
-        let url = `http://localhost:9000/shop/detail?num=${num}`;
-
-
-        //axios
-        axios.get(url)
+        axios.get(detailUrl)
             .then(res => {
-                // res.data 안에 있다고 가정
                 setSangpum(res.data.sangpum);
                 setPhoto(res.data.photo);
                 setDan(res.data.dan);
@@ -36,15 +61,11 @@ const ShopDetail = () => {
     }
 
     useEffect(() => {
-
-        console.log("list");
         detailData();
-    }, [num])
+    }, [num]);
 
     return (
-
         <div>
-
             <h1>{sangpum} 상세 페이지</h1>
 
             <table className='table table-bordered' style={{ width: '700px', margin: '0 auto' }}>
@@ -67,17 +88,46 @@ const ShopDetail = () => {
                         <td>{dan}원</td>
                         <td>{su}개</td>
                         <td>{ipgoday}</td>
-
+                    </tr>
+                    <tr>
+                        <td colSpan='5'>
+                            <button type='button' className='btn btn-outline-success' onClick={() => {
+                                navi("/shop/list");
+                            }}>목록</button>&nbsp;&nbsp;
+                            <button type='button' className='btn btn-outline-info'>추가</button>&nbsp;&nbsp;
+                            <button type='button' className='btn btn-outline-warning'>수정</button>&nbsp;&nbsp;
+                            <button type='button' className='btn btn-outline-danger' onClick={handleClickOpen}>
+                                삭제
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
-            <br /><br />
-            <button type='button' className='btn btn-outline-success' onClick={() => {
 
-                navi("/shop/list");
-            }}>목록</button>
+            {/* ✅ 삭제 다이얼로그 영역 */}
+            <Dialog
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">정말 삭제하시겠습니까?</DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        이 상품은 삭제 후 복구할 수 없습니다. 계속하시겠습니까?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleDeleteConfirm} color="error" autoFocus>
+                        삭제
+                    </Button>
+                    <Button onClick={handleClose} color="primary">
+                        취소
+                    </Button>
+                </DialogActions>
+            </Dialog>
         </div>
     )
 }
 
-export default ShopDetail
+export default ShopDetail;

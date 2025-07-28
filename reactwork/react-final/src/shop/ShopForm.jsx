@@ -46,7 +46,7 @@ const ShopForm = () => {
     const onInsert = () => {
 
         axios.post(insertUrl, { sangpum, su, dan })  //{"sangpum":sangpum} 같을땐 생략 (key값이 스프링 이름과 일치)
-            .then(res => {
+            .then(() => {
                 //insert성공후 처리할 코드
                 navi("/shop/list");
             })

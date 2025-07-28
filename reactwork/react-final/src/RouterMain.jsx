@@ -3,8 +3,8 @@ import { About, Main, Menu, Title } from './components'
 import { Route, Routes } from 'react-router-dom'
 import { Shop, ShopForm, ShopDetail } from './shop'
 import Board from './board/Board'
-import Member from './member/Member'
 import Login from './login/Login'
+import { JoinForm, LoginForm, MemberList } from './member'
 
 const RouterMain = () => {
     return (
@@ -16,12 +16,20 @@ const RouterMain = () => {
                     <Route path='/' element={<Main />} />
 
                     {/* Shop */}
-                    <Route path='/shop/list' element={<Shop />} />
-                    <Route path='/shop/form' element={<ShopForm />} />
-                    <Route path='/shop/detail/:num' element={<ShopDetail />} />
+                    <Route path='/shop'>
+                        <Route path='list' element={<Shop />} />
+                        <Route path='form' element={<ShopForm />} />
+                        <Route path='detail/:num' element={<ShopDetail />} />
+                    </Route>
 
                     <Route path='/board/list' element={<Board />} />
-                    <Route path='/member/form' element={<Member />} />
+
+                    <Route path='/member'>
+                        <Route path='form' element={<JoinForm />} />
+                        <Route path='login' element={<LoginForm />} />
+                        <Route path='list' element={<MemberList />} />
+                    </Route>
+
                     <Route path='/login' element={<Login />} />
                     <Route path='/about' element={<About />} />
                     <Route path='*' element={
