@@ -1,7 +1,7 @@
 import React from 'react'
 import { About, Main, Menu, Title } from './components'
 import { Route, Routes } from 'react-router-dom'
-import { Shop, ShopForm, ShopDetail } from './shop'
+import { Shop, ShopForm, ShopDetail, ShopUpdate } from './shop'
 import Board from './board/Board'
 import Login from './login/Login'
 import { JoinForm, LoginForm, MemberList } from './member'
@@ -20,6 +20,7 @@ const RouterMain = () => {
                         <Route path='list' element={<Shop />} />
                         <Route path='form' element={<ShopForm />} />
                         <Route path='detail/:num' element={<ShopDetail />} />
+                        <Route path='update/:num1' element={<ShopUpdate />} />
                     </Route>
 
                     <Route path='/board/list' element={<Board />} />
@@ -30,7 +31,6 @@ const RouterMain = () => {
                         <Route path='list' element={<MemberList />} />
                     </Route>
 
-                    <Route path='/login' element={<Login />} />
                     <Route path='/about' element={<About />} />
                     <Route path='*' element={
 

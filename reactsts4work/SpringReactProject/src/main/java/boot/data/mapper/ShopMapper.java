@@ -16,4 +16,6 @@ public interface ShopMapper {
 	public ShopDto getOneShopData(Integer num);
 	
 	public void deleteShop(Integer num);
+
+	public void updateShop(ShopDto dto);
 }

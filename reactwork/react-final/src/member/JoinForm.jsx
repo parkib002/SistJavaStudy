@@ -54,7 +54,13 @@ const JoinForm = () => {
 
             axios.post(insertUrl, { myname, myid, mypass })
                 .then(() => {
-                    navi("/member/login");
+                    alert('회원가입 성공');
+                    setMyname('');
+                    setMyid('');
+                    setMypass('');
+                    setIdmsg('');
+                    setBtnok(false);
+                    navi("/");
                 })
         }
     }
@@ -92,7 +98,7 @@ const JoinForm = () => {
                         <tr>
                             <th>비밀번호</th>
                             <td>
-                                <input type="text" className='form-control' style={{ width: '120px' }} required
+                                <input type="password" className='form-control' style={{ width: '120px' }} required
                                     defaultValue={mypass} onChange={(e) => {
                                         setMypass(e.target.value);
                                     }} />

@@ -14,5 +14,6 @@ public interface ShopServiceInter {
 	public ShopDto getOneShopData(Integer num);
 	
 	public void deleteShop(Integer num,HttpSession session);
-
+	
+	public void updateShop(ShopDto dto);
 }

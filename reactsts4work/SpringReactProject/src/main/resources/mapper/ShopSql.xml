@@ -16,4 +16,8 @@
 	<delete id="deleteShop" parameterType="int">
 		delete from reactshop where num=#{num}
 	</delete>
+	
+	<update id="updateShop" parameterType="shop">
+		update reactshop set sangpum=#{sangpum},photo=#{photo},su=#{su},dan=#{dan} where num=#{num}
+	</update>
 </mapper>

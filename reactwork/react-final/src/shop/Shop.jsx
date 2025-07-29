@@ -25,9 +25,9 @@ const Shop = () => {
                 console.log("len= " + res.data.length);
             });
 
-        //처음 랜더링시 딱 한번 데이터 가져오기
     }
 
+    //처음 랜더링시 딱 한번 데이터 가져오기
     useEffect(() => {
 
         console.log("list");

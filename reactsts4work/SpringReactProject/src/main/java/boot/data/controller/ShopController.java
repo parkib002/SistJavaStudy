@@ -96,5 +96,15 @@ public class ShopController {
 	{
 		shopService.deleteShop(num, session);
 	}
+	
+	@PostMapping("/update")
+	public void update(@RequestBody ShopDto dto)
+	{
+		dto.setPhoto(photoName);
+		
+		shopService.updateShop(dto);
+		
+		photoName = null;
+	}
 
 }

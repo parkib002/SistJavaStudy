@@ -50,4 +50,13 @@ public class ShopService implements ShopServiceInter {
 		shopMapper.deleteShop(num);
 	}
 
+	@Override
+	public void updateShop(ShopDto dto) {
+		// TODO Auto-generated method stub
+	
+		
+		shopMapper.updateShop(dto);
+		
+	}
+
 }

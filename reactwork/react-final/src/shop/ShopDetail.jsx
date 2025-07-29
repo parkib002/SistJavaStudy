@@ -36,7 +36,7 @@ const ShopDetail = () => {
     // ✅ 진짜 삭제 요청
     const handleDeleteConfirm = () => {
         axios.delete(deleteUrl)
-            .then(res => {
+            .then(() => {
                 alert("삭제 성공");
                 navi("/shop/list");
             })
@@ -94,8 +94,12 @@ const ShopDetail = () => {
                             <button type='button' className='btn btn-outline-success' onClick={() => {
                                 navi("/shop/list");
                             }}>목록</button>&nbsp;&nbsp;
-                            <button type='button' className='btn btn-outline-info'>추가</button>&nbsp;&nbsp;
-                            <button type='button' className='btn btn-outline-warning'>수정</button>&nbsp;&nbsp;
+                            <button type='button' className='btn btn-outline-info' onClick={() => {
+                                navi("/shop/form");
+                            }}>추가</button>&nbsp;&nbsp;
+                            <button type='button' className='btn btn-outline-warning' onClick={() => {
+                                navi("/shop/update/" + num);
+                            }}>수정</button>&nbsp;&nbsp;
                             <button type='button' className='btn btn-outline-danger' onClick={handleClickOpen}>
                                 삭제
                             </button>

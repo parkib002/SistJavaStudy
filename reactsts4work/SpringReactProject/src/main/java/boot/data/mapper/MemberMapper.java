@@ -21,5 +21,5 @@ public interface MemberMapper {
 	public String getName(String myid);
 	
 	public void deleteMember(int num);
-
+	
 }
